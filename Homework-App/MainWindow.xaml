@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Homework_App"
         mc:Ignorable="d"
-        Title="Homework App" Height="450" Width="800">
+        Title="Homework App" Height="600" Width="1000">
     <Window.Resources>
         <Style x:Key="test">
             <Setter Property="Border.Background" Value="#FFE94B4B"/>
@@ -24,10 +24,33 @@
         <Button x:Name="settingsButton" Content="Settings" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="42" Width="141" Style="{DynamicResource menu-color}" Grid.Row="1" Click="settingsButton_Click" Cursor="Hand"/>
         
         <!-- Main homework grid -->
-        <Grid x:Name="homeworkGrid" Margin="141,0,0,0" Grid.RowSpan="2" Visibility="Hidden">
+        <Grid x:Name="homeworkGrid" Margin="141,0,0,0" Grid.RowSpan="2" Visibility="Visible">
             <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
                 <Label Content="Homework" FontSize="26"/>
+                
+                
             </Border>
+            <Grid Margin="10,100,0,0" Width="300" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Due today" FontSize="18"/>
+                <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine">
+                    <ScrollViewer>
+                        <!-- This is an example homework assignment -->
+                        <Grid Height="60" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="#FF6C6C6C" Background="#FFE6E6E6">
+                                
+                            </Border>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
         </Grid>
 
         <!-- Main classes grid -->
