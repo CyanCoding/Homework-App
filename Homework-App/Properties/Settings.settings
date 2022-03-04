@@ -5,5 +5,8 @@
     <Setting Name="SelectedTheme" Type="System.String" Scope="User">
       <Value Profile="(Default)">Blueish</Value>
     </Setting>
+    <Setting Name="StartTab" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Homework</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

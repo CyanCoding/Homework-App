@@ -43,6 +43,21 @@
                     <ComboBoxItem Background="#FFE94B4B" Content="Redish"/>
                 </ComboBox>
             </Grid>
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" Width="210" Height="60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Start tab" Width="100" FontSize="18" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <!-- The value in here is set at runtime -->
+                <ComboBox x:Name="tabComboBox" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" SelectionChanged="tabComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Homework"/>
+                    <ComboBoxItem Content="Classes"/>
+                    <ComboBoxItem Content="Calendar"/>
+                </ComboBox>
+            </Grid>
         </Grid>
 
 

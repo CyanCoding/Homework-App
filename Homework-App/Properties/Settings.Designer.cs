@@ -34,5 +34,17 @@ namespace Homework_App.Properties {
                 this["SelectedTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Homework")]
+        public string StartTab {
+            get {
+                return ((string)(this["StartTab"]));
+            }
+            set {
+                this["StartTab"] = value;
+            }
+        }
     }
 }

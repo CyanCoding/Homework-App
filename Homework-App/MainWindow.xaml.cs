@@ -21,6 +21,7 @@ namespace Homework_App {
         public MainWindow() {
             InitializeComponent();
 
+            // Generate and apply the theme
             Style style = new Style();
             // theme[0]: regular color
             // theme[1]: selection color
@@ -29,25 +30,51 @@ namespace Homework_App {
             style.Setters.Add(new Setter(Border.BackgroundProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
             style.Setters.Add(new Setter(Border.BorderBrushProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
             Application.Current.Resources["menu-color"] = style;
+
+            // Switch tabs to the user's settings
+            switch (Properties.Settings.Default.StartTab) {
+                case "Homework":
+                    homeworkButton_Click();
+                    break;
+                case "Classes":
+                    classesButton_Click();
+                    break;
+                case "Calendar":
+                    calendarButton_Click();
+                    break;
+            }
         }
 
-        private void homeworkButton_Click(object sender, RoutedEventArgs e) {
+        private void homeworkButton_Click(object? sender = null, RoutedEventArgs? e = null) {
             UpdateSelection(homeworkButton);
         }
 
-        private void classesButton_Click(object sender, RoutedEventArgs e) {
+        private void classesButton_Click(object? sender = null, RoutedEventArgs? e = null) {
             UpdateSelection(classesButton);
         }
 
-        private void calendarButton_Click(object sender, RoutedEventArgs e) {
+        private void calendarButton_Click(object? sender = null, RoutedEventArgs? e = null) {
             UpdateSelection(calendarButton);
         }
 
-        private void settingsButton_Click(object sender, RoutedEventArgs e) {
+        private void settingsButton_Click(object? sender = null, RoutedEventArgs? e = null) {
             UpdateSelection(settingsButton);
 
             // Prepare the scene
             themeComboBox.SelectedIndex = Themes.ThemeToInt(Properties.Settings.Default.SelectedTheme);
+
+            switch (Properties.Settings.Default.StartTab) {
+                case "Homework":
+                    tabComboBox.SelectedIndex = 0;
+                    break;
+                case "Classes":
+                    tabComboBox.SelectedIndex = 1;
+                    break;
+                case "Calendar":
+                    tabComboBox.SelectedIndex = 2;
+                    break;
+            }
+
             settingsGrid.Visibility = Visibility.Visible;
 
         }
@@ -75,6 +102,8 @@ namespace Homework_App {
         /// </summary>
         private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             string themeName = Themes.IntTotheme(themeComboBox.SelectedIndex);
+            
+            // Saves the new theme to properties
             Properties.Settings.Default.SelectedTheme = themeName;
             Properties.Settings.Default.Save();
 
@@ -90,6 +119,27 @@ namespace Homework_App {
 
             // We have to update the button selection again for the new style
             UpdateSelection(settingsButton);
+        }
+
+        /// <summary>
+        /// Changes the user's start tab
+        /// </summary>
+        private void tabComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            int tab = tabComboBox.SelectedIndex;
+
+            switch (tab) {
+                case 0:
+                    Properties.Settings.Default.StartTab = "Homework";
+                    break;
+                case 1:
+                    Properties.Settings.Default.StartTab = "Classes";
+                    break;
+                case 2:
+                    Properties.Settings.Default.StartTab = "Calendar";
+                    break;
+            }
+
+            Properties.Settings.Default.Save();
         }
     }
 }
