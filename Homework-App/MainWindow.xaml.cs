@@ -32,19 +32,19 @@ namespace Homework_App {
         }
 
         private void homeworkButton_Click(object sender, RoutedEventArgs e) {
-            //UpdateSelection(homeworkButton);
+            UpdateSelection(homeworkButton);
         }
 
         private void classesButton_Click(object sender, RoutedEventArgs e) {
-            //UpdateSelection(classesButton);
+            UpdateSelection(classesButton);
         }
 
         private void calendarButton_Click(object sender, RoutedEventArgs e) {
-            //UpdateSelection(calendarButton);
+            UpdateSelection(calendarButton);
         }
 
         private void settingsButton_Click(object sender, RoutedEventArgs e) {
-            //UpdateSelection(settingsButton);
+            UpdateSelection(settingsButton);
 
             // Prepare the scene
             themeComboBox.SelectedIndex = Themes.ThemeToInt(Themes.CurrentTheme);
@@ -74,42 +74,21 @@ namespace Homework_App {
         /// Changes the theme globally.
         /// </summary>
         private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            /*            string themeName = Themes.IntTotheme(themeComboBox.SelectedIndex);
-                        Themes.CurrentTheme = themeName;
-
-                        Style style = new Style();
-                        // theme[0]: regular color
-                        // theme[1]: selection color
-                        string[] theme = Themes.BrushValues[themeName].Split(',');
-
-                        style.Setters.Add(new Setter(Border.BackgroundProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
-                        style.Setters.Add(new Setter(Border.BorderBrushProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
-
-                        Trigger mouseOver = new Trigger() {
-                            //SourceName = "source",
-                            Property = IsMouseOverProperty,
-                            Value = true
-                        };
-
-                        mouseOver.Setters.Add(new Setter(Border.BackgroundProperty, new BrushConverter().ConvertFrom(theme[1]) as Brush));
-                        style.Triggers.Add(mouseOver);*/
+            string themeName = Themes.IntTotheme(themeComboBox.SelectedIndex);
+            Themes.CurrentTheme = themeName;
 
             Style style = new Style();
-            style.Setters.Add(new Setter(Button.BackgroundProperty, new BrushConverter().ConvertFrom("#FF0000") as Brush));
+            // theme[0]: regular color
+            // theme[1]: selection color
+            string[] theme = Themes.BrushValues[themeName].Split(',');
 
-            Trigger mouseOver = new Trigger() {
-                Property = IsMouseOverProperty,
-                Value = true
-            };
-
-            mouseOver.Setters.Add(new Setter(Button.BackgroundProperty, new BrushConverter().ConvertFrom("#00FF00") as Brush));
-            style.Triggers.Add(mouseOver);
-
+            style.Setters.Add(new Setter(Border.BackgroundProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
+            style.Setters.Add(new Setter(Border.BorderBrushProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
 
             Application.Current.Resources["menu-color"] = style;
 
             // We have to update the button selection again for the new style
-            //UpdateSelection(settingsButton);
+            UpdateSelection(settingsButton);
         }
     }
 }
