@@ -46,19 +46,19 @@ namespace Homework_App {
         }
 
         private void homeworkButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(homeworkButton);
+            UpdateSelection(homeworkButton, homeworkGrid);
         }
 
         private void classesButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(classesButton);
+            UpdateSelection(classesButton, classesGrid);
         }
 
         private void calendarButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(calendarButton);
+            UpdateSelection(calendarButton, calendarGrid);
         }
 
         private void settingsButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(settingsButton);
+            UpdateSelection(settingsButton, settingsGrid);
 
             // Prepare the scene
             themeComboBox.SelectedIndex = Themes.ThemeToInt(Properties.Settings.Default.SelectedTheme);
@@ -79,12 +79,19 @@ namespace Homework_App {
 
         }
 
-        private void UpdateSelection(Button selectedButton) {
+        private void UpdateSelection(Button selectedButton, Grid showingGrid) {
             Button[] menuList = new Button[] { 
                 homeworkButton,
-                calendarButton,
                 classesButton,
+                calendarButton,
                 settingsButton
+            };
+
+            Grid[] gridList = new Grid[] {
+                homeworkGrid,
+                classesGrid,
+                calendarGrid,
+                settingsGrid
             };
 
             foreach (Button button in menuList) {
@@ -93,6 +100,15 @@ namespace Homework_App {
                 }
                 else {
                     Themes.DeselectButton(button);
+                }
+            }
+
+            foreach (Grid grid in gridList) {
+                if (grid == showingGrid) {
+                    grid.Visibility = Visibility.Visible;
+                }
+                else {
+                    grid.Visibility = Visibility.Hidden;
                 }
             }
         }
@@ -118,7 +134,7 @@ namespace Homework_App {
             Application.Current.Resources["menu-color"] = style;
 
             // We have to update the button selection again for the new style
-            UpdateSelection(settingsButton);
+            UpdateSelection(settingsButton, settingsGrid);
         }
 
         /// <summary>

@@ -22,9 +22,30 @@
         <Button x:Name="classesButton" Content="Classes" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="141" Margin="0,42,0,0" Style="{DynamicResource menu-color}" Click="classesButton_Click" Cursor="Hand"/>
         <Button x:Name="calendarButton" Content="Calendar" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="141" Margin="0,84,0,0" Style="{DynamicResource menu-color}" Click="calendarButton_Click" Cursor="Hand"/>
         <Button x:Name="settingsButton" Content="Settings" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="42" Width="141" Style="{DynamicResource menu-color}" Grid.Row="1" Click="settingsButton_Click" Cursor="Hand"/>
+        
+        <!-- Main homework grid -->
+        <Grid x:Name="homeworkGrid" Margin="141,0,0,0" Grid.RowSpan="2" Visibility="Hidden">
+            <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+                <Label Content="Homework" FontSize="26"/>
+            </Border>
+        </Grid>
+
+        <!-- Main classes grid -->
+        <Grid x:Name="classesGrid" Margin="141,0,0,0" Grid.RowSpan="2" Visibility="Hidden">
+            <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+                <Label Content="Classes" FontSize="26"/>
+            </Border>
+        </Grid>
+
+        <!-- Main calendar grid -->
+        <Grid x:Name="calendarGrid" Margin="141,0,0,0" Grid.RowSpan="2" Visibility="Hidden">
+            <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+                <Label Content="Calendar" FontSize="26"/>
+            </Border>
+        </Grid>
 
         <!-- Main settings grid -->
-        <Grid x:Name="settingsGrid" Margin="141,0,0,0" Grid.RowSpan="2">
+        <Grid x:Name="settingsGrid" Margin="141,0,0,0" Grid.RowSpan="2" Visibility="Hidden">
             <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
                 <Label Content="Settings" FontSize="26"/>
             </Border>
