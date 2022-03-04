@@ -35,7 +35,7 @@
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="App theme" Width="100" FontSize="18" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                
+
                 <!-- The value in here is set at runtime -->
                 <ComboBox x:Name="themeComboBox" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" SelectionChanged="themeComboBox_SelectionChanged">
                     <ComboBoxItem Background="#FFA6C5FF" Content="Blueish"/>

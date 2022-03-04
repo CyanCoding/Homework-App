@@ -24,7 +24,7 @@ namespace Homework_App {
             Style style = new Style();
             // theme[0]: regular color
             // theme[1]: selection color
-            string[] theme = Themes.BrushValues[Themes.CurrentTheme].Split(',');
+            string[] theme = Themes.BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
 
             style.Setters.Add(new Setter(Border.BackgroundProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
             style.Setters.Add(new Setter(Border.BorderBrushProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
@@ -47,7 +47,7 @@ namespace Homework_App {
             UpdateSelection(settingsButton);
 
             // Prepare the scene
-            themeComboBox.SelectedIndex = Themes.ThemeToInt(Themes.CurrentTheme);
+            themeComboBox.SelectedIndex = Themes.ThemeToInt(Properties.Settings.Default.SelectedTheme);
             settingsGrid.Visibility = Visibility.Visible;
 
         }
@@ -75,7 +75,8 @@ namespace Homework_App {
         /// </summary>
         private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             string themeName = Themes.IntTotheme(themeComboBox.SelectedIndex);
-            Themes.CurrentTheme = themeName;
+            Properties.Settings.Default.SelectedTheme = themeName;
+            Properties.Settings.Default.Save();
 
             Style style = new Style();
             // theme[0]: regular color

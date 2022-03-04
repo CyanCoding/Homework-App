@@ -18,9 +18,6 @@ namespace Homework_App {
             {"Redish", "#FFE94B4B,#FFF27B7B"}
         };
 
-        // We can get the key of BrushValues from this current theme
-        internal static string CurrentTheme = "Blueish";
-
         /// <summary>
         /// Sets a button's background to the appropriate color based
         /// on the currentTheme value.
@@ -29,14 +26,14 @@ namespace Homework_App {
         internal static void SetSelection(Button button) {
             // theme[0]: regular color
             // theme[1]: selection color
-            string[] theme = BrushValues[CurrentTheme].Split(',');
+            string[] theme = BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
             button.Background = new BrushConverter().ConvertFrom(theme[1]) as Brush;
         }
 
         internal static void DeselectButton(Button button) {
             // theme[0]: regular color
             // theme[1]: selection color
-            string[] theme = BrushValues[CurrentTheme].Split(',');
+            string[] theme = BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
             button.Background = new BrushConverter().ConvertFrom(theme[0]) as Brush;
         }
 
