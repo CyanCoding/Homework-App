@@ -204,7 +204,7 @@
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Date" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Date" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                             <Calendar Height="170" BorderBrush="#FFAA2929" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <Label Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                         </Grid>
