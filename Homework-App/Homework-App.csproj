@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="green-flag.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="bin\Debug\net6.0-windows\Homework-App.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="green-flag.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -59,5 +59,35 @@ namespace Homework_App.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] green_flag {
+            get {
+                object obj = ResourceManager.GetObject("green_flag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] red_flag {
+            get {
+                object obj = ResourceManager.GetObject("red_flag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] yellow_flag {
+            get {
+                object obj = ResourceManager.GetObject("yellow_flag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
