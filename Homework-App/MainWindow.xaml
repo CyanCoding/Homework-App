@@ -296,10 +296,20 @@
                         </Grid>
 
                         <!-- Ideas: add file, add hyperlink, etc. -->
-                        
+                        <!-- Add file button and hyperlink button -->
+                        <Grid Height="35" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,580,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="1" Content="+ Add file" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}"/>
+                            <Button Grid.Column="2" Content="+ Add link" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}"/>
+                        </Grid>
 
                         <!-- Extra space -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,560,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,620,0,0">
                         </Grid>
                     </Grid>
                 </ScrollViewer>
