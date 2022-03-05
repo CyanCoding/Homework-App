@@ -157,7 +157,23 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="Type" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                     <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                        <ComboBoxItem Content="Homework"/>
+                        <ComboBoxItem Content="Lesson"/>
                         <ComboBoxItem Content="Paper"/>
+                        <ComboBoxItem Content="Video"/>
+                        <ComboBoxItem Content="Slideshow"/>
+                        <ComboBoxItem Content="Worksheet"/>
+                        <ComboBoxItem Content="Presentation"/>
+                        <ComboBoxItem Content="Project"/>
+                        <ComboBoxItem Content="Group project"/>
+                        <ComboBoxItem Content="Discussion"/>
+                        <ComboBoxItem Content="Study"/>
+                        <ComboBoxItem Content="Lab"/>
+                        <ComboBoxItem Content="Quiz"/>
+                        <ComboBoxItem Content="Exam"/>
+                        <ComboBoxItem Content="Midterm"/>
+                        <ComboBoxItem Content="Final"/>
+                        <ComboBoxItem Content="Other"/>
                     </ComboBox>
                 </Grid>
 
