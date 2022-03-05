@@ -157,5 +157,13 @@ namespace Homework_App {
 
             Properties.Settings.Default.Save();
         }
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e) {
+            testy.Content = "✔";
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e) {
+            testy.Content = "";
+        }
     }
 }
