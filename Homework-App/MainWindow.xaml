@@ -134,6 +134,7 @@
                 <SolidColorBrush Color="Black" Opacity="0.7"/>
             </Grid.Background>
 
+            <!-- Make dynamic height!! -->
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="450" Height="500" Background="White">
                 <Label Content="Add new assignment" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0"/>
 
@@ -253,8 +254,52 @@
                             </ComboBox>
                         </Grid>
 
+                        <!-- Reminder -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,440,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Reminder" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <ComboBoxItem Content=""/>
+                                <ComboBoxItem Content="When due"/>
+                                <ComboBoxItem Content="1 hour before"/>
+                                <ComboBoxItem Content="2 hours before"/>
+                                <ComboBoxItem Content="4 hours before"/>
+                                <ComboBoxItem Content="6 hours before"/>
+                                <ComboBoxItem Content="8 hours before"/>
+                                <ComboBoxItem Content="12 hours before"/>
+                                <ComboBoxItem Content="1 day before"/>
+                                <ComboBoxItem Content="2 days before"/>
+                                <ComboBoxItem Content="3 days before"/>
+                                <ComboBoxItem Content="4 days before"/>
+                                <ComboBoxItem Content="5 days before"/>
+                                <ComboBoxItem Content="6 days before"/>
+                                <ComboBoxItem Content="7 days before"/>
+                                <ComboBoxItem Content="1.5 weeks before"/>
+                                <ComboBoxItem Content="2 weeks before"/>
+                                <ComboBoxItem Content="Custom"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Notes -->
+                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,480,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Notes" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <RichTextBox VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                        </Grid>
+
+                        <!-- Ideas: add file, add hyperlink, etc. -->
+                        
+
                         <!-- Extra space -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,430,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,560,0,0">
                         </Grid>
                     </Grid>
                 </ScrollViewer>
