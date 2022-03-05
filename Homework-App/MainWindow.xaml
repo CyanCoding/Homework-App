@@ -52,7 +52,7 @@
                             </Grid.RowDefinitions>
                             <Border Grid.ColumnSpan="2" Grid.RowSpan="2"  BorderThickness="1" BorderBrush="#FF6C6C6C" Background="White"/>
 
-                            <Image Margin="0,0,5,5" Grid.Row="1" Grid.Column="1" Source="{StaticResource flagDrawingImage}" Width="20" Height="20" HorizontalAlignment="Right" />
+                            <Image Margin="0,0,5,5" Grid.Row="1" Grid.Column="1" Source="{StaticResource redFlag}" Width="20" Height="20" HorizontalAlignment="Right" />
 
                             <Label FontSize="14" Margin="5,5,0,0" VerticalAlignment="Top" Content="Complete WW2 Assignment"/>
                             <Grid Grid.Row="1">

@@ -1,19 +1,56 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Green flag -->
   <Geometry x:Key="flagGeometry">F1 M24,24z M0,0z M4,15C4,15 5,14 8,14 11,14 13,16 16,16 19,16 20,15 20,15L20,3C20,3 19,4 16,4 13,4 11,2 8,2 5,2 4,3 4,3z</Geometry>
-  <DrawingGroup x:Key="flagDrawingGroup" ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+  <DrawingGroup x:Key="greenFlagDrawingGroup" ClipGeometry="M0,0 V24 H24 V0 H0 Z">
     <GeometryDrawing Geometry="{StaticResource flagGeometry}">
       <GeometryDrawing.Pen>
-        <Pen Brush="#FF000000" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+        <Pen Brush="#FF4BB86E" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
       </GeometryDrawing.Pen>
     </GeometryDrawing>
     <GeometryDrawing>
       <GeometryDrawing.Pen>
-        <Pen Brush="#FF000000" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+        <Pen Brush="#FF4BB86E" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
       </GeometryDrawing.Pen>
       <GeometryDrawing.Geometry>
         <LineGeometry StartPoint="4,22" EndPoint="4,15" />
       </GeometryDrawing.Geometry>
     </GeometryDrawing>
   </DrawingGroup>
-  <DrawingImage x:Key="flagDrawingImage" Drawing="{StaticResource flagDrawingGroup}" />
+    <DrawingImage x:Key="greenFlag" Drawing="{StaticResource greenFlagDrawingGroup}" />
+
+    <!-- Red flag -->
+    <DrawingGroup x:Key="redFlagDrawingGroup" ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+        <GeometryDrawing Geometry="{StaticResource flagGeometry}">
+            <GeometryDrawing.Pen>
+                <Pen Brush="#FFB84B4B" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing>
+            <GeometryDrawing.Pen>
+                <Pen Brush="#FFB84B4B" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+            <GeometryDrawing.Geometry>
+                <LineGeometry StartPoint="4,22" EndPoint="4,15" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingImage x:Key="redFlag" Drawing="{StaticResource redFlagDrawingGroup}" />
+
+    <!-- Yellow flag -->
+    <DrawingGroup x:Key="yellowFlagDrawingGroup" ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+        <GeometryDrawing Geometry="{StaticResource flagGeometry}">
+            <GeometryDrawing.Pen>
+                <Pen Brush="#FFB8B44B" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing>
+            <GeometryDrawing.Pen>
+                <Pen Brush="#FFB8B44B" Thickness="2" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+            </GeometryDrawing.Pen>
+            <GeometryDrawing.Geometry>
+                <LineGeometry StartPoint="4,22" EndPoint="4,15" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+    <DrawingImage x:Key="yellowFlag" Drawing="{StaticResource yellowFlagDrawingGroup}" />
 </ResourceDictionary>
