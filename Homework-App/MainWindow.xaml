@@ -157,6 +157,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="Type" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                     <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                        <ComboBoxItem Content=""/>
                         <ComboBoxItem Content="Homework"/>
                         <ComboBoxItem Content="Lesson"/>
                         <ComboBoxItem Content="Paper"/>
@@ -176,6 +177,22 @@
                         <ComboBoxItem Content="Other"/>
                     </ComboBox>
                 </Grid>
+
+                <!-- Class -->
+                <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,140,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Class" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                    <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                        <ComboBoxItem Content=""/>
+                        <ComboBoxItem Content="Test class 1"/>
+                        <ComboBoxItem Content="Test class 2"/>
+                    </ComboBox>
+                </Grid>
+                
 
                 <!-- Cancel and save buttons -->
                 <Grid VerticalAlignment="Bottom" Grid.RowSpan="2" Height="50" Margin="0,0,0,5">
