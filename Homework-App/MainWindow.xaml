@@ -292,7 +292,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Notes" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <RichTextBox VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <RichTextBox VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" AcceptsTab="True" Block.LineHeight="2"/>
                         </Grid>
 
                         <!-- Ideas: add file, add hyperlink, etc. -->
