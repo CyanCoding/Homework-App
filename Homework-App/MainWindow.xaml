@@ -148,7 +148,8 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Title" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <TextBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <TextBox VerticalContentAlignment="Center" BorderBrush="#FFAA2929" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                         </Grid>
 
                         <!-- Assignment type -->
@@ -204,7 +205,8 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Date" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <Calendar Height="170" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Calendar Height="170" BorderBrush="#FFAA2929" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                         </Grid>
 
                         <!-- Time -->
