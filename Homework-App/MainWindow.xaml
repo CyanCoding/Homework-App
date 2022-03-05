@@ -233,6 +233,29 @@
                                 <ComboBoxItem Content="High"/>
                             </ComboBox>
                         </Grid>
+
+                        <!-- Repeat -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,400,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Repeat" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <ComboBoxItem Content=""/>
+                                <ComboBoxItem Content="Every day"/>
+                                <ComboBoxItem Content="Every work day (Mon - Fri)"/>
+                                <ComboBoxItem Content="Once a week"/>
+                                <ComboBoxItem Content="Once every other week"/>
+                                <ComboBoxItem Content="Once a month"/>
+                                <ComboBoxItem Content="Custom"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Extra space -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,430,0,0">
+                        </Grid>
                     </Grid>
                 </ScrollViewer>
 
