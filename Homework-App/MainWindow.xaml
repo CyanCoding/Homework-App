@@ -134,7 +134,7 @@
                 <SolidColorBrush Color="Black" Opacity="0.7"/>
             </Grid.Background>
 
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Height="500" Background="White">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="450" Height="500" Background="White">
                 <Label Content="Add new assignment" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0"/>
 
                 <ScrollViewer Height="380">
@@ -144,7 +144,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Title" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                             <TextBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
@@ -155,7 +155,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Type" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                             <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
@@ -185,7 +185,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Class" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                             <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
@@ -200,10 +200,10 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Date" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <Calendar Height="170" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Calendar Height="170" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                         </Grid>
 
                         <!-- Time -->
@@ -211,7 +211,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Time" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Center" Margin="5,0,0,0"/>
                             <TextBox VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
@@ -223,7 +223,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Priority" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
                             <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
@@ -239,11 +239,13 @@
                 <!-- Cancel and save buttons -->
                 <Grid VerticalAlignment="Bottom" Grid.RowSpan="2" Height="50" Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Cancel" FontSize="13" Background="#FFE94B4B" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10"/>
-                    <Button Grid.Column="1" Content="Save" FontSize="13" Style="{DynamicResource menu-color}" Cursor="Hand" BorderThickness="0.5" Margin="5,10,10,10"/>
+                    <Button Grid.Column="0" Content="Cancel" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Background="#FFAA2929"/>
+                    <Button Grid.Column="1" Content="Save + make another" FontSize="13" Style="{DynamicResource menu-color}" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White"/>
+                    <Button Grid.Column="2" Content="Save" FontSize="13" Style="{DynamicResource menu-color}" Foreground="White" Cursor="Hand" BorderThickness="0.5" Margin="5,10,10,10"/>
                 </Grid>
             </Grid>
         </Grid>
