@@ -174,13 +174,17 @@ namespace Homework_App {
             newAssignmentGrid.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Checks if the user has filled in the assignment title AND datepicker
+        /// </summary>
+        /// <returns>True if both are filled in.</returns>
         private bool assignmentFilledDetails() {
-            bool returnVal = false;
+            bool returnVal = true;
             // Title text box is required
             if (assignmentTitleTextbox.Text == "") {
                 assignmentTitleTextbox.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
                 assignmentTitleRequiredLabel.Visibility = Visibility.Visible;
-                returnVal = true;
+                returnVal = false;
             } else {
                 assignmentTitleTextbox.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
                 assignmentTitleRequiredLabel.Visibility = Visibility.Hidden;
@@ -189,7 +193,7 @@ namespace Homework_App {
             if (assignmentCalendar.SelectedDate == null) {
                 assignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
                 assignmentCalendarRequiredLabel.Visibility = Visibility.Visible;
-                returnVal = true;
+                returnVal = false;
             } else {
                 assignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
                 assignmentCalendarRequiredLabel.Visibility = Visibility.Hidden;
@@ -200,10 +204,29 @@ namespace Homework_App {
 
         private void saveAndAddButton_Click(object sender, RoutedEventArgs e) {
             assignmentFilledDetails();
+            // Add assignment and clear values
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e) {
             assignmentFilledDetails();
+            // Add assignment and close screen and clear values
+        }
+
+        /// <summary>
+        /// When the user clicks to add a file to their assignment
+        /// </summary>
+        private void assignmentAddFileButton_Click(object sender, RoutedEventArgs e) {
+            // Create OpenFileDialog 
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (result.HasValue && result.Value) {
+                // File
+                string filename = dlg.FileName; // System.IO.Path.GetFileName(filename);
+            }
         }
     }
 }
