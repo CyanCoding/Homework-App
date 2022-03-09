@@ -165,5 +165,45 @@ namespace Homework_App {
         private void Label_MouseLeave(object sender, MouseEventArgs e) {
             testy.Content = "";
         }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e) {
+            newAssignmentGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void newAssignmentButton_Click(object sender, RoutedEventArgs e) {
+            newAssignmentGrid.Visibility = Visibility.Visible;
+        }
+
+        private bool assignmentFilledDetails() {
+            bool returnVal = false;
+            // Title text box is required
+            if (assignmentTitleTextbox.Text == "") {
+                assignmentTitleTextbox.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+                assignmentTitleRequiredLabel.Visibility = Visibility.Visible;
+                returnVal = true;
+            } else {
+                assignmentTitleTextbox.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                assignmentTitleRequiredLabel.Visibility = Visibility.Hidden;
+            }
+            // Valid calendar day is required
+            if (assignmentCalendar.SelectedDate == null) {
+                assignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+                assignmentCalendarRequiredLabel.Visibility = Visibility.Visible;
+                returnVal = true;
+            } else {
+                assignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                assignmentCalendarRequiredLabel.Visibility = Visibility.Hidden;
+            }
+
+            return returnVal;
+        }
+
+        private void saveAndAddButton_Click(object sender, RoutedEventArgs e) {
+            assignmentFilledDetails();
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e) {
+            assignmentFilledDetails();
+        }
     }
 }

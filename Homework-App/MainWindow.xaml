@@ -32,7 +32,7 @@
                 <Label Content="Homework" FontSize="26"/>
             </Border>
 
-            <Button x:Name="newAssignmentButton" Content="Add new assignment +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="171" Style="{DynamicResource menu-color}" Cursor="Hand" Margin="10,70,0,0"/>
+            <Button x:Name="newAssignmentButton" Content="Add new assignment +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="171" Style="{DynamicResource menu-color}" Cursor="Hand" Margin="10,70,0,0" Click="newAssignmentButton_Click"/>
 
             <Grid Margin="10,130,0,0" Width="300" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
@@ -129,7 +129,7 @@
         </Grid>
 
         <!-- This needs to come last so it appears above everything else -->
-        <Grid Grid.RowSpan="2" x:Name="newAssignmentGrid">
+        <Grid Grid.RowSpan="2" x:Name="newAssignmentGrid" Visibility="Visible">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.7"/>
             </Grid.Background>
@@ -148,8 +148,8 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Title" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <TextBox VerticalContentAlignment="Center" BorderBrush="#FFAA2929" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
-                            <Label Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <TextBox x:Name="assignmentTitleTextbox" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label x:Name="assignmentTitleRequiredLabel" Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0" Visibility="Hidden"/>
                         </Grid>
 
                         <!-- Assignment type -->
@@ -198,19 +198,20 @@
                         </Grid>
 
                         <!-- Date -->
-                        <Grid Height="170" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,120,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,120,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Date" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <Calendar Height="170" BorderBrush="#FFAA2929" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
-                            <Label Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <!-- <Calendar x:Name="assignmentCalendar" Height="170" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/> -->
+                            <DatePicker x:Name="assignmentCalendar" Width="216" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label x:Name="assignmentCalendarRequiredLabel" Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0" Visibility="Hidden"/>
                         </Grid>
 
                         <!-- Time -->
-                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,300,0,0">
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,160,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
@@ -222,7 +223,7 @@
                         </Grid>
 
                         <!-- Priority -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,360,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,220,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
@@ -238,7 +239,7 @@
                         </Grid>
 
                         <!-- Repeat -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,400,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,260,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
@@ -257,7 +258,7 @@
                         </Grid>
 
                         <!-- Reminder -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,440,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,300,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
@@ -287,7 +288,7 @@
                         </Grid>
 
                         <!-- Notes -->
-                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,480,0,0">
+                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,340,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="6*"/>
@@ -297,9 +298,8 @@
                             <RichTextBox VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" AcceptsTab="True" Block.LineHeight="2"/>
                         </Grid>
 
-                        <!-- Ideas: add file, add hyperlink, etc. -->
                         <!-- Add file button and hyperlink button -->
-                        <Grid Height="35" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,580,0,0">
+                        <Grid Height="35" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,430,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="3*"/>
@@ -311,7 +311,7 @@
                         </Grid>
 
                         <!-- Extra space -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,620,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,470,0,0">
                         </Grid>
                     </Grid>
                 </ScrollViewer>
@@ -323,9 +323,9 @@
                         <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="Cancel" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Background="#FFAA2929"/>
-                    <Button Grid.Column="1" Content="Save + make another" FontSize="13" Style="{DynamicResource menu-color}" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White"/>
-                    <Button Grid.Column="2" Content="Save" FontSize="13" Style="{DynamicResource menu-color}" Foreground="White" Cursor="Hand" BorderThickness="0.5" Margin="5,10,10,10"/>
+                    <Button Grid.Column="0" Content="Cancel" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Background="#FFAA2929" x:Name="cancelButton" Click="cancelButton_Click"/>
+                    <Button x:Name="saveAndAddButton" Grid.Column="1" Content="Save + make another" FontSize="13" Style="{DynamicResource menu-color}" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Click="saveAndAddButton_Click"/>
+                    <Button x:Name="saveButton" Grid.Column="2" Content="Save" FontSize="13" Style="{DynamicResource menu-color}" Foreground="White" Cursor="Hand" BorderThickness="0.5" Margin="5,10,10,10" Click="saveButton_Click"/>
                 </Grid>
             </Grid>
         </Grid>
