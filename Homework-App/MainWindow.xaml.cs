@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -208,8 +208,37 @@ namespace Homework_App {
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e) {
-            assignmentFilledDetails();
-            // Add assignment and close screen and clear values
+            // Make sure everything required is filled
+            if (!assignmentFilledDetails()) {
+                return;
+            }
+
+            // Add assignment
+            Assignment.AssignmentData data;
+            data.Title = assignmentTitle.Text;
+            data.Type = assignmentType.Text;
+            data.Class = assignmentClass.Text;
+            data.Date = assignmentCalendar.Text;
+            data.Time = assignmentTime.Text;
+            data.Priority = assignmentPriority.Text;
+            data.Repeat = assignmentRepeat.Text;
+            data.Reminder = assignmentReminder.Text;
+            data.Notes = assignmentNotes.Text;
+
+            Assignment.CreateAssignment(data);
+
+            // Clear values
+            assignmentTitle.Text = "";
+            assignmentType.SelectedIndex = 0;
+            assignmentClass.SelectedIndex = 0;
+            assignmentCalendar.Text = "";
+            assignmentTime.Text = "";
+            assignmentPriority.SelectedIndex = 0;
+            assignmentRepeat.SelectedIndex = 0;
+            assignmentReminder.SelectedIndex = 0;
+            assignmentNotes.Text = "";
+
+            newAssignmentGrid.Visibility = Visibility.Hidden; // Hide assignment window
         }
 
         /// <summary>
