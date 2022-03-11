@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -181,12 +181,12 @@ namespace Homework_App {
         private bool assignmentFilledDetails() {
             bool returnVal = true;
             // Title text box is required
-            if (assignmentTitleTextbox.Text == "") {
-                assignmentTitleTextbox.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+            if (assignmentTitle.Text == "") {
+                assignmentTitle.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
                 assignmentTitleRequiredLabel.Visibility = Visibility.Visible;
                 returnVal = false;
             } else {
-                assignmentTitleTextbox.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                assignmentTitle.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
                 assignmentTitleRequiredLabel.Visibility = Visibility.Hidden;
             }
             // Valid calendar day is required

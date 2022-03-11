@@ -148,7 +148,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Title" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <TextBox x:Name="assignmentTitleTextbox" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <TextBox SpellCheck.IsEnabled="True" x:Name="assignmentTitle" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <Label x:Name="assignmentTitleRequiredLabel" Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0" Visibility="Hidden"/>
                         </Grid>
 
@@ -160,7 +160,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Type" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <ComboBox x:Name="assignmentType" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Homework"/>
                                 <ComboBoxItem Content="Lesson"/>
@@ -190,7 +190,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Class" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <ComboBox x:Name="assignmentClass" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Test class 1"/>
                                 <ComboBoxItem Content="Test class 2"/>
@@ -217,7 +217,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Time" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Center" Margin="5,0,0,0"/>
-                            <TextBox VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <TextBox x:Name="assignmentTime" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <Label Content="23:59, 2:00 PM, 8am, etc." FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FF8E8E8E"/>
                         </Grid>
 
@@ -229,7 +229,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Priority" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <ComboBox x:Name="assignmentPriority" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Low"/>
                                 <ComboBoxItem Content="Medium"/>
@@ -245,7 +245,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Repeat" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <ComboBox x:Name="assignmentRepeat" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Every day"/>
                                 <ComboBoxItem Content="Every work day (Mon - Fri)"/>
@@ -264,7 +264,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Reminder" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <ComboBox VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <ComboBox x:Name="assignmentReminder" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="When due"/>
                                 <ComboBoxItem Content="1 hour before"/>
@@ -294,7 +294,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Notes" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <RichTextBox VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" AcceptsTab="True" Block.LineHeight="2"/>
+                            <TextBox SpellCheck.IsEnabled="True" AcceptsReturn="True" TextWrapping="Wrap" x:Name="assignmentNotes" VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" AcceptsTab="True" Block.LineHeight="2"/>
                         </Grid>
 
                         <!-- Attachments -->
