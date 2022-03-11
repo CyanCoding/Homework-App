@@ -202,12 +202,10 @@ namespace Homework_App {
             return returnVal;
         }
 
+        /// <summary>
+        /// Saves and clears values (but doesn't close window).
+        /// </summary>
         private void saveAndAddButton_Click(object sender, RoutedEventArgs e) {
-            assignmentFilledDetails();
-            // Add assignment and clear values
-        }
-
-        private void saveButton_Click(object sender, RoutedEventArgs e) {
             // Make sure everything required is filled
             if (!assignmentFilledDetails()) {
                 return;
@@ -237,6 +235,14 @@ namespace Homework_App {
             assignmentRepeat.SelectedIndex = 0;
             assignmentReminder.SelectedIndex = 0;
             assignmentNotes.Text = "";
+        }
+
+        /// <summary>
+        /// This does the same thing as saveAndAddButton except
+        /// it closes the window after we save.
+        /// </summary>
+        private void saveButton_Click(object sender, RoutedEventArgs e) {
+            saveAndAddButton_Click(sender, e);
 
             newAssignmentGrid.Visibility = Visibility.Hidden; // Hide assignment window
         }
