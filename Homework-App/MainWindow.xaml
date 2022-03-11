@@ -307,7 +307,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="Attachments" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
 
-                            <Label Content="Coming soon!" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Coming soon!" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="5,-5,0,0"/>
                             <!--<Button x:Name="assignmentAddFileButton" IsEnabled="False" ToolTip="Coming soon!" Grid.Column="1" Content="+ Add file" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
                             <Button x:Name="assignmentAddLinkButton" IsEnabled="False" ToolTip="Coming soon!" Grid.Column="2" Content="+ Add link" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
                             -->
@@ -315,7 +315,7 @@
 
                         <!-- Extra space -->
                         <!-- Move down when attachments are added -->
-                        <Grid x:Name="assignmentSpaceGrid" Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,470,0,0">
+                        <Grid x:Name="assignmentSpaceGrid" Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,450,0,0">
                         </Grid>
                     </Grid>
                 </ScrollViewer>
