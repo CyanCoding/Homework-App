@@ -205,7 +205,7 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Date" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <DatePicker x:Name="assignmentCalendar" Width="216" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <DatePicker x:Name="assignmentCalendar" Width="221" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <Label x:Name="assignmentCalendarRequiredLabel" Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0" Visibility="Hidden"/>
                         </Grid>
 
@@ -307,19 +307,15 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="Attachments" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
 
-                            <Button x:Name="assignmentAddFileButton" Grid.Column="1" Content="+ Add file" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
-                            <Button x:Name="assignmentAddLinkButton" Grid.Column="2" Content="+ Add link" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
-                            <!-- <Border Grid.Column="1" Margin="0,0,0,0" Height="20">
-                                <Label Content="Link: waoudouwad" FontSize="12"/>
-                            </Border>
-                            <Border Grid.Column="1" Margin="0,20,0,0" Height="20">
-                                <Label Content="Link: waoudouwad" FontSize="12"/>
-                            </Border> -->
-                        </Grid>
+                            <Label Content="Coming soon!" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <!--<Button x:Name="assignmentAddFileButton" IsEnabled="False" ToolTip="Coming soon!" Grid.Column="1" Content="+ Add file" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
+                            <Button x:Name="assignmentAddLinkButton" IsEnabled="False" ToolTip="Coming soon!" Grid.Column="2" Content="+ Add link" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
+                            -->
+                            </Grid>
 
                         <!-- Extra space -->
                         <!-- Move down when attachments are added -->
-                        <Grid x:Name="assignmentSpaceGrid" Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,540,0,0">
+                        <Grid x:Name="assignmentSpaceGrid" Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,470,0,0">
                         </Grid>
                     </Grid>
                 </ScrollViewer>
