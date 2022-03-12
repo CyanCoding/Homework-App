@@ -291,7 +291,8 @@ namespace Homework_App {
         // 3: This week
         // 4: Next week
         // 5: All
-        private static int[] margins = new int[] { 0, 0, 0, 0, 0, 0};
+        // 6: Past
+        private static int[] margins = new int[] { 0, 0, 0, 0, 0, 0, 0};
 
         /// <summary>
         /// Adds an assignment to the homework tab
@@ -299,8 +300,9 @@ namespace Homework_App {
         /// <param name="data">The assignment data from the file</param>
         private void AddAssignment(Assignment.AssignmentData data) {
             // This uses the same assumptions as margins variable
+            bool inPast = true;
             bool[] addPlaces = new bool[] {
-                false, false, false, false, false, true
+                false, false, false, false, false, true, false
             };
 
             // First we check the day, which changes some values later on
@@ -340,30 +342,50 @@ namespace Homework_App {
             if (todayString == data.Date) { // Due today
                 margins[0] += 70;
                 addPlaces[0] = true;
+                inPast = false;
             }
             else if (tomorrowString == data.Date) { // Due tomorrow
                 margins[1] += 70;
                 addPlaces[1] = true;
+                inPast = false;
             }
             foreach (string day in threeDays) { // Due in the next three days
                 if (day == data.Date) {
                     margins[2] += 70;
                     addPlaces[2] = true;
+                    inPast = false;
                 }
             }
             foreach (string day in sevenDays) { // Due this week
                 if (day == data.Date) {
                     margins[3] += 70;
                     addPlaces[3] = true;
+                    inPast = false;
                 }
             }
             foreach (string day in nextSevenDays) { // Due in the next seven days
                 if (day == data.Date) {
                     margins[4] += 70;
                     addPlaces[4] = true;
+                    inPast = false;
+                }
+            }
+            
+            if (inPast) {
+                // We just use 1000 as a genaric large number
+                for (int i = 0; i < 1000; i++) {
+                    if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
+                        inPast = false;
+                        break;
+                    }
+                }
+                if (inPast) {
+                    margins[6] += 70;
+                    addPlaces[6] = true;
                 }
             }
 
+            // Update all assignments margin
             margins[5] += 70;
 
             // TODO: Figure out how to format this another way
@@ -549,6 +571,10 @@ namespace Homework_App {
                             allHomeworkGrid.Height += 70;
                             allHomeworkGrid.Children.Add(outerGrid);
                             break;
+                        case 6:
+                            pastHomeworkGrid.Height += 70;
+                            pastHomeworkGrid.Children.Add(outerGrid);
+                            break;
                     }
                 }
             }
@@ -575,7 +601,8 @@ namespace Homework_App {
                 nextThreeDaysHomeworkGrid,
                 thisWeekHomeworkGrid,
                 nextWeekHomeworkGrid,
-                allHomeworkGrid
+                allHomeworkGrid,
+                pastHomeworkGrid
             };
 
             foreach (Grid g in grids) {
@@ -614,6 +641,10 @@ namespace Homework_App {
                     assignmentDisplay1Label.Content = "All assignments";
                     ChangeGridVisibility(allHomeworkGrid);
                     break;
+                case 6:
+                    assignmentDisplay1Label.Content = "Past assignments";
+                    ChangeGridVisibility(pastHomeworkGrid);
+                    break;
             }
         }
 
@@ -621,7 +652,7 @@ namespace Homework_App {
         private void assignmentSwitchButton_MouseDown(object sender, MouseButtonEventArgs e) {
             Properties.Settings.Default.AssignmentDisplay1++;
 
-            if (Properties.Settings.Default.AssignmentDisplay1 == 6) {
+            if (Properties.Settings.Default.AssignmentDisplay1 == 7) {
                 Properties.Settings.Default.AssignmentDisplay1 = 0;
             }
             Properties.Settings.Default.Save();

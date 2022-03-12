@@ -55,6 +55,7 @@
                             <Grid x:Name="thisWeekHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
                             <Grid x:Name="nextWeekHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
                             <Grid x:Name="allHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="pastHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
                         </Grid>
                     </ScrollViewer>
                 </Border>
