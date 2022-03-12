@@ -309,65 +309,40 @@ namespace Homework_App {
             // such as which grid it's sorted into and the margin height
             // on outerGrid
             DateTime today = DateTime.Today;
-            string todayString = today.ToString("M/dd/yyyy");
-            string tomorrowString = today.AddDays(1).ToString("M/dd/yyyy");
-
-            string[] threeDays = new string[] {
-                today.ToString("M/dd/yyyy"),
-                today.AddDays(1).ToString("M/dd/yyyy"),
-                today.AddDays(2).ToString("M/dd/yyyy")
-            };
-
-            string[] sevenDays = new string[] {
-                today.ToString("M/dd/yyyy"),
-                today.AddDays(1).ToString("M/dd/yyyy"),
-                today.AddDays(2).ToString("M/dd/yyyy"),
-                today.AddDays(3).ToString("M/dd/yyyy"),
-                today.AddDays(4).ToString("M/dd/yyyy"),
-                today.AddDays(5).ToString("M/dd/yyyy"),
-                today.AddDays(6).ToString("M/dd/yyyy")
-            };
-
-            string[] nextSevenDays = new string[] {
-                today.AddDays(7).ToString("M/dd/yyyy"),
-                today.AddDays(8).ToString("M/dd/yyyy"),
-                today.AddDays(9).ToString("M/dd/yyyy"),
-                today.AddDays(10).ToString("M/dd/yyyy"),
-                today.AddDays(11).ToString("M/dd/yyyy"),
-                today.AddDays(12).ToString("M/dd/yyyy"),
-                today.AddDays(13).ToString("M/dd/yyyy")
-            };
 
             // Figure out what range the assignment's due date falls in
-            if (todayString == data.Date) { // Due today
+            if (today.ToString("M/dd/yyyy") == data.Date) { // Due today
                 margins[0] += 70;
                 addPlaces[0] = true;
                 inPast = false;
             }
-            else if (tomorrowString == data.Date) { // Due tomorrow
+            else if (today.AddDays(1).ToString("M/dd/yyyy") == data.Date) { // Due tomorrow
                 margins[1] += 70;
                 addPlaces[1] = true;
                 inPast = false;
             }
-            foreach (string day in threeDays) { // Due in the next three days
-                if (day == data.Date) {
+            for (int i = 0; i < 3; i++) { // Due in next three days
+                if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
                     margins[2] += 70;
                     addPlaces[2] = true;
                     inPast = false;
+                    break;
                 }
             }
-            foreach (string day in sevenDays) { // Due this week
-                if (day == data.Date) {
+            for (int i = 0; i < 7; i++) { // Due this week
+                if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
                     margins[3] += 70;
                     addPlaces[3] = true;
                     inPast = false;
+                    break;
                 }
             }
-            foreach (string day in nextSevenDays) { // Due in the next seven days
-                if (day == data.Date) {
+            for (int i = 7; i < 14; i++) { // Due next week
+                if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
                     margins[4] += 70;
                     addPlaces[4] = true;
                     inPast = false;
+                    break;
                 }
             }
             
