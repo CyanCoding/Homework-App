@@ -58,5 +58,17 @@ namespace Homework_App.Properties {
                 this["AssignmentDisplay1"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AssignmentDisplay2 {
+            get {
+                return ((int)(this["AssignmentDisplay2"]));
+            }
+            set {
+                this["AssignmentDisplay2"] = value;
+            }
+        }
     }
 }
