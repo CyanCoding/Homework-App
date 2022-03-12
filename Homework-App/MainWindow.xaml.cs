@@ -301,6 +301,11 @@ namespace Homework_App {
         /// </summary>
         /// <param name="data">The assignment data from the file</param>
         private void AddAssignment(Assignment.AssignmentData data) {
+            // If this assignment is complete, don't add it
+            if (data.Complete == "true") {
+                return;
+            }
+
             // This uses the same assumptions as margins variable
             bool inPast = true;
             bool[] addPlaces = new bool[] {
