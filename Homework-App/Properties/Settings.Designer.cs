@@ -46,5 +46,17 @@ namespace Homework_App.Properties {
                 this["StartTab"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AssignmentDisplay1 {
+            get {
+                return ((int)(this["AssignmentDisplay1"]));
+            }
+            set {
+                this["AssignmentDisplay1"] = value;
+            }
+        }
     }
 }
