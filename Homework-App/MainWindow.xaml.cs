@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -435,6 +435,8 @@ namespace Homework_App {
                         Label checkboxLabel = new Label();
                         checkboxLabel.MouseEnter += Label_MouseEnter;
                         checkboxLabel.MouseLeave += Label_MouseLeave;
+                        checkboxLabel.MouseDown += AssignmentCompleted;
+                        checkboxLabel.Name = "n" + data.FileName; // Used to identify file associated with task
                         checkboxLabel.FontSize = 8;
                         checkboxLabel.Margin = new Thickness(-3);
                         checkboxLabel.VerticalAlignment = VerticalAlignment.Center;
@@ -590,6 +592,18 @@ namespace Homework_App {
         private void Label_MouseLeave(object sender, MouseEventArgs e) {
             Label box = (Label)sender;
             box.Content = "";
+        }
+
+        /// <summary>
+        /// When the user presses the checkbox or otherwise
+        /// completes an assignment.
+        /// </summary>
+        private void AssignmentCompleted(object sender, MouseButtonEventArgs e) {
+            Label l = (Label)sender;
+            // Example name: n133443 (n is used to make it a valid name)
+            // Make sure to add back the '.json' when referencing the path
+
+            // TODO: Somehow take the l.Name and hide the outerGrid and mark as complete
         }
 
         private void AssignmentMouseEnter(object sender, MouseEventArgs e) {
