@@ -48,7 +48,14 @@
                 <Label x:Name="assignmentSwitchButton" Cursor="Hand" Grid.Column="1" Content="&#xE8AB;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe MDL2 Assets" MouseDown="assignmentSwitchButton_MouseDown"/>
                 <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine" Grid.ColumnSpan="2">
                     <ScrollViewer x:Name="dueTodayScrollview">
-                        <Grid x:Name="todayHomeworkGrid" Height="0" VerticalAlignment="Top"/>
+                        <Grid VerticalAlignment="Top">
+                            <Grid x:Name="todayHomeworkGrid" Height="0" Visibility="Hidden"/>
+                            <Grid x:Name="tomorrowHomeworkGrid" Height="0" Visibility="Hidden"/>
+                            <Grid x:Name="nextThreeDaysHomeworkGrid" Height="0" Visibility="Hidden"/>
+                            <Grid x:Name="thisWeekHomeworkGrid" Height="0" Visibility="Hidden"/>
+                            <Grid x:Name="nextWeekHomeworkGrid" Height="0" Visibility="Hidden"/>
+                            <Grid x:Name="allHomeworkGrid" Height="0" Visibility="Hidden"/>
+                        </Grid>
                     </ScrollViewer>
                 </Border>
             </Grid>
