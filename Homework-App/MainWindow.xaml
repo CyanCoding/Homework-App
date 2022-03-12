@@ -42,45 +42,8 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Due today" FontSize="18"/>
                 <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine">
-                    <ScrollViewer>
-                        <!-- This is an example homework assignment -->
-                        <Grid Height="60" VerticalAlignment="Top">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="8*"/>
-                                <ColumnDefinition Width="4*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="3*"/>
-                                <RowDefinition Height="2*"/>
-                            </Grid.RowDefinitions>
-                            <!-- Outside border -->
-                            <Border Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="0,0,0,-5"  BorderThickness="0,0,0,1" BorderBrush="#FF6C6C6C" Background="White"/>
-                            
-                            <!-- Check box -->
-                            <Border Grid.Column="0" HorizontalAlignment="Right" Margin="0,5,5,0" Width="18" Height="18" BorderBrush="#FFCA2424" BorderThickness="2">
-                                <Label x:Name="testy" Content="✔" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" FontSize="8" Margin="-3" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" Foreground="#FF5B5B5B"/>
-                            </Border>
-                            
-                            <!-- Assignment name -->
-                            <Label FontSize="14" Grid.Column="1" Margin="0,5,0,0" VerticalAlignment="Top" Content="Complete WW2 Assignment"/>
-                            
-                            <!-- Due date -->
-                            <Label FontSize="13" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Today - 2:00 PM" Foreground="#FF717171"/>
+                    <ScrollViewer x:Name="dueTodayScrollview">
 
-                            <!-- Assignment type -->
-                            <Label FontSize="13" Grid.Column="2" Margin="0,-3,0,0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Presentation" Foreground="#FF717171"/>
-
-                            <!-- Class info -->
-                            <Grid Grid.Row="1" Grid.Column="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="10*"/>
-                                </Grid.ColumnDefinitions>
-                                <Ellipse Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="10" StrokeThickness="0" Width="10" Fill="#FFF37646"/>
-                                <Label FontSize="13" Margin="-5,-3,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Content="American History"/>
-                            </Grid>
-                        </Grid>
                     </ScrollViewer>
                 </Border>
             </Grid>
