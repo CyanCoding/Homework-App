@@ -49,12 +49,12 @@
                 <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine" Grid.ColumnSpan="2">
                     <ScrollViewer x:Name="dueTodayScrollview">
                         <Grid VerticalAlignment="Top">
-                            <Grid x:Name="todayHomeworkGrid" Height="0" Visibility="Hidden"/>
-                            <Grid x:Name="tomorrowHomeworkGrid" Height="0" Visibility="Hidden"/>
-                            <Grid x:Name="nextThreeDaysHomeworkGrid" Height="0" Visibility="Hidden"/>
-                            <Grid x:Name="thisWeekHomeworkGrid" Height="0" Visibility="Hidden"/>
-                            <Grid x:Name="nextWeekHomeworkGrid" Height="0" Visibility="Hidden"/>
-                            <Grid x:Name="allHomeworkGrid" Height="0" Visibility="Hidden"/>
+                            <Grid x:Name="todayHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="tomorrowHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="nextThreeDaysHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="thisWeekHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="nextWeekHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="allHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
                         </Grid>
                     </ScrollViewer>
                 </Border>
