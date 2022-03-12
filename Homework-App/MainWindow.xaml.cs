@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -281,7 +281,7 @@ namespace Homework_App {
             foreach (var file in d.GetFiles("*.json")) {
                 Assignment.AssignmentData data = Assignment.ReadAssignment(file.FullName);
                 AddAssignment(data, i);
-                i += 60;
+                i += 70;
             }
         }
 
@@ -446,7 +446,8 @@ namespace Homework_App {
 
             outerGrid.Children.Add(classGrid);
 
-            dueTodayScrollview.Content = outerGrid;
+            todayHomeworkGrid.Height += 70;
+            todayHomeworkGrid.Children.Add(outerGrid);
         }
     }
 }
