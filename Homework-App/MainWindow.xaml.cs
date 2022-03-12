@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -362,11 +362,19 @@ namespace Homework_App {
 
             // Assignment name
             Label assignmentName = new Label();
-            assignmentName.FontSize = 14;
             assignmentName.SetValue(Grid.ColumnProperty, 1);
             assignmentName.Margin = new Thickness(0, 5, 0, 0);
             assignmentName.VerticalAlignment = VerticalAlignment.Top;
             assignmentName.Content = data.Title;
+
+            TextBlock block = new TextBlock();
+            block.FontSize = 14;
+            block.TextDecorations = TextDecorations.Underline;
+            block.Text = data.Title;
+            block.Cursor = Cursors.Hand;
+            block.MouseEnter += AssignmentMouseEnter;
+            block.MouseLeave += AssignmentMouseLeave;
+            assignmentName.Content = block;
             outerGrid.Children.Add(assignmentName);
 
             // Due date
@@ -448,6 +456,15 @@ namespace Homework_App {
 
             todayHomeworkGrid.Height += 70;
             todayHomeworkGrid.Children.Add(outerGrid);
+        }
+
+        private void AssignmentMouseEnter(object sender, MouseEventArgs e) {
+            TextBlock t = (TextBlock)sender;
+            t.TextDecorations = TextDecorations.Underline;
+        }
+        private void AssignmentMouseLeave(object sender, MouseEventArgs e) {
+            TextBlock t = (TextBlock)sender;
+            t.TextDecorations = null;
         }
     }
 }
