@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -122,6 +122,7 @@ namespace Homework_App {
             internal string Reminder;
             internal string Notes;
             internal string Complete;
+            internal string FileName;
         }
 
         private class AssignmentStructure {
@@ -154,6 +155,9 @@ namespace Homework_App {
             data.Reminder = settings.Reminder;
             data.Notes = settings.Notes;
             data.Complete = settings.Complete;
+
+            // Removes '.json' from the file name (example value: "45532")
+            data.FileName = Path.GetFileName(path).Remove(Path.GetFileName(path).Length - 5, 5);
 
             return data;
         }

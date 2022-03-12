@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -232,6 +232,7 @@ namespace Homework_App {
             data.Reminder = assignmentReminder.Text;
             data.Notes = assignmentNotes.Text;
             data.Complete = "false";
+            data.FileName = ""; // This is set when the file is read
 
             Assignment.CreateAssignment(data);
 
