@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -299,9 +299,9 @@ namespace Homework_App {
             ColumnDefinition column1 = new ColumnDefinition();
             column1.Width = new GridLength(1, GridUnitType.Star);
             ColumnDefinition column2 = new ColumnDefinition();
-            column2.Width = new GridLength(8, GridUnitType.Star);
+            column2.Width = new GridLength(7, GridUnitType.Star);
             ColumnDefinition column3 = new ColumnDefinition();
-            column3.Width = new GridLength(4, GridUnitType.Star);
+            column3.Width = new GridLength(5, GridUnitType.Star);
 
             RowDefinition row1 = new RowDefinition();
             row1.Height = new GridLength(3, GridUnitType.Star);
@@ -369,7 +369,6 @@ namespace Homework_App {
 
             TextBlock block = new TextBlock();
             block.FontSize = 14;
-            block.TextDecorations = TextDecorations.Underline;
             block.Text = data.Title;
             block.Cursor = Cursors.Hand;
             block.MouseEnter += AssignmentMouseEnter;
