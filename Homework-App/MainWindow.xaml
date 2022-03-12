@@ -40,8 +40,13 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Content="Due today" FontSize="18"/>
-                <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine">
+                <Label x:Name="assignmentSwitchButton" Cursor="Hand" Grid.Column="1" Content="&#xE8AB;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe MDL2 Assets" MouseDown="assignmentSwitchButton_MouseDown"/>
+                <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine" Grid.ColumnSpan="2">
                     <ScrollViewer x:Name="dueTodayScrollview">
                         <Grid x:Name="todayHomeworkGrid" Height="0" VerticalAlignment="Top"/>
                     </ScrollViewer>

@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -464,6 +466,40 @@ namespace Homework_App {
         private void AssignmentMouseLeave(object sender, MouseEventArgs e) {
             TextBlock t = (TextBlock)sender;
             t.TextDecorations = null;
+        }
+
+        private static bool isSwitchingAnimationRunning = false;
+        private void assignmentSwitchButton_MouseDown(object sender, MouseButtonEventArgs e) {
+            // ANIMATION
+            if (!isSwitchingAnimationRunning) {
+                isSwitchingAnimationRunning = true;
+                Dispatcher.Invoke(new Action(() => {
+                    ThicknessAnimation animation = new ThicknessAnimation();
+
+                    animation.From = new Thickness(0, 0, 0, 0);
+                    animation.To = new Thickness(50, 0, 0, 0);
+                    animation.Duration = TimeSpan.FromSeconds(0.2);
+
+                    assignmentSwitchButton.BeginAnimation(MarginProperty, animation);
+                }));
+
+                Thread thread = new Thread(() => {
+                    Thread.Sleep(200);
+                    Dispatcher.Invoke(new Action(() => {
+                        assignmentSwitchButton.Margin = new Thickness(-50, 0, 0, 0);
+                        ThicknessAnimation animation = new ThicknessAnimation();
+
+                        animation.From = new Thickness(-50, 0, 0, 0);
+                        animation.To = new Thickness(0, 0, 0, 0);
+                        animation.Duration = TimeSpan.FromSeconds(0.2);
+
+                        assignmentSwitchButton.BeginAnimation(MarginProperty, animation);
+                        isSwitchingAnimationRunning = false;
+                    }));
+                });
+                thread.Start();
+            }
+
         }
     }
 }
