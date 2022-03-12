@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -118,6 +118,38 @@ namespace Homework_App {
                     break;
                 }
             }
+        }
+
+        private class AssignmentStructure {
+            public string Title { get; set; }
+            public string Type { get; set; }
+            public string Class { get; set; }
+            public string Date { get; set; }
+            public string Time { get; set; }
+            public string Priority { get; set; }
+            public string Repeat { get; set; }
+            public string Reminder { get; set; }
+            public string Notes { get; set; }
+        }
+
+        internal static AssignmentData ReadAssignment(string path) {
+            AssignmentData data = new AssignmentData();
+
+            string json = File.ReadAllText(path);
+
+            AssignmentStructure settings =
+                JsonConvert.DeserializeObject<AssignmentStructure>(json);
+
+            data.Title = settings.Title;
+            data.Type = settings.Type;
+            data.Class = settings.Class;
+            data.Date = settings.Date;
+            data.Time = settings.Time;
+            data.Repeat = settings.Repeat;
+            data.Reminder = settings.Reminder;
+            data.Notes = settings.Notes;
+
+            return data;
         }
     }
 }
