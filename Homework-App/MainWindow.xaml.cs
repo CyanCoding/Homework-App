@@ -237,6 +237,8 @@ namespace Homework_App {
             assignmentRepeat.SelectedIndex = 0;
             assignmentReminder.SelectedIndex = 0;
             assignmentNotes.Text = "";
+
+            AddAssignment(data);
         }
 
         /// <summary>
@@ -287,7 +289,7 @@ namespace Homework_App {
                 <Border Grid.ColumnSpan="3" Grid.RowSpan="3" Margin="0,0,0,-5"  BorderThickness="0,0,0,1" BorderBrush="#FF6C6C6C" Background="White"/>
                            
                 <!-- Check box -->
-                <Border Grid.Column="0" HorizontalAlignment="Right" Margin="0,5,5,0" Width="18" Height="18" BorderBrush="#FFCA2424" BorderThickness="2">
+                <Border HorizontalAlignment="Right" Margin="0,5,5,0" Width="18" Height="18" BorderBrush="#FFCA2424" BorderThickness="2">
                     <Label x:Name="testy" Content="" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" FontSize="8" Margin="-3" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" Foreground="#FF5B5B5B"/>
                 </Border>
                            
@@ -347,12 +349,24 @@ namespace Homework_App {
 
             // Check box
             Border checkboxBorder = new Border();
-            checkboxBorder.HorizontalAlignment = HorizontalAlignment.Left;
+            checkboxBorder.HorizontalAlignment = HorizontalAlignment.Right;
+            checkboxBorder.SetValue(Grid.ColumnProperty, 0);
             checkboxBorder.Margin = new Thickness(0, 5, 5, 0);
             checkboxBorder.Width = 18;
             checkboxBorder.Height = 18;
-            // TODO: Set priority color here
-            checkboxBorder.BorderBrush = new BrushConverter().ConvertFrom("#FFCA2424") as Brush;
+
+            string checkBoxBrush = "#FF707070";
+            if (data.Priority == "Low") {
+                checkBoxBrush = "#FF4BB86E";
+            }
+            else if (data.Priority == "Medium") {
+                checkBoxBrush = "#FFB8B44B";
+            }
+            else if (data.Priority == "High") {
+                checkBoxBrush = "#FFB84B4B";
+            }
+
+            checkboxBorder.BorderBrush = new BrushConverter().ConvertFrom(checkBoxBrush) as Brush;
             checkboxBorder.BorderThickness = new Thickness(2);
 
             Label checkboxLabel = new Label();
@@ -374,7 +388,7 @@ namespace Homework_App {
             assignmentName.SetValue(Grid.ColumnProperty, 1);
             assignmentName.Margin = new Thickness(0, 5, 0, 0);
             assignmentName.VerticalAlignment = VerticalAlignment.Top;
-            assignmentName.Content = ""; // TODO: Fill in title here
+            assignmentName.Content = data.Title;
             outerGrid.Children.Add(assignmentName);
 
             // Due date
@@ -383,7 +397,27 @@ namespace Homework_App {
             dueDate.SetValue(Grid.ColumnProperty, 3);
             dueDate.HorizontalAlignment = HorizontalAlignment.Right;
             dueDate.VerticalAlignment = VerticalAlignment.Center;
-            dueDate.Content = ""; // TODO: Fill in due date content
+
+            // TODO: Sort items into different scrollviewers by date
+            DateTime today = DateTime.Today;
+            string todayString = today.ToString("M/dd/yyy");
+
+            string dateString = "";
+
+            // Assignment is due today
+            if (todayString == data.Date) {
+                dateString = "Today";
+            }
+            else {
+                dateString = data.Date;
+            }
+
+            // Attach time to date ("Today - 2:00 PM")
+            if (data.Time != "") {
+                dateString += " - " + data.Time;
+            }
+
+            dueDate.Content = dateString;
             dueDate.Foreground = new BrushConverter().ConvertFrom("#FF717171") as Brush;
             outerGrid.Children.Add(dueDate);
 
@@ -395,7 +429,7 @@ namespace Homework_App {
             type.HorizontalAlignment = HorizontalAlignment.Right;
             type.VerticalAlignment = VerticalAlignment.Center;
             type.Margin = new Thickness(0, -3, 0, 0);
-            type.Content = ""; // TODO: Fill in type content here
+            type.Content = data.Type;
             type.Foreground = new BrushConverter().ConvertFrom("#FF717171") as Brush;
             outerGrid.Children.Add(type);
 
@@ -405,9 +439,9 @@ namespace Homework_App {
             classGrid.SetValue(Grid.ColumnProperty, 1);
 
             ColumnDefinition classColumn1 = new ColumnDefinition();
-            column1.Width = new GridLength(1, GridUnitType.Star);
+            classColumn1.Width = new GridLength(1, GridUnitType.Star);
             ColumnDefinition classColumn2 = new ColumnDefinition();
-            column1.Width = new GridLength(10, GridUnitType.Star);
+            classColumn2.Width = new GridLength(10, GridUnitType.Star);
 
             classGrid.ColumnDefinitions.Add(classColumn1);
             classGrid.ColumnDefinitions.Add(classColumn2);
@@ -429,7 +463,7 @@ namespace Homework_App {
             classLabel.HorizontalAlignment = HorizontalAlignment.Left;
             classLabel.VerticalAlignment = VerticalAlignment.Center;
             classLabel.SetValue(Grid.ColumnProperty, 1);
-            classLabel.Content = ""; // TODO: Get class name here
+            classLabel.Content = data.Class;
             classGrid.Children.Add(classLabel);
 
             outerGrid.Children.Add(classGrid);
