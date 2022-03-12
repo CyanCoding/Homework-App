@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -62,8 +62,6 @@ namespace Homework_App {
         internal static bool CreateAssignment(AssignmentData data) {
             StringBuilder sb = new StringBuilder();
             StringWriter sw = new StringWriter(sb);
-
-            DateTime today = DateTime.Today;
 
             Dictionary<string, string> writeValues = new Dictionary<string, string>() {
                 { "Title", data.Title },
