@@ -165,16 +165,6 @@ namespace Homework_App {
             Properties.Settings.Default.Save();
         }
 
-        private void Label_MouseEnter(object sender, MouseEventArgs e) {
-            Label box = (Label)sender;
-            box.Content = "✔";
-        }
-
-        private void Label_MouseLeave(object sender, MouseEventArgs e) {
-            Label box = (Label)sender;
-            box.Content = "";
-        }
-
         private void cancelButton_Click(object sender, RoutedEventArgs e) {
             newAssignmentGrid.Visibility = Visibility.Hidden;
         }
@@ -590,6 +580,16 @@ namespace Homework_App {
                 }
             }
            
+        }
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e) {
+            Label box = (Label)sender;
+            box.Content = "✔";
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e) {
+            Label box = (Label)sender;
+            box.Content = "";
         }
 
         private void AssignmentMouseEnter(object sender, MouseEventArgs e) {
