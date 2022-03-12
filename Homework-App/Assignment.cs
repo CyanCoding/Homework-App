@@ -31,18 +31,6 @@ namespace Homework_App {
             }
         }
 
-        internal struct AssignmentData {
-            internal string Title;
-            internal string Type;
-            internal string Class;
-            internal string Date;
-            internal string Time;
-            internal string Priority;
-            internal string Repeat;
-            internal string Reminder;
-            internal string Notes;
-        }
-
         /// <summary>
         /// Creates a new assignment
         /// 
@@ -73,6 +61,7 @@ namespace Homework_App {
                 { "Repeat", data.Repeat },
                 { "Reminder", data.Reminder },
                 { "Notes", data.Notes },
+                { "Complete", "false" }
             };
 
             using (JsonWriter js = new JsonTextWriter(sw)) {
@@ -120,6 +109,19 @@ namespace Homework_App {
             }
         }
 
+        internal struct AssignmentData {
+            internal string Title;
+            internal string Type;
+            internal string Class;
+            internal string Date;
+            internal string Time;
+            internal string Priority;
+            internal string Repeat;
+            internal string Reminder;
+            internal string Notes;
+            internal string Complete;
+        }
+
         private class AssignmentStructure {
             public string Title { get; set; }
             public string Type { get; set; }
@@ -130,6 +132,7 @@ namespace Homework_App {
             public string Repeat { get; set; }
             public string Reminder { get; set; }
             public string Notes { get; set; }
+            public string Complete { get; set; }
         }
 
         internal static AssignmentData ReadAssignment(string path) {
@@ -148,6 +151,7 @@ namespace Homework_App {
             data.Repeat = settings.Repeat;
             data.Reminder = settings.Reminder;
             data.Notes = settings.Notes;
+            data.Complete = settings.Complete;
 
             return data;
         }

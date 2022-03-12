@@ -231,6 +231,7 @@ namespace Homework_App {
             data.Repeat = assignmentRepeat.Text;
             data.Reminder = assignmentReminder.Text;
             data.Notes = assignmentNotes.Text;
+            data.Complete = "false";
 
             Assignment.CreateAssignment(data);
 
