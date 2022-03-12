@@ -733,6 +733,10 @@ namespace Homework_App {
         }
 
         private static bool isSwitchingAnimationRunning = false;
+        /// <summary>
+        /// When the user switches the Scrollviewer display option
+        /// by clicking on the little two-arrow button
+        /// </summary>
         private void assignmentSwitchButton_MouseDown(object sender, MouseButtonEventArgs e) {
             // We get the name of the object to tell us if we're operating
             // on the first grid or the second
