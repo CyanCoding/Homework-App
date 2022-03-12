@@ -33,7 +33,7 @@
             </Border>
 
             <Button x:Name="newAssignmentButton" Content="Add new assignment +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="171" Style="{DynamicResource menu-color}" Cursor="Hand" Margin="10,70,0,0" Click="newAssignmentButton_Click"/>
-            
+
             <!-- Make dynamic height -->
             <Grid Margin="10,130,0,0" Width="400" Height="450" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
@@ -56,6 +56,33 @@
                             <Grid x:Name="nextWeekHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
                             <Grid x:Name="allHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
                             <Grid x:Name="pastHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+            <!-- Make dynamic height -->
+            <Grid Margin="430,10,0,0" Width="400" Height="450" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="assignmentDisplay2Label" Grid.Row="0" Content="Due today" FontSize="18"/>
+                <Label x:Name="assignmentSwitchButton2" Cursor="Hand" Grid.Column="1" Content="&#xE8AB;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe MDL2 Assets" MouseDown="assignmentSwitchButton_MouseDown"/>
+                <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine" Grid.ColumnSpan="2">
+                    <ScrollViewer x:Name="dueTodayScrollview2">
+                        <Grid VerticalAlignment="Top">
+                            <Grid x:Name="todayHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="tomorrowHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="nextThreeDaysHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="thisWeekHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="nextWeekHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="allHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                            <Grid x:Name="pastHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
                         </Grid>
                     </ScrollViewer>
                 </Border>
