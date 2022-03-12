@@ -1,4 +1,4 @@
-﻿<Window x:Class="Homework_App.MainWindow"
+<Window x:Class="Homework_App.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -43,7 +43,7 @@
                 <Label Grid.Row="0" Content="Due today" FontSize="18"/>
                 <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine">
                     <ScrollViewer x:Name="dueTodayScrollview">
-
+                        <Grid x:Name="todayHomeworkGrid" Height="0" VerticalAlignment="Top"/>
                     </ScrollViewer>
                 </Border>
             </Grid>
