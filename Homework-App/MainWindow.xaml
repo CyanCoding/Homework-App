@@ -1,4 +1,4 @@
-<Window x:Class="Homework_App.MainWindow"
+﻿<Window x:Class="Homework_App.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -76,7 +76,7 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="App theme" Width="100" FontSize="18" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Content="App theme" Width="100" FontSize="18" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Normal"/>
 
                 <!-- The value in here is set at runtime -->
                 <ComboBox x:Name="themeComboBox" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" SelectionChanged="themeComboBox_SelectionChanged">
