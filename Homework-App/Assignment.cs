@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,6 +44,8 @@ namespace Homework_App {
         /// - Repeat
         /// - Reminder
         /// - Notes
+        /// - Complete (true/false as a string)
+        /// - file name
         /// - Attachments * coming soon *
         /// </summary>
         /// <returns>True if created successfully</returns>
