@@ -47,6 +47,7 @@ namespace Homework_App {
                     break;
             }
 
+            ChangeAssignmentDisplay1();
             LoadAssignmentsFromFile();
         }
 
@@ -468,8 +469,40 @@ namespace Homework_App {
             t.TextDecorations = null;
         }
 
+        private void ChangeAssignmentDisplay1() {
+            switch (Properties.Settings.Default.AssignmentDisplay1) {
+                case 0:
+                    assignmentDisplay1Label.Content = "Due today";
+                    break;
+                case 1:
+                    assignmentDisplay1Label.Content = "Due tomorrow";
+                    break;
+                case 2:
+                    assignmentDisplay1Label.Content = "Due in next three days";
+                    break;
+                case 3:
+                    assignmentDisplay1Label.Content = "Due this week";
+                    break;
+                case 4:
+                    assignmentDisplay1Label.Content = "Due next week";
+                    break;
+                case 5:
+                    assignmentDisplay1Label.Content = "All assignments";
+                    break;
+            }
+        }
+
         private static bool isSwitchingAnimationRunning = false;
         private void assignmentSwitchButton_MouseDown(object sender, MouseButtonEventArgs e) {
+            Properties.Settings.Default.AssignmentDisplay1++;
+
+            if (Properties.Settings.Default.AssignmentDisplay1 == 6) {
+                Properties.Settings.Default.AssignmentDisplay1 = 0;
+            }
+            Properties.Settings.Default.Save();
+
+            ChangeAssignmentDisplay1();
+
             // ANIMATION
             if (!isSwitchingAnimationRunning) {
                 isSwitchingAnimationRunning = true;
