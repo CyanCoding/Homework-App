@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,8 @@ namespace Homework_App {
                     calendarButton_Click();
                     break;
             }
+
+            LoadAssignmentsFromFile();
         }
 
         private void homeworkButton_Click(object? sender = null, RoutedEventArgs? e = null) {
@@ -238,7 +241,7 @@ namespace Homework_App {
             assignmentReminder.SelectedIndex = 0;
             assignmentNotes.Text = "";
 
-            AddAssignment(data);
+            AddAssignment(data, 0); // TODO: FIX
         }
 
         /// <summary>
@@ -268,14 +271,29 @@ namespace Homework_App {
             }
         }
 
+        private void LoadAssignmentsFromFile() {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            path += "/Homework-App/assignment";
+            DirectoryInfo d = new DirectoryInfo(path);
+
+
+            int i = 0;
+            foreach (var file in d.GetFiles("*.json")) {
+                Assignment.AssignmentData data = Assignment.ReadAssignment(file.FullName);
+                AddAssignment(data, i);
+                i += 60;
+            }
+        }
+
         /// <summary>
         /// Adds an assignment to the homework tab
         /// </summary>
         /// <param name="data">The assignment data from the file</param>
-        private void AddAssignment(Assignment.AssignmentData data) {
+        private void AddAssignment(Assignment.AssignmentData data, int m) {
             // Outer grid
             Grid outerGrid = new Grid();
             outerGrid.Height = 60;
+            outerGrid.Margin = new Thickness(0, m, 0, 0);
             outerGrid.VerticalAlignment = VerticalAlignment.Top;
 
             ColumnDefinition column1 = new ColumnDefinition();
