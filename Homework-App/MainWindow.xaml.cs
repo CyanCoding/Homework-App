@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -604,6 +604,14 @@ namespace Homework_App {
             // Make sure to add back the '.json' when referencing the path
 
             // TODO: Somehow take the l.Name and hide the outerGrid and mark as complete
+            // Hides the assignment by hiding the parents of the checkbox label
+            Border? checkboxParent = l.Parent as Border;
+            if (checkboxParent != null) {
+                Grid? outerGrid = checkboxParent.Parent as Grid;
+                if (outerGrid != null) {
+                    outerGrid.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void AssignmentMouseEnter(object sender, MouseEventArgs e) {
