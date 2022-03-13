@@ -49,7 +49,7 @@ namespace Homework_App {
         /// - Attachments * coming soon *
         /// </summary>
         /// <returns>True if created successfully</returns>
-        internal static bool CreateAssignment(AssignmentData data) {
+        internal static bool CreateAssignment(AssignmentData data, string path = "") {
             StringBuilder sb = new StringBuilder();
             StringWriter sw = new StringWriter(sb);
 
@@ -63,7 +63,7 @@ namespace Homework_App {
                 { "Repeat", data.Repeat },
                 { "Reminder", data.Reminder },
                 { "Notes", data.Notes },
-                { "Complete", "false" }
+                { "Complete", data.Complete }
             };
 
             using (JsonWriter js = new JsonTextWriter(sw)) {
@@ -84,7 +84,7 @@ namespace Homework_App {
 
                 js.WriteEndObject();
             }
-            WriteAssignment(sw.ToString());
+            WriteAssignment(sw.ToString(), path);
 
             sb.Clear();
             sw.Close();
@@ -92,15 +92,25 @@ namespace Homework_App {
             return false;
         }
 
-        internal static void WriteAssignment(string json) {
+        /// <summary>
+        /// This is called by CreateAssignment ONLY!
+        /// </summary>
+        /// <param name="json">JSON string to write</param>
+        private static void WriteAssignment(string json, string path = "") {
             VerifyDirectory();
+
+            // This happens if we are overwriting an assignment
+            if (path != "") {
+                File.WriteAllText(path, json);
+                return;
+            }
 
             // Create a random number for the file title
             Random rnd = new Random();
             while (true) {
                 string fileName = rnd.Next(1, 100000).ToString() + ".json";
 
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 path += "/Homework-App/assignment/" + fileName;
 
                 // If the file doesn't exist, write. Otherwise make a new name
@@ -160,6 +170,30 @@ namespace Homework_App {
             data.FileName = Path.GetFileName(path).Remove(Path.GetFileName(path).Length - 5, 5);
 
             return data;
+        }
+
+        internal static void MarkAssignmentCompleted(string fileName) {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            path += "/Homework-App/assignment/" + fileName;
+
+            string json = File.ReadAllText(path);
+
+            AssignmentStructure? settings =
+                JsonConvert.DeserializeObject<AssignmentStructure>(json);
+
+            AssignmentData data = new AssignmentData();
+
+            data.Title = settings.Title;
+            data.Type = settings.Type;
+            data.Class = settings.Class;
+            data.Date = settings.Date;
+            data.Time = settings.Time;
+            data.Repeat = settings.Repeat;
+            data.Reminder = settings.Reminder;
+            data.Notes = settings.Notes;
+            data.Complete = "true";
+
+            CreateAssignment(data, path);
         }
     }
 }

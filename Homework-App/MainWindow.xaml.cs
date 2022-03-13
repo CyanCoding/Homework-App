@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -600,10 +600,13 @@ namespace Homework_App {
         /// </summary>
         private void AssignmentCompleted(object sender, MouseButtonEventArgs e) {
             Label l = (Label)sender;
-            // Example name: n133443 (n is used to make it a valid name)
-            // Make sure to add back the '.json' when referencing the path
 
-            // TODO: Somehow take the l.Name and hide the outerGrid and mark as complete
+            // Example name: n133443 (n is used to make it a valid name)
+            string fileName = l.Name.Substring(1, l.Name.Length - 1);
+            fileName += ".json"; // Now we have the file name! (e.g. 133443.json)
+
+            Assignment.MarkAssignmentCompleted(fileName);
+
             // Hides the assignment by hiding the parents of the checkbox label
             Border? checkboxParent = l.Parent as Border;
             if (checkboxParent != null) {
