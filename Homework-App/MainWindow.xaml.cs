@@ -412,6 +412,7 @@ namespace Homework_App {
 
                         // Check box
                         Border checkboxBorder = new Border();
+                        checkboxBorder.Name = "checkboxBorder";
                         checkboxBorder.HorizontalAlignment = HorizontalAlignment.Right;
                         checkboxBorder.SetValue(Grid.ColumnProperty, 0);
                         checkboxBorder.Margin = new Thickness(0, 5, 5, 0);
@@ -436,7 +437,12 @@ namespace Homework_App {
                         checkboxLabel.MouseEnter += Label_MouseEnter;
                         checkboxLabel.MouseLeave += Label_MouseLeave;
                         checkboxLabel.MouseDown += AssignmentCompleted;
-                        checkboxLabel.Name = "n" + data.FileName; // Used to identify file associated with task
+                        if (j == 0) {
+                            checkboxLabel.Name = "n" + data.FileName; // Used to identify file of Scrollviewer 1
+                        }
+                        else {
+                            checkboxLabel.Name = "m" + data.FileName; // Used to identify file of Scrollviewer 2
+                        }
                         checkboxLabel.FontSize = 8;
                         checkboxLabel.Margin = new Thickness(-3);
                         checkboxLabel.VerticalAlignment = VerticalAlignment.Center;
@@ -605,7 +611,7 @@ namespace Homework_App {
             string fileName = l.Name.Substring(1, l.Name.Length - 1);
             fileName += ".json"; // Now we have the file name! (e.g. 133443.json)
 
-            Assignment.MarkAssignmentCompleted(fileName);
+            //Assignment.MarkAssignmentCompleted(fileName);
 
             // Hides the assignment by hiding the parents of the checkbox label
             Border? checkboxParent = l.Parent as Border;
@@ -614,6 +620,32 @@ namespace Homework_App {
                 if (outerGrid != null) {
                     outerGrid.Visibility = Visibility.Hidden;
                 }
+            }
+
+            // Hide assignment from other scrollviewer
+            object wanted;
+            string nameToFind = "m" + l.Name.Substring(1, l.Name.Length - 1);
+            if (l.Name[0] == 'n') {
+                wanted = dueTodayScrollview2.FindName("todayHomeworkGrid2");
+                foreach (object child in ((Grid)wanted).Children) {
+                    Grid? childGrid = child as Grid;
+
+                    if (childGrid != null) {
+                        foreach (object c in childGrid.Children) {
+                            if (c is Border && ((Border)c).Name == "checkboxBorder") {
+                                // Do something
+                                Label label = (Label)((Border)c).Child;
+
+                                if (label.Name == nameToFind) {
+                                    // We found the duplicate in the other scrollviewer!
+                                    // We want to hide this as well
+                                    childGrid.Visibility = Visibility.Collapsed;
+                                }
+                            }
+                        }
+                        
+                    }
+                }                
             }
         }
 
