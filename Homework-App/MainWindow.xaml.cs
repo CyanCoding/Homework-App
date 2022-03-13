@@ -623,23 +623,32 @@ namespace Homework_App {
             }
 
             // Hide assignment from other scrollviewer
-            object wanted;
             string nameToFind = "m" + l.Name.Substring(1, l.Name.Length - 1);
+            // TODO: Hide from every scrollviewer
+
+            // Checkbox label first character meaning:
+            // 'n': First scrollviewer
+            // 'm': Second scrollviewer
             if (l.Name[0] == 'n') {
-                wanted = dueTodayScrollview2.FindName("todayHomeworkGrid2");
+                // Get grid from scrollviewer #2
+                object wanted = dueTodayScrollview2.FindName("todayHomeworkGrid2");
+
+                // Locates all the assignment grids from the scrollviewer sub-grid
                 foreach (object child in ((Grid)wanted).Children) {
                     Grid? childGrid = child as Grid;
 
                     if (childGrid != null) {
+                        // Gets each object from the assignment grid
                         foreach (object c in childGrid.Children) {
+                            // Checkbox grids are Border objects with the name "checkboxBorder"
                             if (c is Border && ((Border)c).Name == "checkboxBorder") {
-                                // Do something
                                 Label label = (Label)((Border)c).Child;
 
+                                // If the label name matches nameToFind, it's the
+                                // duplicate we're looking for.
                                 if (label.Name == nameToFind) {
-                                    // We found the duplicate in the other scrollviewer!
-                                    // We want to hide this as well
-                                    childGrid.Visibility = Visibility.Collapsed;
+                                    // Hide the duplicate
+                                    childGrid.Visibility = Visibility.Hidden;
                                 }
                             }
                         }
