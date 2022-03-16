@@ -887,5 +887,17 @@ namespace Homework_App {
             }
 
         }
+
+        /// <summary>
+        /// Executed when the window is resized
+        /// </summary>
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e) {
+            int height = (int)this.ActualHeight;
+            int width = (int)this.ActualWidth;
+
+            // Change height of assignment grids
+            assignmentGrid1.Height = height - 175;
+            assignmentGrid2.Height = height - 55;
+        }
     }
 }
