@@ -380,6 +380,7 @@ namespace Homework_App {
                         // We take - 70 because the first one would be at 0
                         outerGrid.Margin = new Thickness(0, margins[i] - 70, 0, 0);
                         outerGrid.VerticalAlignment = VerticalAlignment.Top;
+                        outerGrid.Name = "b" + data.FileName;
 
                         ColumnDefinition column1 = new ColumnDefinition();
                         column1.Width = new GridLength(1, GridUnitType.Star);
@@ -437,18 +438,13 @@ namespace Homework_App {
                         checkboxLabel.MouseEnter += Label_MouseEnter;
                         checkboxLabel.MouseLeave += Label_MouseLeave;
                         checkboxLabel.MouseDown += AssignmentCompleted;
-                        if (j == 0) {
-                            checkboxLabel.Name = "n" + data.FileName; // Used to identify file of Scrollviewer 1
-                        }
-                        else {
-                            checkboxLabel.Name = "m" + data.FileName; // Used to identify file of Scrollviewer 2
-                        }
                         checkboxLabel.FontSize = 8;
                         checkboxLabel.Margin = new Thickness(-3);
                         checkboxLabel.VerticalAlignment = VerticalAlignment.Center;
                         checkboxLabel.HorizontalAlignment = HorizontalAlignment.Center;
                         checkboxLabel.Cursor = Cursors.Hand;
                         checkboxLabel.Foreground = new BrushConverter().ConvertFrom("#FF5B5B5B") as Brush;
+                        checkboxLabel.Name = "c" + data.FileName;
 
                         checkboxBorder.Child = checkboxLabel;
                         outerGrid.Children.Add(checkboxBorder);
@@ -623,11 +619,15 @@ namespace Homework_App {
             }
 
             // Hide assignment from other scrollviewer
-            string nameToFind = nameToFind = l.Name.Substring(1, l.Name.Length - 1);
+            string nameToFind = "b" + l.Name.Substring(1, l.Name.Length - 1);
 
             HideAssignment(nameToFind);
         }
 
+        /// <summary>
+        /// Searches the grids for an assignment and hides it
+        /// </summary>
+        /// <param name="searchName">The number to search for (e.g. '65543')</param>
         private void HideAssignment(string searchName) {
             Grid[] gridsToHide = new Grid[] {
                 todayHomeworkGrid2,
@@ -648,29 +648,11 @@ namespace Homework_App {
             };
 
             foreach (Grid grid in gridsToHide) {
-                // Locates all the assignment grids from the scrollviewer sub-grid
+                // b21234 indicates the grid name
                 foreach (object child in grid.Children) {
-                    Grid? childGrid = child as Grid;
-
-                    if (childGrid != null) {
-                        // Gets each object from the assignment grid
-                        foreach (object c in childGrid.Children) {
-                            // Checkbox grids are Border objects with the name "checkboxBorder"
-                            if (c is Border && ((Border)c).Name == "checkboxBorder") {
-                                Label label = (Label)((Border)c).Child;
-
-                                // If the label name matches nameToFind, it's the
-                                // duplicate we're looking for.
-
-                                // 'm' and 'n' here are used to designate which scrollviewer
-                                // an item is in.
-                                if (label.Name == "m" + searchName || label.Name == "n" + searchName) {
-                                    // Hide the duplicate
-                                    childGrid.Visibility = Visibility.Hidden;
-                                }
-                            }
-                        }
-
+                    //object assignment = child.FindName("b" + searchName);
+                    if (((Grid)child).Name == searchName) { 
+                        ((Grid)child).Visibility = Visibility.Hidden;
                     }
                 }
             }
