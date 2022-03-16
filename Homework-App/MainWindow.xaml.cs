@@ -647,13 +647,41 @@ namespace Homework_App {
                 pastHomeworkGrid
             };
 
+            // With this we'll know which grids the assignment
+            // to hide is in - that way we know which margins
+            // we have to change.
+            Grid[] assignmentPresentGrids = new Grid[14];
+
+            int i = 0;
+
+            // First we hide all the assignments from the grids
             foreach (Grid grid in gridsToHide) {
                 // b21234 indicates the grid name
                 foreach (object child in grid.Children) {
-                    //object assignment = child.FindName("b" + searchName);
                     if (((Grid)child).Name == searchName) { 
                         ((Grid)child).Visibility = Visibility.Hidden;
+                        assignmentPresentGrids[i] = grid;
+                        i++;
                     }
+                }
+            }
+
+            // Now we need to update the other assignments in each
+            // grid the assignment WAS present in because
+            // there's a gap. So we update their margins
+            foreach (Grid grid in assignmentPresentGrids) {
+                if (grid != null) {
+                    foreach (object child in grid.Children) {
+                        if (child is Grid && child != null) {
+                            Thickness thick = ((Grid)child).Margin;
+
+                            if (thick.Top != 0) { // 0 top thickness means it was already at the top
+                                thick.Top -= 70;
+                            }
+
+                            ((Grid)child).Margin = thick; // Update thickness
+                        }
+                    } 
                 }
             }
         }
