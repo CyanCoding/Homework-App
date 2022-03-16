@@ -623,18 +623,33 @@ namespace Homework_App {
             }
 
             // Hide assignment from other scrollviewer
-            string nameToFind = "m" + l.Name.Substring(1, l.Name.Length - 1);
-            // TODO: Hide from every scrollviewer
+            string nameToFind = nameToFind = l.Name.Substring(1, l.Name.Length - 1);
 
-            // Checkbox label first character meaning:
-            // 'n': First scrollviewer
-            // 'm': Second scrollviewer
-            if (l.Name[0] == 'n') {
-                // Get grid from scrollviewer #2
-                object wanted = dueTodayScrollview2.FindName("todayHomeworkGrid2");
+            HideAssignment(nameToFind);
+        }
 
+        private void HideAssignment(string searchName) {
+            Grid[] gridsToHide = new Grid[] {
+                todayHomeworkGrid2,
+                tomorrowHomeworkGrid2,
+                nextThreeDaysHomeworkGrid2,
+                thisWeekHomeworkGrid2,
+                nextThreeDaysHomeworkGrid2,
+                allHomeworkGrid2,
+                pastHomeworkGrid2,
+
+                todayHomeworkGrid,
+                tomorrowHomeworkGrid,
+                nextThreeDaysHomeworkGrid,
+                thisWeekHomeworkGrid,
+                nextWeekHomeworkGrid,
+                allHomeworkGrid,
+                pastHomeworkGrid
+            };
+
+            foreach (Grid grid in gridsToHide) {
                 // Locates all the assignment grids from the scrollviewer sub-grid
-                foreach (object child in ((Grid)wanted).Children) {
+                foreach (object child in grid.Children) {
                     Grid? childGrid = child as Grid;
 
                     if (childGrid != null) {
@@ -646,15 +661,18 @@ namespace Homework_App {
 
                                 // If the label name matches nameToFind, it's the
                                 // duplicate we're looking for.
-                                if (label.Name == nameToFind) {
+
+                                // 'm' and 'n' here are used to designate which scrollviewer
+                                // an item is in.
+                                if (label.Name == "m" + searchName || label.Name == "n" + searchName) {
                                     // Hide the duplicate
                                     childGrid.Visibility = Visibility.Hidden;
                                 }
                             }
                         }
-                        
+
                     }
-                }                
+                }
             }
         }
 
