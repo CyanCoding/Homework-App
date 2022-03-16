@@ -2,12 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Homework_App {
-    internal class Assignment {
+    internal static class Assignment {
 
         /// <summary>
         /// Creates the app data directory if it doesn't exist.
@@ -72,14 +70,9 @@ namespace Homework_App {
                 js.WriteStartObject();
 
                 // Iterate through writeValues. If the value isn't set, we use the key value
-                foreach (KeyValuePair<string, string> kvp in writeValues) {
-                    js.WritePropertyName(kvp.Key);
-                    if (kvp.Value != null) {
-                        js.WriteValue(kvp.Value);
-                    }
-                    else {
-                        js.WriteValue("");
-                    }
+                foreach (var (key, value) in writeValues) {
+                    js.WritePropertyName(key);
+                    js.WriteValue(value != "" ? value : "");
                 }
 
                 js.WriteEndObject();
@@ -96,6 +89,7 @@ namespace Homework_App {
         /// This is called by CreateAssignment ONLY!
         /// </summary>
         /// <param name="json">JSON string to write</param>
+        /// <param name="path">The path to write to</param>
         private static void WriteAssignment(string json, string path = "") {
             VerifyDirectory();
 

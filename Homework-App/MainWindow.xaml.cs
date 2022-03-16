@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Homework_App {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class MainWindow {
         public MainWindow() {
             InitializeComponent();
 
@@ -47,58 +39,58 @@ namespace Homework_App {
                     break;
             }
 
-            ChangeAssignmentDisplay(1, assignmentDisplay1Label);
-            ChangeAssignmentDisplay(2, assignmentDisplay2Label);
+            ChangeAssignmentDisplay(1, AssignmentDisplay1Label);
+            ChangeAssignmentDisplay(2, AssignmentDisplay2Label);
             LoadAssignmentsFromFile();
         }
 
         private void homeworkButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(homeworkButton, homeworkGrid);
+            UpdateSelection(HomeworkButton, HomeworkGrid);
         }
 
         private void classesButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(classesButton, classesGrid);
+            UpdateSelection(ClassesButton, ClassesGrid);
         }
 
         private void calendarButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(calendarButton, calendarGrid);
+            UpdateSelection(CalendarButton, CalendarGrid);
         }
 
         private void settingsButton_Click(object? sender = null, RoutedEventArgs? e = null) {
-            UpdateSelection(settingsButton, settingsGrid);
+            UpdateSelection(SettingsButton, SettingsGrid);
 
             // Prepare the scene
-            themeComboBox.SelectedIndex = Themes.ThemeToInt(Properties.Settings.Default.SelectedTheme);
+            ThemeComboBox.SelectedIndex = Themes.ThemeToInt(Properties.Settings.Default.SelectedTheme);
 
             switch (Properties.Settings.Default.StartTab) {
                 case "Homework":
-                    tabComboBox.SelectedIndex = 0;
+                    TabComboBox.SelectedIndex = 0;
                     break;
                 case "Classes":
-                    tabComboBox.SelectedIndex = 1;
+                    TabComboBox.SelectedIndex = 1;
                     break;
                 case "Calendar":
-                    tabComboBox.SelectedIndex = 2;
+                    TabComboBox.SelectedIndex = 2;
                     break;
             }
 
-            settingsGrid.Visibility = Visibility.Visible;
+            SettingsGrid.Visibility = Visibility.Visible;
 
         }
 
         private void UpdateSelection(Button selectedButton, Grid showingGrid) {
             Button[] menuList = new Button[] {
-                homeworkButton,
-                classesButton,
-                calendarButton,
-                settingsButton
+                HomeworkButton,
+                ClassesButton,
+                CalendarButton,
+                SettingsButton
             };
 
             Grid[] gridList = new Grid[] {
-                homeworkGrid,
-                classesGrid,
-                calendarGrid,
-                settingsGrid
+                HomeworkGrid,
+                ClassesGrid,
+                CalendarGrid,
+                SettingsGrid
             };
 
             foreach (Button button in menuList) {
@@ -124,7 +116,7 @@ namespace Homework_App {
         /// Changes the theme globally.
         /// </summary>
         private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            string themeName = Themes.IntTotheme(themeComboBox.SelectedIndex);
+            string themeName = Themes.IntTotheme(ThemeComboBox.SelectedIndex);
 
             // Saves the new theme to properties
             Properties.Settings.Default.SelectedTheme = themeName;
@@ -141,14 +133,14 @@ namespace Homework_App {
             Application.Current.Resources["menu-color"] = style;
 
             // We have to update the button selection again for the new style
-            UpdateSelection(settingsButton, settingsGrid);
+            UpdateSelection(SettingsButton, SettingsGrid);
         }
 
         /// <summary>
         /// Changes the user's start tab
         /// </summary>
         private void tabComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            int tab = tabComboBox.SelectedIndex;
+            int tab = TabComboBox.SelectedIndex;
 
             switch (tab) {
                 case 0:
@@ -166,36 +158,36 @@ namespace Homework_App {
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e) {
-            newAssignmentGrid.Visibility = Visibility.Hidden;
+            NewAssignmentGrid.Visibility = Visibility.Hidden;
         }
 
         private void newAssignmentButton_Click(object sender, RoutedEventArgs e) {
-            newAssignmentGrid.Visibility = Visibility.Visible;
+            NewAssignmentGrid.Visibility = Visibility.Visible;
         }
 
         /// <summary>
         /// Checks if the user has filled in the assignment title AND datepicker
         /// </summary>
         /// <returns>True if both are filled in.</returns>
-        private bool assignmentFilledDetails() {
+        private bool AssignmentFilledDetails() {
             bool returnVal = true;
             // Title text box is required
-            if (assignmentTitle.Text == "") {
-                assignmentTitle.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
-                assignmentTitleRequiredLabel.Visibility = Visibility.Visible;
+            if (AssignmentTitle.Text == "") {
+                AssignmentTitle.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+                AssignmentTitleRequiredLabel.Visibility = Visibility.Visible;
                 returnVal = false;
             } else {
-                assignmentTitle.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
-                assignmentTitleRequiredLabel.Visibility = Visibility.Hidden;
+                AssignmentTitle.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                AssignmentTitleRequiredLabel.Visibility = Visibility.Hidden;
             }
             // Valid calendar day is required
-            if (assignmentCalendar.SelectedDate == null) {
-                assignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
-                assignmentCalendarRequiredLabel.Visibility = Visibility.Visible;
+            if (AssignmentCalendar.SelectedDate == null) {
+                AssignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+                AssignmentCalendarRequiredLabel.Visibility = Visibility.Visible;
                 returnVal = false;
             } else {
-                assignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
-                assignmentCalendarRequiredLabel.Visibility = Visibility.Hidden;
+                AssignmentCalendar.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                AssignmentCalendarRequiredLabel.Visibility = Visibility.Hidden;
             }
 
             return returnVal;
@@ -206,36 +198,36 @@ namespace Homework_App {
         /// </summary>
         private void saveAndAddButton_Click(object sender, RoutedEventArgs e) {
             // Make sure everything required is filled
-            if (!assignmentFilledDetails()) {
+            if (!AssignmentFilledDetails()) {
                 return;
             }
 
             // Add assignment
             Assignment.AssignmentData data;
-            data.Title = assignmentTitle.Text;
-            data.Type = assignmentType.Text;
-            data.Class = assignmentClass.Text;
-            data.Date = assignmentCalendar.Text;
-            data.Time = assignmentTime.Text;
-            data.Priority = assignmentPriority.Text;
-            data.Repeat = assignmentRepeat.Text;
-            data.Reminder = assignmentReminder.Text;
-            data.Notes = assignmentNotes.Text;
+            data.Title = AssignmentTitle.Text;
+            data.Type = AssignmentType.Text;
+            data.Class = AssignmentClass.Text;
+            data.Date = AssignmentCalendar.Text;
+            data.Time = AssignmentTime.Text;
+            data.Priority = AssignmentPriority.Text;
+            data.Repeat = AssignmentRepeat.Text;
+            data.Reminder = AssignmentReminder.Text;
+            data.Notes = AssignmentNotes.Text;
             data.Complete = "false";
             data.FileName = ""; // This is set when the file is read
 
             Assignment.CreateAssignment(data);
 
             // Clear values
-            assignmentTitle.Text = "";
-            assignmentType.SelectedIndex = 0;
-            assignmentClass.SelectedIndex = 0;
-            assignmentCalendar.Text = "";
-            assignmentTime.Text = "";
-            assignmentPriority.SelectedIndex = 0;
-            assignmentRepeat.SelectedIndex = 0;
-            assignmentReminder.SelectedIndex = 0;
-            assignmentNotes.Text = "";
+            AssignmentTitle.Text = "";
+            AssignmentType.SelectedIndex = 0;
+            AssignmentClass.SelectedIndex = 0;
+            AssignmentCalendar.Text = "";
+            AssignmentTime.Text = "";
+            AssignmentPriority.SelectedIndex = 0;
+            AssignmentRepeat.SelectedIndex = 0;
+            AssignmentReminder.SelectedIndex = 0;
+            AssignmentNotes.Text = "";
 
             AddAssignment(data);
         }
@@ -247,9 +239,10 @@ namespace Homework_App {
         private void saveButton_Click(object sender, RoutedEventArgs e) {
             saveAndAddButton_Click(sender, e);
 
-            newAssignmentGrid.Visibility = Visibility.Hidden; // Hide assignment window
+            NewAssignmentGrid.Visibility = Visibility.Hidden; // Hide assignment window
         }
 
+/*
         /// <summary>
         /// When the user clicks to add a file to their assignment
         /// </summary>
@@ -266,6 +259,7 @@ namespace Homework_App {
                 string filename = dlg.FileName; // System.IO.Path.GetFileName(filename);
             }
         }
+*/
 
         private void LoadAssignmentsFromFile() {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -531,22 +525,22 @@ namespace Homework_App {
                         Grid allGrid;
                         Grid pastGrid;
                         if (j == 0) {
-                            todayGrid = todayHomeworkGrid;
-                            tomGrid = tomorrowHomeworkGrid;
-                            threeGrid = nextThreeDaysHomeworkGrid;
-                            weekGrid = thisWeekHomeworkGrid;
-                            nextWeekGrid = nextWeekHomeworkGrid;
-                            allGrid = allHomeworkGrid;
-                            pastGrid = pastHomeworkGrid;
+                            todayGrid = TodayHomeworkGrid;
+                            tomGrid = TomorrowHomeworkGrid;
+                            threeGrid = NextThreeDaysHomeworkGrid;
+                            weekGrid = ThisWeekHomeworkGrid;
+                            nextWeekGrid = NextWeekHomeworkGrid;
+                            allGrid = AllHomeworkGrid;
+                            pastGrid = PastHomeworkGrid;
                         }
                         else {
-                            todayGrid = todayHomeworkGrid2;
-                            tomGrid = tomorrowHomeworkGrid2;
-                            threeGrid = nextThreeDaysHomeworkGrid2;
-                            weekGrid = thisWeekHomeworkGrid2;
-                            nextWeekGrid = nextWeekHomeworkGrid2;
-                            allGrid = allHomeworkGrid2;
-                            pastGrid = pastHomeworkGrid2;
+                            todayGrid = TodayHomeworkGrid2;
+                            tomGrid = TomorrowHomeworkGrid2;
+                            threeGrid = NextThreeDaysHomeworkGrid2;
+                            weekGrid = ThisWeekHomeworkGrid2;
+                            nextWeekGrid = NextWeekHomeworkGrid2;
+                            allGrid = AllHomeworkGrid2;
+                            pastGrid = PastHomeworkGrid2;
                         }
 
                         // Figure out which grid to add to
@@ -603,12 +597,6 @@ namespace Homework_App {
         private void AssignmentCompleted(object sender, MouseButtonEventArgs e) {
             Label l = (Label)sender;
 
-            // Example name: n133443 (n is used to make it a valid name)
-            string fileName = l.Name.Substring(1, l.Name.Length - 1);
-            fileName += ".json"; // Now we have the file name! (e.g. 133443.json)
-
-            //Assignment.MarkAssignmentCompleted(fileName);
-
             // Hides the assignment by hiding the parents of the checkbox label
             Border? checkboxParent = l.Parent as Border;
             if (checkboxParent != null) {
@@ -630,21 +618,21 @@ namespace Homework_App {
         /// <param name="searchName">The number to search for (e.g. '65543')</param>
         private void HideAssignment(string searchName) {
             Grid[] gridsToHide = new Grid[] {
-                todayHomeworkGrid2,
-                tomorrowHomeworkGrid2,
-                nextThreeDaysHomeworkGrid2,
-                thisWeekHomeworkGrid2,
-                nextThreeDaysHomeworkGrid2,
-                allHomeworkGrid2,
-                pastHomeworkGrid2,
+                TodayHomeworkGrid2,
+                TomorrowHomeworkGrid2,
+                NextThreeDaysHomeworkGrid2,
+                ThisWeekHomeworkGrid2,
+                NextThreeDaysHomeworkGrid2,
+                AllHomeworkGrid2,
+                PastHomeworkGrid2,
 
-                todayHomeworkGrid,
-                tomorrowHomeworkGrid,
-                nextThreeDaysHomeworkGrid,
-                thisWeekHomeworkGrid,
-                nextWeekHomeworkGrid,
-                allHomeworkGrid,
-                pastHomeworkGrid
+                TodayHomeworkGrid,
+                TomorrowHomeworkGrid,
+                NextThreeDaysHomeworkGrid,
+                ThisWeekHomeworkGrid,
+                NextWeekHomeworkGrid,
+                AllHomeworkGrid,
+                PastHomeworkGrid
             };
 
             // With this we'll know which grids the assignment
@@ -672,14 +660,14 @@ namespace Homework_App {
             foreach (Grid grid in assignmentPresentGrids) {
                 if (grid != null) {
                     foreach (object child in grid.Children) {
-                        if (child is Grid && child != null) {
-                            Thickness thick = ((Grid)child).Margin;
+                        if (child is Grid grid1) {
+                            Thickness thick = grid1.Margin;
 
                             if (thick.Top != 0) { // 0 top thickness means it was already at the top
                                 thick.Top -= 70;
                             }
 
-                            ((Grid)child).Margin = thick; // Update thickness
+                            grid1.Margin = thick; // Update thickness
                         }
                     } 
                 }
@@ -702,23 +690,23 @@ namespace Homework_App {
         /// <param name="gridNum">1 == firstGrids, 2 == secondGrids</param>
         private void ChangeGridVisibility(Grid grid, int gridNum) {
             Grid[] firstGrids = new Grid[] {
-                todayHomeworkGrid,
-                tomorrowHomeworkGrid,
-                nextThreeDaysHomeworkGrid,
-                thisWeekHomeworkGrid,
-                nextWeekHomeworkGrid,
-                allHomeworkGrid,
-                pastHomeworkGrid
+                TodayHomeworkGrid,
+                TomorrowHomeworkGrid,
+                NextThreeDaysHomeworkGrid,
+                ThisWeekHomeworkGrid,
+                NextWeekHomeworkGrid,
+                AllHomeworkGrid,
+                PastHomeworkGrid
             };
 
             Grid[] secondGrids = new Grid[] {
-                todayHomeworkGrid2,
-                tomorrowHomeworkGrid2,
-                nextThreeDaysHomeworkGrid2,
-                thisWeekHomeworkGrid2,
-                nextWeekHomeworkGrid2,
-                allHomeworkGrid2,
-                pastHomeworkGrid2
+                TodayHomeworkGrid2,
+                TomorrowHomeworkGrid2,
+                NextThreeDaysHomeworkGrid2,
+                ThisWeekHomeworkGrid2,
+                NextWeekHomeworkGrid2,
+                AllHomeworkGrid2,
+                PastHomeworkGrid2
             };
 
             if (gridNum == 1) {
@@ -763,64 +751,64 @@ namespace Homework_App {
                 case 0:
                     l.Content = "Due today";
                     if (gridNum == 1) {
-                        ChangeGridVisibility(todayHomeworkGrid, gridNum);
+                        ChangeGridVisibility(TodayHomeworkGrid, gridNum);
                     }
                     else {
-                        ChangeGridVisibility(todayHomeworkGrid2, gridNum);
+                        ChangeGridVisibility(TodayHomeworkGrid2, gridNum);
                     }
                     break;
                 case 1:
                     l.Content = "Due tomorrow";
                     if (gridNum == 1) {
-                        ChangeGridVisibility(tomorrowHomeworkGrid, gridNum);
+                        ChangeGridVisibility(TomorrowHomeworkGrid, gridNum);
                     }
                     else {
-                        ChangeGridVisibility(tomorrowHomeworkGrid2, gridNum);
+                        ChangeGridVisibility(TomorrowHomeworkGrid2, gridNum);
                     }
                     break;
                 case 2:
                     l.Content = "Due in next three days";
                     if (gridNum == 1) {
-                        ChangeGridVisibility(nextThreeDaysHomeworkGrid, gridNum);
+                        ChangeGridVisibility(NextThreeDaysHomeworkGrid, gridNum);
                     }
                     else {
-                        ChangeGridVisibility(nextThreeDaysHomeworkGrid2, gridNum);
+                        ChangeGridVisibility(NextThreeDaysHomeworkGrid2, gridNum);
                     }
                     break;
                 case 3:
                     l.Content = "Due this week";
                     if (gridNum == 1) {
-                        ChangeGridVisibility(thisWeekHomeworkGrid, gridNum);
+                        ChangeGridVisibility(ThisWeekHomeworkGrid, gridNum);
                     }
                     else {
-                        ChangeGridVisibility(thisWeekHomeworkGrid2, gridNum);
+                        ChangeGridVisibility(ThisWeekHomeworkGrid2, gridNum);
                     }
                     break;
                 case 4:
                     l.Content = "Due next week";
                     if (gridNum == 1) {
-                        ChangeGridVisibility(nextWeekHomeworkGrid, gridNum);
+                        ChangeGridVisibility(NextWeekHomeworkGrid, gridNum);
                     }
                     else {
-                        ChangeGridVisibility(nextWeekHomeworkGrid2, gridNum);
+                        ChangeGridVisibility(NextWeekHomeworkGrid2, gridNum);
                     }
                     break;
                 case 5:
                     l.Content = "All assignments";
                     if (gridNum == 1) {
-                        ChangeGridVisibility(allHomeworkGrid, gridNum);
+                        ChangeGridVisibility(AllHomeworkGrid, gridNum);
                     }
                     else {
-                        ChangeGridVisibility(allHomeworkGrid2, gridNum);
+                        ChangeGridVisibility(AllHomeworkGrid2, gridNum);
                     }
                     break;
                 case 6:
                     l.Content = "Past assignments";
                     if (gridNum == 1) {
-                        ChangeGridVisibility(pastHomeworkGrid, gridNum);
+                        ChangeGridVisibility(PastHomeworkGrid, gridNum);
                     }
                     else {
-                        ChangeGridVisibility(pastHomeworkGrid2, gridNum);
+                        ChangeGridVisibility(PastHomeworkGrid2, gridNum);
                     }
                     break;
             }
@@ -842,7 +830,7 @@ namespace Homework_App {
                     Properties.Settings.Default.AssignmentDisplay1 = 0;
                 }
 
-                ChangeAssignmentDisplay(1, assignmentDisplay1Label);
+                ChangeAssignmentDisplay(1, AssignmentDisplay1Label);
             }
             else {
                 Properties.Settings.Default.AssignmentDisplay2++;
@@ -851,7 +839,7 @@ namespace Homework_App {
                     Properties.Settings.Default.AssignmentDisplay2 = 0;
                 }
 
-                ChangeAssignmentDisplay(2, assignmentDisplay2Label);
+                ChangeAssignmentDisplay(2, AssignmentDisplay2Label);
             }
 
             Properties.Settings.Default.Save();
@@ -896,8 +884,8 @@ namespace Homework_App {
             int width = (int)this.ActualWidth;
 
             // Change height of assignment grids
-            assignmentGrid1.Height = height - 175;
-            assignmentGrid2.Height = height - 55;
+            AssignmentGrid1.Height = height - 175;
+            AssignmentGrid2.Height = height - 55;
         }
     }
 }
