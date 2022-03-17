@@ -297,16 +297,22 @@ namespace Homework_App {
             // on outerGrid
             DateTime today = DateTime.Today;
 
+            // We use "Today" and "Tomorrow" instead of dates
+            bool dueToday = false;
+            bool dueTomorrow = false;
+
             // Figure out what range the assignment's due date falls in
             if (today.ToString("M/dd/yyyy") == data.Date) { // Due today
                 Margins[0] += 70;
                 addPlaces[0] = true;
                 inPast = false;
+                dueToday = true;
             }
             else if (today.AddDays(1).ToString("M/dd/yyyy") == data.Date) { // Due tomorrow
                 Margins[1] += 70;
                 addPlaces[1] = true;
                 inPast = false;
+                dueTomorrow = true;
             }
             for (int i = 0; i < 3; i++) { // Due in next three days
                 if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
@@ -351,7 +357,17 @@ namespace Homework_App {
             Margins[5] += 70;
 
             // TODO: Figure out how to format this another way
-            string dateString = data.Date;
+            string dateString;
+            if (dueToday) {
+                dateString = "Today";
+            }
+            else if (dueTomorrow) {
+                dateString = "Tomorrow";
+            }
+            else {
+                dateString = data.Date;
+            }
+            
             // Attach time to date ("3/2/2222 - 2:00 PM")
             if (data.Time != "") {
                 dateString += " - " + data.Time;
