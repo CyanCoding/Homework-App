@@ -148,7 +148,7 @@
             </Grid.Background>
 
             <!-- Make dynamic height!! -->
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Height="500" Background="White">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="450" Height="500" Background="White">
                 <Label Content="Add new class" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0"/>
 
                 <ScrollViewer Height="380">
@@ -199,11 +199,11 @@
                             <TextBox SpellCheck.IsEnabled="True" x:Name="ClassProfessor" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <ComboBox x:Name="ClassProfessorPronouns" VerticalContentAlignment="Center" Grid.Column="2" FontSize="13" Padding="5" Margin="0,0,10,0">
                                 <ComboBoxItem Content=""/>
-                                <ComboBoxItem Content="He/Him"/>
-                                <ComboBoxItem Content="She/Her"/>
-                                <ComboBoxItem Content="They/Them"/>
-                                <ComboBoxItem Content="Ze/Zir"/>
-                                <ComboBoxItem Content="Ve/Ver"/>
+                                <ComboBoxItem Content="He"/>
+                                <ComboBoxItem Content="She"/>
+                                <ComboBoxItem Content="They"/>
+                                <ComboBoxItem Content="Ze"/>
+                                <ComboBoxItem Content="Ve"/>
                             </ComboBox>
                         </Grid>
 
