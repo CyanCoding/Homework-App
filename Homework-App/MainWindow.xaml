@@ -142,7 +142,7 @@
         </Grid>
         
         <!-- This needs to come last so it appears above everything else -->
-        <Grid Grid.Row="0" Grid.RowSpan="2" x:Name="NewClassGrid" Visibility="Visible">
+        <Grid Grid.Row="0" Grid.RowSpan="2" x:Name="NewClassGrid" Visibility="Hidden">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.7"/>
             </Grid.Background>
@@ -345,19 +345,19 @@
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Title" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Title" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <TextBox SpellCheck.IsEnabled="True" x:Name="AssignmentTitle" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <Label x:Name="AssignmentTitleRequiredLabel" Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0" Visibility="Hidden"/>
                         </Grid>
 
                         <!-- Assignment type -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,40,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,50,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Type" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Type" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <ComboBox x:Name="AssignmentType" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Homework"/>
@@ -381,13 +381,13 @@
                         </Grid>
 
                         <!-- Class -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,80,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,100,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Class" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Class" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <ComboBox x:Name="AssignmentClass" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Test class 1"/>
@@ -396,37 +396,37 @@
                         </Grid>
 
                         <!-- Date -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,120,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,150,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Date" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
-                            <DatePicker x:Name="AssignmentCalendar" Width="221" HorizontalAlignment="Left" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label Content="Date" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <DatePicker x:Name="AssignmentCalendar" HorizontalAlignment="Stretch" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <Label x:Name="AssignmentCalendarRequiredLabel" Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0" Visibility="Hidden"/>
                         </Grid>
 
                         <!-- Time -->
-                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,160,0,0">
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,200,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Time" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Center" Margin="5,0,0,0"/>
+                            <Label Content="Time" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
                             <TextBox x:Name="AssignmentTime" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
                             <Label Content="23:59, 2:00 PM, 8am, etc." FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FF8E8E8E"/>
                         </Grid>
 
                         <!-- Priority -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,220,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,260,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Priority" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Priority" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <ComboBox x:Name="AssignmentPriority" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Low"/>
@@ -436,13 +436,13 @@
                         </Grid>
 
                         <!-- Repeat -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,260,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,310,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Repeat" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Repeat" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <ComboBox x:Name="AssignmentRepeat" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="Every day"/>
@@ -455,13 +455,13 @@
                         </Grid>
 
                         <!-- Reminder -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,300,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,360,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Reminder" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Reminder" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <ComboBox x:Name="AssignmentReminder" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
                                 <ComboBoxItem Content="When due"/>
@@ -485,25 +485,25 @@
                         </Grid>
 
                         <!-- Notes -->
-                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,340,0,0">
+                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,410,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Notes" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Notes" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <TextBox SpellCheck.IsEnabled="True" AcceptsReturn="True" TextWrapping="Wrap" x:Name="AssignmentNotes" VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" AcceptsTab="True" Block.LineHeight="2"/>
                         </Grid>
 
                         <!-- Attachments -->
-                        <Grid x:Name="AssignmentFileGrid" Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,430,0,0">
+                        <Grid x:Name="AssignmentFileGrid" Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,500,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Attachments" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0"/>
+                            <Label Content="Attachments" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
 
                             <Label Content="Coming soon!" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="5,-5,0,0"/>
                             <!--<Button x:Name="assignmentAddFileButton" IsEnabled="False" ToolTip="Coming soon!" Grid.Column="1" Content="+ Add file" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
@@ -513,7 +513,7 @@
 
                         <!-- Extra space -->
                         <!-- Move down when attachments are added -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,450,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,500,0,0">
                         </Grid>
                     </Grid>
                 </ScrollViewer>
