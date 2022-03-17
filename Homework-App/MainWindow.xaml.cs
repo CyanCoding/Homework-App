@@ -539,6 +539,10 @@ namespace Homework_App {
                         classLabel.SetValue(Grid.ColumnProperty, 1);
                         classGrid.Children.Add(classLabel);
 
+                        if (data.Class == "") {
+                            classEllipse.Visibility = Visibility.Hidden;
+                        }
+
                         outerGrid.Children.Add(classGrid);
 
                         // Add the assignment to the proper grid
