@@ -103,12 +103,7 @@ namespace Homework_App {
             }
 
             foreach (Grid grid in gridList) {
-                if (grid == showingGrid) {
-                    grid.Visibility = Visibility.Visible;
-                }
-                else {
-                    grid.Visibility = Visibility.Hidden;
-                }
+                grid.Visibility = grid == showingGrid ? Visibility.Visible : Visibility.Hidden;
             }
         }
 
@@ -279,7 +274,7 @@ namespace Homework_App {
         // 4: Next week
         // 5: All
         // 6: Past
-        private static int[] margins = new int[] { 0, 0, 0, 0, 0, 0, 0};
+        private static readonly int[] Margins = new int[] { 0, 0, 0, 0, 0, 0, 0};
 
         /// <summary>
         /// Adds an assignment to the homework tab
@@ -304,18 +299,18 @@ namespace Homework_App {
 
             // Figure out what range the assignment's due date falls in
             if (today.ToString("M/dd/yyyy") == data.Date) { // Due today
-                margins[0] += 70;
+                Margins[0] += 70;
                 addPlaces[0] = true;
                 inPast = false;
             }
             else if (today.AddDays(1).ToString("M/dd/yyyy") == data.Date) { // Due tomorrow
-                margins[1] += 70;
+                Margins[1] += 70;
                 addPlaces[1] = true;
                 inPast = false;
             }
             for (int i = 0; i < 3; i++) { // Due in next three days
                 if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
-                    margins[2] += 70;
+                    Margins[2] += 70;
                     addPlaces[2] = true;
                     inPast = false;
                     break;
@@ -323,7 +318,7 @@ namespace Homework_App {
             }
             for (int i = 0; i < 7; i++) { // Due this week
                 if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
-                    margins[3] += 70;
+                    Margins[3] += 70;
                     addPlaces[3] = true;
                     inPast = false;
                     break;
@@ -331,7 +326,7 @@ namespace Homework_App {
             }
             for (int i = 7; i < 14; i++) { // Due next week
                 if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
-                    margins[4] += 70;
+                    Margins[4] += 70;
                     addPlaces[4] = true;
                     inPast = false;
                     break;
@@ -339,7 +334,7 @@ namespace Homework_App {
             }
             
             if (inPast) {
-                // We just use 1000 as a genaric large number
+                // We just use 1000 as a generic large number
                 for (int i = 0; i < 1000; i++) {
                     if (data.Date == today.AddDays(i).ToString("M/dd/yyyy")) {
                         inPast = false;
@@ -347,13 +342,13 @@ namespace Homework_App {
                     }
                 }
                 if (inPast) {
-                    margins[6] += 70;
+                    Margins[6] += 70;
                     addPlaces[6] = true;
                 }
             }
 
             // Update all assignments margin
-            margins[5] += 70;
+            Margins[5] += 70;
 
             // TODO: Figure out how to format this another way
             string dateString = data.Date;
@@ -366,27 +361,33 @@ namespace Homework_App {
                 if (addPlaces[i]) { // Only add an item if it rests in that date range
 
                     // We create two assignments because you can't have
-                    // an assignment as the child of both our Scrollviewer grids
+                    // an assignment as the child of both our Scroll-viewer grids
                     for (int j = 0; j < 2; j++) {
                         // Outer grid
-                        Grid outerGrid = new Grid();
-                        outerGrid.Height = 60;
-                        // We take - 70 because the first one would be at 0
-                        outerGrid.Margin = new Thickness(0, margins[i] - 70, 0, 0);
-                        outerGrid.VerticalAlignment = VerticalAlignment.Top;
-                        outerGrid.Name = "b" + data.FileName;
+                        Grid outerGrid = new Grid {
+                            Height = 60,
+                            // We take - 70 because the first one would be at 0
+                            Margin = new Thickness(0, Margins[i] - 70, 0, 0),
+                            VerticalAlignment = VerticalAlignment.Top,
+                            Name = "b" + data.FileName
+                        };
 
-                        ColumnDefinition column1 = new ColumnDefinition();
-                        column1.Width = new GridLength(1, GridUnitType.Star);
-                        ColumnDefinition column2 = new ColumnDefinition();
-                        column2.Width = new GridLength(7, GridUnitType.Star);
-                        ColumnDefinition column3 = new ColumnDefinition();
-                        column3.Width = new GridLength(5, GridUnitType.Star);
+                        ColumnDefinition column1 = new ColumnDefinition {
+                            Width = new GridLength(1, GridUnitType.Star)
+                        };
+                        ColumnDefinition column2 = new ColumnDefinition {
+                            Width = new GridLength(7, GridUnitType.Star)
+                        };
+                        ColumnDefinition column3 = new ColumnDefinition {
+                            Width = new GridLength(5, GridUnitType.Star)
+                        };
 
-                        RowDefinition row1 = new RowDefinition();
-                        row1.Height = new GridLength(3, GridUnitType.Star);
-                        RowDefinition row2 = new RowDefinition();
-                        row2.Height = new GridLength(2, GridUnitType.Star);
+                        RowDefinition row1 = new RowDefinition {
+                            Height = new GridLength(3, GridUnitType.Star)
+                        };
+                        RowDefinition row2 = new RowDefinition {
+                            Height = new GridLength(2, GridUnitType.Star)
+                        };
 
                         outerGrid.ColumnDefinitions.Add(column1);
                         outerGrid.ColumnDefinitions.Add(column2);
@@ -406,13 +407,14 @@ namespace Homework_App {
                         outerGrid.Children.Add(outsideBorder);
 
                         // Check box
-                        Border checkboxBorder = new Border();
-                        checkboxBorder.Name = "checkboxBorder";
-                        checkboxBorder.HorizontalAlignment = HorizontalAlignment.Right;
+                        Border checkboxBorder = new Border {
+                            Name = "checkboxBorder",
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            Margin = new Thickness(0, 5, 5, 0),
+                            Width = 18,
+                            Height = 18
+                        };
                         checkboxBorder.SetValue(Grid.ColumnProperty, 0);
-                        checkboxBorder.Margin = new Thickness(0, 5, 5, 0);
-                        checkboxBorder.Width = 18;
-                        checkboxBorder.Height = 18;
 
                         string checkBoxBrush = "#FF707070";
                         if (data.Priority == "Low") {
@@ -450,35 +452,38 @@ namespace Homework_App {
                         assignmentName.VerticalAlignment = VerticalAlignment.Top;
                         assignmentName.Content = data.Title;
 
-                        TextBlock block = new TextBlock();
-                        block.FontSize = 14;
-                        block.Text = data.Title;
-                        block.Cursor = Cursors.Hand;
+                        TextBlock block = new TextBlock {
+                            FontSize = 14,
+                            Text = data.Title,
+                            Cursor = Cursors.Hand
+                        };
                         block.MouseEnter += AssignmentMouseEnter;
                         block.MouseLeave += AssignmentMouseLeave;
                         assignmentName.Content = block;
                         outerGrid.Children.Add(assignmentName);
 
                         // Due date
-                        Label dueDate = new Label();
-                        dueDate.FontSize = 13;
+                        Label dueDate = new Label {
+                            FontSize = 13,
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Content = dateString,
+                            Foreground = new BrushConverter().ConvertFrom("#FF717171") as Brush,
+                        };
                         dueDate.SetValue(Grid.ColumnProperty, 3);
-                        dueDate.HorizontalAlignment = HorizontalAlignment.Right;
-                        dueDate.VerticalAlignment = VerticalAlignment.Center;
-                        dueDate.Content = dateString;
-                        dueDate.Foreground = new BrushConverter().ConvertFrom("#FF717171") as Brush;
                         outerGrid.Children.Add(dueDate);
 
                         // Assignment type
-                        Label type = new Label();
-                        type.FontSize = 13;
+                        Label type = new Label {
+                            FontSize = 13,
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Margin = new Thickness(0, -3, 0, 0),
+                            Content = data.Type,
+                            Foreground = new BrushConverter().ConvertFrom("#FF717171") as Brush
+                        };
                         type.SetValue(Grid.ColumnProperty, 2);
                         type.SetValue(Grid.RowProperty, 1);
-                        type.HorizontalAlignment = HorizontalAlignment.Right;
-                        type.VerticalAlignment = VerticalAlignment.Center;
-                        type.Margin = new Thickness(0, -3, 0, 0);
-                        type.Content = data.Type;
-                        type.Foreground = new BrushConverter().ConvertFrom("#FF717171") as Brush;
                         outerGrid.Children.Add(type);
 
                         // Class info
@@ -486,32 +491,36 @@ namespace Homework_App {
                         classGrid.SetValue(Grid.RowProperty, 1);
                         classGrid.SetValue(Grid.ColumnProperty, 1);
 
-                        ColumnDefinition classColumn1 = new ColumnDefinition();
-                        classColumn1.Width = new GridLength(1, GridUnitType.Star);
-                        ColumnDefinition classColumn2 = new ColumnDefinition();
-                        classColumn2.Width = new GridLength(10, GridUnitType.Star);
+                        ColumnDefinition classColumn1 = new ColumnDefinition {
+                            Width = new GridLength(1, GridUnitType.Star)
+                        };
+                        ColumnDefinition classColumn2 = new ColumnDefinition {
+                            Width = new GridLength(10, GridUnitType.Star)
+                        };
 
                         classGrid.ColumnDefinitions.Add(classColumn1);
                         classGrid.ColumnDefinitions.Add(classColumn2);
 
-                        Ellipse classEllipse = new Ellipse();
-                        classEllipse.Width = 10;
-                        classEllipse.Height = 10;
-                        classEllipse.Margin = new Thickness(5, 0, 0, 0);
-                        classEllipse.HorizontalAlignment = HorizontalAlignment.Left;
-                        classEllipse.VerticalAlignment = VerticalAlignment.Center;
-                        classEllipse.StrokeThickness = 0;
-                        // TODO: Get class color for ellipse
-                        classEllipse.Fill = new BrushConverter().ConvertFrom("#FFF37646") as Brush;
+                        Ellipse classEllipse = new Ellipse {
+                            Width = 10,
+                            Height = 10,
+                            Margin = new Thickness(5, 0, 0, 0),
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            StrokeThickness = 0,
+                            // TODO: Get class color for ellipse
+                            Fill = new BrushConverter().ConvertFrom("#FFF37646") as Brush
+                        };
                         classGrid.Children.Add(classEllipse);
 
-                        Label classLabel = new Label();
-                        classLabel.FontSize = 13;
-                        classLabel.Margin = new Thickness(-5, -3, 0, 0);
-                        classLabel.HorizontalAlignment = HorizontalAlignment.Left;
-                        classLabel.VerticalAlignment = VerticalAlignment.Center;
+                        Label classLabel = new Label {
+                            FontSize = 13,
+                            Margin = new Thickness(-5, -3, 0, 0),
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Content = data.Class
+                        };
                         classLabel.SetValue(Grid.ColumnProperty, 1);
-                        classLabel.Content = data.Class;
                         classGrid.Children.Add(classLabel);
 
                         outerGrid.Children.Add(classGrid);
@@ -598,15 +607,11 @@ namespace Homework_App {
             Label l = (Label)sender;
 
             // Hides the assignment by hiding the parents of the checkbox label
-            Border? checkboxParent = l.Parent as Border;
-            if (checkboxParent != null) {
-                Grid? outerGrid = checkboxParent.Parent as Grid;
-                if (outerGrid != null) {
-                    outerGrid.Visibility = Visibility.Hidden;
-                }
+            if (l.Parent is Border {Parent: Grid outerGrid}) {
+                outerGrid.Visibility = Visibility.Hidden;
             }
 
-            // Hide assignment from other scrollviewer
+            // Hide assignment from other Scroll-viewer
             string nameToFind = "b" + l.Name.Substring(1, l.Name.Length - 1);
 
             HideAssignment(nameToFind);
@@ -711,22 +716,12 @@ namespace Homework_App {
 
             if (gridNum == 1) {
                 foreach (Grid g in firstGrids) {
-                    if (grid == g) {
-                        g.Visibility = Visibility.Visible;
-                    }
-                    else {
-                        g.Visibility = Visibility.Hidden;
-                    }
+                    g.Visibility = grid == g ? Visibility.Visible : Visibility.Hidden;
                 }
             }
             else {
                 foreach (Grid g in secondGrids) {
-                    if (grid == g) {
-                        g.Visibility = Visibility.Visible;
-                    }
-                    else {
-                        g.Visibility = Visibility.Hidden;
-                    }
+                    g.Visibility = grid == g ? Visibility.Visible : Visibility.Hidden;
                 }
             }
 
@@ -736,94 +731,60 @@ namespace Homework_App {
         /// Changes the display of a desired assignment grid
         /// </summary>
         /// <param name="gridNum">The index of the grid to change (1 or 2).</param>
+        /// <param name="l">The label to change</param>
         private void ChangeAssignmentDisplay(int gridNum, Label l) {
-            int propertyVal;
-
-            // Choose which setting to use based on Scrollviewer grid
-            if (gridNum == 1) {
-                propertyVal = Properties.Settings.Default.AssignmentDisplay1;
-            }
-            else {
-                propertyVal = Properties.Settings.Default.AssignmentDisplay2;
-            }
+            // Choose which setting to use based on Scroll-viewer grid
+            var propertyVal = gridNum == 1 ? Properties.Settings.Default.AssignmentDisplay1 : 
+                Properties.Settings.Default.AssignmentDisplay2;
 
             switch (propertyVal) {
                 case 0:
                     l.Content = "Due today";
-                    if (gridNum == 1) {
-                        ChangeGridVisibility(TodayHomeworkGrid, gridNum);
-                    }
-                    else {
-                        ChangeGridVisibility(TodayHomeworkGrid2, gridNum);
-                    }
+                    ChangeGridVisibility(gridNum == 1 ? TodayHomeworkGrid :
+                        TodayHomeworkGrid2, gridNum);
                     break;
                 case 1:
                     l.Content = "Due tomorrow";
-                    if (gridNum == 1) {
-                        ChangeGridVisibility(TomorrowHomeworkGrid, gridNum);
-                    }
-                    else {
-                        ChangeGridVisibility(TomorrowHomeworkGrid2, gridNum);
-                    }
+                    ChangeGridVisibility(gridNum == 1 ? TomorrowHomeworkGrid :
+                        TomorrowHomeworkGrid2, gridNum);
                     break;
                 case 2:
                     l.Content = "Due in next three days";
-                    if (gridNum == 1) {
-                        ChangeGridVisibility(NextThreeDaysHomeworkGrid, gridNum);
-                    }
-                    else {
-                        ChangeGridVisibility(NextThreeDaysHomeworkGrid2, gridNum);
-                    }
+                    ChangeGridVisibility(gridNum == 1 ? NextThreeDaysHomeworkGrid :
+                            NextThreeDaysHomeworkGrid2,
+                        gridNum);
                     break;
                 case 3:
                     l.Content = "Due this week";
-                    if (gridNum == 1) {
-                        ChangeGridVisibility(ThisWeekHomeworkGrid, gridNum);
-                    }
-                    else {
-                        ChangeGridVisibility(ThisWeekHomeworkGrid2, gridNum);
-                    }
+                    ChangeGridVisibility(gridNum == 1 ? ThisWeekHomeworkGrid :
+                        ThisWeekHomeworkGrid2, gridNum);
                     break;
                 case 4:
                     l.Content = "Due next week";
-                    if (gridNum == 1) {
-                        ChangeGridVisibility(NextWeekHomeworkGrid, gridNum);
-                    }
-                    else {
-                        ChangeGridVisibility(NextWeekHomeworkGrid2, gridNum);
-                    }
+                    ChangeGridVisibility(gridNum == 1 ? NextWeekHomeworkGrid :
+                        NextWeekHomeworkGrid2, gridNum);
                     break;
                 case 5:
                     l.Content = "All assignments";
-                    if (gridNum == 1) {
-                        ChangeGridVisibility(AllHomeworkGrid, gridNum);
-                    }
-                    else {
-                        ChangeGridVisibility(AllHomeworkGrid2, gridNum);
-                    }
+                    ChangeGridVisibility(gridNum == 1 ? AllHomeworkGrid : AllHomeworkGrid2, gridNum);
                     break;
                 case 6:
                     l.Content = "Past assignments";
-                    if (gridNum == 1) {
-                        ChangeGridVisibility(PastHomeworkGrid, gridNum);
-                    }
-                    else {
-                        ChangeGridVisibility(PastHomeworkGrid2, gridNum);
-                    }
+                    ChangeGridVisibility(gridNum == 1 ? PastHomeworkGrid : PastHomeworkGrid2, gridNum);
                     break;
             }
         }
 
-        private static bool isSwitchingAnimationRunning = false;
+        private static bool _isSwitchingAnimationRunning;
         /// <summary>
-        /// When the user switches the Scrollviewer display option
+        /// When the user switches the Scroll-viewer display option
         /// by clicking on the little two-arrow button
         /// </summary>
         private void assignmentSwitchButton_MouseDown(object sender, MouseButtonEventArgs e) {
             // We get the name of the object to tell us if we're operating
             // on the first grid or the second
             Label l = (Label)sender;
-            if (l.Name == "assignmentSwitchButton") {
+            if (l.Name == "AssignmentSwitchButton") {
                 Properties.Settings.Default.AssignmentDisplay1++;
 
                 if (Properties.Settings.Default.AssignmentDisplay1 == 7) {
@@ -845,31 +806,31 @@ namespace Homework_App {
             Properties.Settings.Default.Save();
 
             // ANIMATION
-            if (!isSwitchingAnimationRunning) {
-                isSwitchingAnimationRunning = true;
-                Dispatcher.Invoke(new Action(() => {
-                    ThicknessAnimation animation = new ThicknessAnimation();
-
-                    animation.From = new Thickness(0, 0, 0, 0);
-                    animation.To = new Thickness(50, 0, 0, 0);
-                    animation.Duration = TimeSpan.FromSeconds(0.2);
+            if (!_isSwitchingAnimationRunning) {
+                _isSwitchingAnimationRunning = true;
+                Dispatcher.Invoke(() => {
+                    ThicknessAnimation animation = new ThicknessAnimation {
+                        From = new Thickness(0, 0, 0, 0),
+                        To = new Thickness(50, 0, 0, 0),
+                        Duration = TimeSpan.FromSeconds(0.2)
+                    };
 
                     l.BeginAnimation(MarginProperty, animation);
-                }));
+                });
 
                 Thread thread = new Thread(() => {
                     Thread.Sleep(200);
-                    Dispatcher.Invoke(new Action(() => {
+                    Dispatcher.Invoke(() => {
                         l.Margin = new Thickness(-50, 0, 0, 0);
-                        ThicknessAnimation animation = new ThicknessAnimation();
-
-                        animation.From = new Thickness(-50, 0, 0, 0);
-                        animation.To = new Thickness(0, 0, 0, 0);
-                        animation.Duration = TimeSpan.FromSeconds(0.2);
+                        ThicknessAnimation animation = new ThicknessAnimation {
+                            From = new Thickness(-50, 0, 0, 0),
+                            To = new Thickness(0, 0, 0, 0),
+                            Duration = TimeSpan.FromSeconds(0.2)
+                        };
 
                         l.BeginAnimation(MarginProperty, animation);
-                        isSwitchingAnimationRunning = false;
-                    }));
+                        _isSwitchingAnimationRunning = false;
+                    });
                 });
                 thread.Start();
             }
@@ -881,7 +842,7 @@ namespace Homework_App {
         /// </summary>
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e) {
             int height = (int)this.ActualHeight;
-            int width = (int)this.ActualWidth;
+            //int width = (int)this.ActualWidth;
 
             // Change height of assignment grids
             AssignmentGrid1.Height = height - 175;

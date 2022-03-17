@@ -130,31 +130,45 @@ namespace Homework_App {
         }
 
         private class AssignmentStructure {
-            public string Title { get; set; }
-            public string Type { get; set; }
-            public string Class { get; set; }
-            public string Date { get; set; }
-            public string Time { get; set; }
-            public string Priority { get; set; }
-            public string Repeat { get; set; }
-            public string Reminder { get; set; }
-            public string Notes { get; set; }
-            public string Complete { get; set; }
+            public AssignmentStructure(string title, string type, string @class, string date, string time, string priority, string repeat, string reminder, string notes, string complete) {
+                Title = title;
+                Type = type;
+                Class = @class;
+                Date = date;
+                Time = time;
+                Priority = priority;
+                Repeat = repeat;
+                Reminder = reminder;
+                Notes = notes;
+                Complete = complete;
+            }
+
+            public string Title { get; }
+            public string Type { get; }
+            public string Class { get; }
+            public string Date { get; }
+            public string Time { get; }
+            public string Priority { get; }
+            public string Repeat { get; }
+            public string Reminder { get; }
+            public string Notes { get; }
+            public string Complete { get; }
         }
 
         internal static AssignmentData ReadAssignment(string path) {
             AssignmentData data = new AssignmentData();
 
             string json = File.ReadAllText(path);
-
+            
             AssignmentStructure settings =
-                JsonConvert.DeserializeObject<AssignmentStructure>(json);
+                JsonConvert.DeserializeObject<AssignmentStructure>(json)!;
 
             data.Title = settings.Title;
             data.Type = settings.Type;
             data.Class = settings.Class;
             data.Date = settings.Date;
             data.Time = settings.Time;
+            data.Priority = settings.Priority;
             data.Repeat = settings.Repeat;
             data.Reminder = settings.Reminder;
             data.Notes = settings.Notes;
@@ -175,17 +189,17 @@ namespace Homework_App {
             AssignmentStructure? settings =
                 JsonConvert.DeserializeObject<AssignmentStructure>(json);
 
-            AssignmentData data = new AssignmentData();
-
-            data.Title = settings.Title;
-            data.Type = settings.Type;
-            data.Class = settings.Class;
-            data.Date = settings.Date;
-            data.Time = settings.Time;
-            data.Repeat = settings.Repeat;
-            data.Reminder = settings.Reminder;
-            data.Notes = settings.Notes;
-            data.Complete = "true";
+            AssignmentData data = new AssignmentData {
+                Title = settings!.Title,
+                Type = settings.Type,
+                Class = settings.Class,
+                Date = settings.Date,
+                Time = settings.Time,
+                Repeat = settings.Repeat,
+                Reminder = settings.Reminder,
+                Notes = settings.Notes,
+                Complete = "true"
+            };
 
             CreateAssignment(data, path);
         }
