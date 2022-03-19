@@ -264,14 +264,14 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Days" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
-                            <ComboBox x:Name="ClassTimesComboBox" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
-                                <CheckBox x:Name="MonCheckbox" Content="Mon"/>
-                                <CheckBox x:Name="TueCheckbox" Content="Tue"/>
-                                <CheckBox x:Name="WedCheckbox" Content="Wed"/>
-                                <CheckBox x:Name="ThuCheckbox" Content="Thu"/>
-                                <CheckBox x:Name="FriCheckbox" Content="Fri"/>
-                                <CheckBox x:Name="SatCheckbox" Content="Sat"/>
-                                <CheckBox x:Name="SunCheckbox" Content="Sun"/>
+                            <ComboBox x:Name="ClassTimesComboBox" DropDownClosed="ClassTimesComboBox_OnDropDownClosed" IsEditable="True" IsReadOnly="True" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <CheckBox x:Name="MonCheckbox" Content="Mon" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                                <CheckBox x:Name="TueCheckbox" Content="Tue" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                                <CheckBox x:Name="WedCheckbox" Content="Wed" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                                <CheckBox x:Name="ThuCheckbox" Content="Thu" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                                <CheckBox x:Name="FriCheckbox" Content="Fri" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                                <CheckBox x:Name="SatCheckbox" Content="Sat" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                                <CheckBox x:Name="SunCheckbox" Content="Sun" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
                             </ComboBox>
                         </Grid>
 

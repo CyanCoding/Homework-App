@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -932,7 +932,6 @@ namespace Homework_App {
             }
             
             // Assemble DaysEachWeek
-            // TODO: Fix class days each week selected text display
             // TODO: Have assignment type show up as they type
             bool?[] classDays = {
                 MonCheckbox.IsChecked,
@@ -977,6 +976,85 @@ namespace Homework_App {
             
             SaveAndAddClass(sender, e);
             NewClassGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void ClassChecksChanged(object sender, RoutedEventArgs e) {
+            var text = "";
+            var count = 0;
+            if (MonCheckbox.IsChecked == true) {
+                text = "Mon";
+                count++;
+            }
+
+            if (TueCheckbox.IsChecked == true) {
+                if (count > 0) {
+                    text += ", Tue";
+                }
+                else {
+                    text += "Tue";
+                }
+
+                count++;
+            }
+            
+            if (WedCheckbox.IsChecked == true) {
+                if (count > 0) {
+                    text += ", Wed";
+                }
+                else {
+                    text += "Wed";
+                }
+
+                count++;
+            }
+            
+            if (ThuCheckbox.IsChecked == true) {
+                if (count > 0) {
+                    text += ", Thu";
+                }
+                else {
+                    text += "Thu";
+                }
+
+                count++;
+            }
+            
+            if (FriCheckbox.IsChecked == true) {
+                if (count > 0) {
+                    text += ", Fri";
+                }
+                else {
+                    text += "Fri";
+                }
+
+                count++;
+            }
+            
+            if (SatCheckbox.IsChecked == true) {
+                if (count > 0) {
+                    text += ", Sat";
+                }
+                else {
+                    text += "Sat";
+                }
+
+                count++;
+            }
+            
+            if (SunCheckbox.IsChecked == true) {
+                if (count > 0) {
+                    text += ", Sun";
+                }
+                else {
+                    text += "Sun";
+                }
+            }
+
+            ClassTimesComboBox.Text = text;
+        }
+
+        private void ClassTimesComboBox_OnDropDownClosed(object? sender, EventArgs e) {
+            ClassChecksChanged(sender!, null!);
         }
     }
 }
