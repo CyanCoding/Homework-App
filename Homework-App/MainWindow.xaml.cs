@@ -915,7 +915,8 @@ namespace Homework_App {
             return successful;
         }
         
-        private void NewClassButtonClicked(object sender, MouseButtonEventArgs e) {
+        private void NewClassButtonClicked(object sender, RoutedEventArgs e) {
+            // We could add an animation here where we fade or slowly appear
             NewClassGrid.Visibility = Visibility.Visible;
         }
 

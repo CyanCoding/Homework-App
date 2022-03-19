@@ -94,7 +94,7 @@
                 <Label Content="Classes" FontSize="26"/>
             </Border>
 
-            <Button Content="Add new class +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="130" Style="{DynamicResource menu-color}" Cursor="Hand" Margin="10,70,0,0" MouseDown="NewClassButtonClicked"/>
+            <Button Content="Add new class +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="130" Style="{DynamicResource menu-color}" Cursor="Hand" Margin="10,70,0,0" Click="NewClassButtonClicked"/>
         </Grid>
 
         <!-- Main calendar grid -->
