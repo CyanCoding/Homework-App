@@ -203,18 +203,20 @@ namespace Homework_App {
             }
 
             // Add assignment
-            Assignment.AssignmentData data;
-            data.Title = AssignmentTitle.Text;
-            data.Type = AssignmentType.Text;
-            data.Class = AssignmentClass.Text;
-            data.Date = AssignmentCalendar.Text;
-            data.Time = AssignmentTime.Text;
-            data.Priority = AssignmentPriority.Text;
-            data.Repeat = AssignmentRepeat.Text;
-            data.Reminder = AssignmentReminder.Text;
-            data.Notes = AssignmentNotes.Text;
-            data.Complete = "false";
-            data.FileName = ""; // This is set when the file is read
+            Assignment.AssignmentData data = new Assignment.AssignmentData {
+                Title = AssignmentTitle.Text,
+                Type = AssignmentType.Text,
+                Class = AssignmentClass.Text,
+                Date = AssignmentCalendar.Text,
+                Time = AssignmentTime.Text,
+                Priority = AssignmentPriority.Text,
+                Repeat = AssignmentRepeat.Text,
+                Reminder = AssignmentReminder.Text,
+                Notes = AssignmentNotes.Text,
+                Complete = "false",
+                FileName = "" // This is set when the file is read
+            };
+
 
             Assignment.CreateAssignment(data);
 
