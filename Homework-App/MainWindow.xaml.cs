@@ -79,14 +79,14 @@ namespace Homework_App {
         }
 
         private void UpdateSelection(Button selectedButton, Grid showingGrid) {
-            var menuList = new Button[] {
+            var menuList = new[] {
                 HomeworkButton,
                 ClassesButton,
                 CalendarButton,
                 SettingsButton
             };
 
-            var gridList = new Grid[] {
+            var gridList = new[] {
                 HomeworkGrid,
                 ClassesGrid,
                 CalendarGrid,
@@ -296,7 +296,7 @@ namespace Homework_App {
 
             // This uses the same assumptions as margins variable
             var inPast = true;
-            var addPlaces = new bool[] {
+            var addPlaces = new[] {
                 false, false, false, false, false, true, false
             };
 
@@ -650,7 +650,7 @@ namespace Homework_App {
         /// </summary>
         /// <param name="searchName">The number to search for (e.g. '65543')</param>
         private void HideAssignment(string searchName) {
-            var gridsToHide = new Grid[] {
+            var gridsToHide = new[] {
                 TodayHomeworkGrid2,
                 TomorrowHomeworkGrid2,
                 NextThreeDaysHomeworkGrid2,
@@ -722,7 +722,7 @@ namespace Homework_App {
         /// <param name="grid">The grid to show.</param>
         /// <param name="gridNum">1 == firstGrids, 2 == secondGrids</param>
         private void ChangeGridVisibility(Grid grid, int gridNum) {
-            var firstGrids = new Grid[] {
+            var firstGrids = new[] {
                 TodayHomeworkGrid,
                 TomorrowHomeworkGrid,
                 NextThreeDaysHomeworkGrid,
@@ -732,7 +732,7 @@ namespace Homework_App {
                 PastHomeworkGrid
             };
 
-            var secondGrids = new Grid[] {
+            var secondGrids = new[] {
                 TodayHomeworkGrid2,
                 TomorrowHomeworkGrid2,
                 NextThreeDaysHomeworkGrid2,
