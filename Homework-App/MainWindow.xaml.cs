@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -153,7 +153,7 @@ namespace Homework_App {
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e) {
-            if (((Label) sender).Name == "CancelClass") {
+            if (((Button) sender).Name == "CancelClass") {
                 NewClassGrid.Visibility = Visibility.Hidden;
             }
             else {
