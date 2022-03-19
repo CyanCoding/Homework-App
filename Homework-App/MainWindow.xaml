@@ -265,13 +265,13 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="Days" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <ComboBox x:Name="ClassTimesComboBox" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
-                                <CheckBox Content="Mon"/>
-                                <CheckBox Content="Tue"/>
-                                <CheckBox Content="Wed"/>
-                                <CheckBox Content="Thu"/>
-                                <CheckBox Content="Fri"/>
-                                <CheckBox Content="Sat"/>
-                                <CheckBox Content="Sun"/>
+                                <CheckBox x:Name="MonCheckbox" Content="Mon"/>
+                                <CheckBox x:Name="TueCheckbox" Content="Tue"/>
+                                <CheckBox x:Name="WedCheckbox" Content="Wed"/>
+                                <CheckBox x:Name="ThuCheckbox" Content="Thu"/>
+                                <CheckBox x:Name="FriCheckbox" Content="Fri"/>
+                                <CheckBox x:Name="SatCheckbox" Content="Sat"/>
+                                <CheckBox x:Name="SunCheckbox" Content="Sun"/>
                             </ComboBox>
                         </Grid>
 

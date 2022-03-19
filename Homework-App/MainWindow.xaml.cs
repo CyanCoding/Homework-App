@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -931,8 +931,40 @@ namespace Homework_App {
                 return;
             }
             
+            // Assemble DaysEachWeek
             // TODO: Fix class days each week selected text display
             // TODO: Have assignment type show up as they type
+            bool?[] classDays = new bool?[] {
+                MonCheckbox.IsChecked,
+                TueCheckbox.IsChecked,
+                WedCheckbox.IsChecked,
+                ThuCheckbox.IsChecked,
+                FriCheckbox.IsChecked,
+                SatCheckbox.IsChecked,
+                SunCheckbox.IsChecked
+            };
+
+            // Fix possible null values
+            for (int i = 0; i < classDays.Length; i++) {
+                classDays[i] ??= false;
+            }
+            
+            ClassData data = new ClassData {
+                Name = ClassName.Text,
+                Building = ClassBuilding.Text,
+                Room = ClassRoom.Text,
+                Professor = ClassProfessor.Text,
+                Pronouns = ClassProfessorPronouns.Text,
+                StartDate = StartDate.Text,
+                EndDate = EndDate.Text,
+                Time = ClassTime.Text,
+                Number = ClassNumber.Text, // This isn't an int, it's something like "CRN 13321"
+                DaysEachWeek = classDays,
+                Reminder = ClassReminder.Text,
+                Notes = ClassNotes.Text
+            };
+            
+            Classes.CreateClass(data);
         }
 
         /// <summary>
