@@ -26,7 +26,7 @@
         <Button x:Name="SettingsButton" Content="Settings" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="42" Width="141" Style="{DynamicResource menu-color}" Grid.Row="1" Click="settingsButton_Click" Cursor="Hand"/>
 
         <!-- Main homework grid -->
-        <Grid x:Name="HomeworkGrid" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Visible">
+        <Grid x:Name="HomeworkGrid" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Hidden">
             <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
                 <Label Content="Homework" FontSize="26"/>
             </Border>
@@ -89,7 +89,7 @@
         </Grid>
 
         <!-- Main classes grid -->
-        <Grid x:Name="ClassesGrid" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Hidden">
+        <Grid x:Name="ClassesGrid" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Visible">
             <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
                 <Label Content="Classes" FontSize="26"/>
             </Border>
@@ -142,7 +142,7 @@
         </Grid>
         
         <!-- This needs to come last so it appears above everything else -->
-        <Grid Grid.Row="0" Grid.RowSpan="2" x:Name="NewClassGrid" Visibility="Hidden">
+        <Grid Grid.Row="0" Grid.RowSpan="2" x:Name="NewClassGrid" Visibility="Visible">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.7"/>
             </Grid.Background>
@@ -153,16 +153,17 @@
 
                 <ScrollViewer Height="380">
                     <Grid>
-                        <!-- Title -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,0,0,0">
+                        
+                        <!-- Class name -->
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Title" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
-                            <TextBox SpellCheck.IsEnabled="True" x:Name="ClassTitle" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
-                            <Label x:Name="ClassTitleRequiredLabel" Grid.Column="2" Content="Required" Foreground="#FFAA2929" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,-5,0,0" Visibility="Hidden"/>
+                            <Label Content="Class name" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox x:Name="ClassName" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label x:Name="ClassNameRequired" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
                         </Grid>
                         
                         <!-- Building -->
@@ -206,27 +207,29 @@
                                 <ComboBoxItem Content="Ve"/>
                             </ComboBox>
                         </Grid>
-
+                        
                         <!-- Start date -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,200,0,0">
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,200,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Start date" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
-                            <DatePicker x:Name="ClassStartDateCalendar" HorizontalAlignment="Stretch" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label Content="Start date" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                            <DatePicker x:Name="StartDate" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label x:Name="StartDateRequired" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
                         </Grid>
                         
                         <!-- End date -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,250,0,0">
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,250,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="End date" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
-                            <DatePicker x:Name="ClassEndDateCalendar" HorizontalAlignment="Stretch" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label Content="End date" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                            <DatePicker x:Name="EndDate" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label x:Name="EndDateRequired" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
                         </Grid>
 
                         <!-- Class time -->
