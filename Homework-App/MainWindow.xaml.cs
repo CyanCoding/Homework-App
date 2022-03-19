@@ -287,6 +287,7 @@ namespace Homework_App {
         /// Adds an assignment to the homework tab
         /// </summary>
         /// <param name="data">The assignment data from the file</param>
+        // TODO: Move this function to Assignment class
         private void AddAssignment(Assignment.AssignmentData data) {
             // If this assignment is complete, don't add it
             if (data.Complete == "true") {
@@ -930,6 +931,8 @@ namespace Homework_App {
                 return;
             }
             
+            // TODO: Fix class days each week selected text display
+            // TODO: Have assignment type show up as they type
         }
 
         /// <summary>
