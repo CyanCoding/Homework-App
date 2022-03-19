@@ -873,7 +873,48 @@ namespace Homework_App {
             AssignmentGrid1.Height = height - 175;
             AssignmentGrid2.Height = height - 55;
         }
+    
+        /// <summary>
+        /// Checks to make sure the user has filled in necessary class details.
+        /// Requires start date, end date, and class.
+        /// </summary>
+        /// <returns>Returns true if requirements met</returns>
+        private bool CheckClassRequirements() {
+            bool successful = true;
+            
+            if (ClassName.Text == "") {
+                ClassNameRequired.Visibility = Visibility.Visible;
+                ClassName.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+                successful = false;
+            }
+            else {
+                ClassName.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                ClassNameRequired.Visibility = Visibility.Hidden;
+            }
 
+            if (StartDate.Text == "") {
+                StartDate.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+                StartDateRequired.Visibility = Visibility.Visible;
+                successful = false;
+            }
+            else {
+                StartDate.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                StartDateRequired.Visibility = Visibility.Hidden;
+            }
+
+            if (EndDate.Text == "") {
+                EndDate.BorderBrush = new BrushConverter().ConvertFrom("#FFAA2929") as Brush;
+                EndDateRequired.Visibility = Visibility.Visible;
+                successful = false;
+            }
+            else {
+                EndDate.BorderBrush = new BrushConverter().ConvertFrom("#FFABADB3") as Brush;
+                EndDateRequired.Visibility = Visibility.Hidden;
+            }
+
+            return successful;
+        }
+        
         private void NewClassButtonClicked(object sender, MouseButtonEventArgs e) {
             NewClassGrid.Visibility = Visibility.Visible;
         }
@@ -882,6 +923,9 @@ namespace Homework_App {
         /// Runs when the user hits the "Save + make another" class button
         /// </summary>
         private void SaveAndAddClass(object sender, RoutedEventArgs e) {
+            if (!CheckClassRequirements()) {
+                return;
+            }
             
         }
 
@@ -889,6 +933,10 @@ namespace Homework_App {
         /// Runs when the user hits the save button
         /// </summary>
         private void SaveClass(object sender, RoutedEventArgs e) {
+            if (!CheckClassRequirements()) {
+                return;
+            }
+            
             SaveAndAddClass(sender, e);
             NewClassGrid.Visibility = Visibility.Hidden;
         }
