@@ -153,7 +153,12 @@ namespace Homework_App {
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e) {
-            NewAssignmentGrid.Visibility = Visibility.Hidden;
+            if (((Label) sender).Name == "CancelClass") {
+                NewClassGrid.Visibility = Visibility.Hidden;
+            }
+            else {
+                NewAssignmentGrid.Visibility = Visibility.Hidden;
+            }
         }
 
         private void newAssignmentButton_Click(object sender, RoutedEventArgs e) {
@@ -867,6 +872,25 @@ namespace Homework_App {
             // Change height of assignment grids
             AssignmentGrid1.Height = height - 175;
             AssignmentGrid2.Height = height - 55;
+        }
+
+        private void NewClassButtonClicked(object sender, MouseButtonEventArgs e) {
+            NewClassGrid.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Runs when the user hits the "Save + make another" class button
+        /// </summary>
+        private void SaveAndAddClass(object sender, RoutedEventArgs e) {
+            
+        }
+
+        /// <summary>
+        /// Runs when the user hits the save button
+        /// </summary>
+        private void SaveClass(object sender, RoutedEventArgs e) {
+            SaveAndAddClass(sender, e);
+            NewClassGrid.Visibility = Visibility.Hidden;
         }
     }
 }
