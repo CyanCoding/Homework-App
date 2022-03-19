@@ -11,19 +11,19 @@ namespace Homework_App {
         /// Creates the app data directory if it doesn't exist.
         /// </summary>
         private static void VerifyDirectory() {
-            string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             dir += "/Homework-App";
 
             if (!Directory.Exists(dir)) {
                 Directory.CreateDirectory(dir);
             }
 
-            string classDir = dir + "/class";
+            var classDir = dir + "/class";
             if (!Directory.Exists(classDir)) {
                 Directory.CreateDirectory(classDir);
             }
 
-            string assignmentDir = dir + "/assignment";
+            var assignmentDir = dir + "/assignment";
             if (!Directory.Exists(assignmentDir)) {
                 Directory.CreateDirectory(assignmentDir);
             }
@@ -48,10 +48,10 @@ namespace Homework_App {
         /// </summary>
         /// <returns>True if created successfully</returns>
         internal static bool CreateAssignment(AssignmentData data, string path = "") {
-            StringBuilder sb = new StringBuilder();
-            StringWriter sw = new StringWriter(sb);
+            var sb = new StringBuilder();
+            var sw = new StringWriter(sb);
 
-            Dictionary<string, string> writeValues = new Dictionary<string, string>() {
+            var writeValues = new Dictionary<string, string>() {
                 { "Title", data.Title },
                 { "Type", data.Type },
                 { "Class", data.Class },
@@ -100,9 +100,9 @@ namespace Homework_App {
             }
 
             // Create a random number for the file title
-            Random rnd = new Random();
+            var rnd = new Random();
             while (true) {
-                string fileName = rnd.Next(1, 100000).ToString() + ".json";
+                var fileName = rnd.Next(1, 100000).ToString() + ".json";
 
                 path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 path += "/Homework-App/assignment/" + fileName;
@@ -156,11 +156,11 @@ namespace Homework_App {
         }
 
         internal static AssignmentData ReadAssignment(string path) {
-            AssignmentData data = new AssignmentData();
+            var data = new AssignmentData();
 
-            string json = File.ReadAllText(path);
+            var json = File.ReadAllText(path);
             
-            AssignmentStructure settings =
+            var settings =
                 JsonConvert.DeserializeObject<AssignmentStructure>(json)!;
 
             data.Title = settings.Title;
@@ -181,15 +181,15 @@ namespace Homework_App {
         }
 
         internal static void MarkAssignmentCompleted(string fileName) {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             path += "/Homework-App/assignment/" + fileName;
 
-            string json = File.ReadAllText(path);
+            var json = File.ReadAllText(path);
 
-            AssignmentStructure? settings =
+            var settings =
                 JsonConvert.DeserializeObject<AssignmentStructure>(json);
 
-            AssignmentData data = new AssignmentData {
+            var data = new AssignmentData {
                 Title = settings!.Title,
                 Type = settings.Type,
                 Class = settings.Class,

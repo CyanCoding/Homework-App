@@ -26,14 +26,14 @@ namespace Homework_App {
         internal static void SetSelection(Button button) {
             // theme[0]: regular color
             // theme[1]: selection color
-            string[] theme = BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
+            var theme = BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
             button.Background = new BrushConverter().ConvertFrom(theme[1]) as Brush;
         }
 
         internal static void DeselectButton(Button button) {
             // theme[0]: regular color
             // theme[1]: selection color
-            string[] theme = BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
+            var theme = BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
             button.Background = new BrushConverter().ConvertFrom(theme[0]) as Brush;
         }
 
