@@ -1007,6 +1007,8 @@ namespace Homework_App {
                 return;
             }
             
+            // TODO: Input a little timer that counts how many assignments the user has or has completed
+            
             // Assemble DaysEachWeek
             bool?[] classDays = {
                 MonCheckbox.IsChecked,
