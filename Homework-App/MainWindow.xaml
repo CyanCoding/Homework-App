@@ -1,4 +1,4 @@
-﻿<Window x:Class="Homework_App.MainWindow"
+<Window x:Class="Homework_App.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -274,9 +274,173 @@
                                 <CheckBox x:Name="SunCheckbox" Content="Sun" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
                             </ComboBox>
                         </Grid>
+                        
+                        <!-- Color -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,470,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Color" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <ComboBox x:Name="ClassColor" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <Grid x:Name="VelvetGreenColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#006b3c"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Velvet green"/>
+                                </Grid>
+                                <Grid x:Name="AvocadoColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#568203"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Avocado"/>
+                                </Grid>
+                                <Grid x:Name="SpringGreenColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#33b864"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Spring green"/>
+                                </Grid>
+                                <Grid x:Name="BlueOpalColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#0f3b57"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Blue Opal"/>
+                                </Grid>
+                                <Grid x:Name="BlueFlowerColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#2282a8"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Blue flower"/>
+                                </Grid>
+                                <Grid x:Name="ElectricBlueColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#0075b3"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Electric blue"/>
+                                </Grid>
+                                <Grid x:Name="BurntRedColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#9f2305"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Burnt red"/>
+                                </Grid>
+                                <Grid x:Name="CherryColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#f2013f"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Cherry"/>
+                                </Grid>
+                                <Grid x:Name="ChristmasRedColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#b01b2e"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Christmas red"/>
+                                </Grid>
+                                <Grid x:Name="CandyCornColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#fcfc5d"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Candy corn"/>
+                                </Grid>
+                                <Grid x:Name="SunshineColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#FFD428"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Sunshine"/>
+                                </Grid>
+                                <Grid x:Name="BakedPotatoColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#b69e87"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Baked potato"/>
+                                </Grid>
+                                <Grid x:Name="BarkColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#996633"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Bark"/>
+                                </Grid>
+                                <Grid x:Name="BrownCoffeeColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#4a2c2a"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Brown coffee"/>
+                                </Grid>
+                                <Grid x:Name="BrilliantPurpleColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#4b0082"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Brilliant purple"/>
+                                </Grid>
+                                <Grid x:Name="CadmiumVioletColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#7f3e98"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Cadmium violet"/>
+                                </Grid>
+                                <Grid x:Name="PaleMauveColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#7a547f"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Pale mauve"/>
+                                </Grid>
+                                <Grid x:Name="CalmPurpleColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#9878f8"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Calm purple"/>
+                                </Grid>
+                                <Grid x:Name="LilacColor">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#cea2fd"/>
+                                    <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Lilac"/>
+                                </Grid>
+                            </ComboBox>
+                        </Grid>
 
                         <!-- Reminder -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,470,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,520,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
@@ -298,7 +462,7 @@
                         </Grid>
 
                         <!-- Notes -->
-                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,520,0,0">
+                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,570,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="6*"/>
@@ -309,8 +473,7 @@
                         </Grid>
 
                         <!-- Extra space -->
-                        <!-- Move down when attachments are added -->
-                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,610,0,0">
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,660,0,0">
                         </Grid>
                     </Grid>
                 </ScrollViewer>
