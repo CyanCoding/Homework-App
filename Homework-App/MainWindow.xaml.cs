@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -173,7 +173,9 @@ namespace Homework_App {
 
             for (int i = 0; i < tuple.Item1.Length; i++) {
                 // Outer class grid
-                var comboGrid = new Grid();
+                var comboGrid = new Grid {
+                    Name = tuple.Item3[i]
+                };
                 var column1 = new ColumnDefinition {
                     Width = new GridLength(1, GridUnitType.Star)
                 };
@@ -251,7 +253,7 @@ namespace Homework_App {
             var data = new Assignment.AssignmentData {
                 Title = AssignmentTitle.Text,
                 Type = AssignmentType.Text,
-                Class = AssignmentClass.Text,
+                Class = ((Grid)AssignmentClass.SelectedItem).Name,
                 Date = AssignmentCalendar.Text,
                 Time = AssignmentTime.Text,
                 Priority = AssignmentPriority.Text,
@@ -570,16 +572,38 @@ namespace Homework_App {
                         classGrid.ColumnDefinitions.Add(classColumn1);
                         classGrid.ColumnDefinitions.Add(classColumn2);
 
+                        // Here we figure out the color for that class
+                        // We also make sure the class exists
+                        var tuple = Classes.GetClassesNameAndColor();
+                        var color = "";
+                        
+                        // We currently have class as something like "e1". We need to convert
+                        // that back to a real name
+                        var realName = "";
+                        for (int k = 0; k < tuple.Item1.Length; k++) {
+                            if (data.Class == tuple.Item3[k]) {
+                                color = tuple.Item2[k];
+                                realName = tuple.Item1[k];
+                            }
+                        }
+
                         var classEllipse = new Ellipse {
                             Width = 10,
                             Height = 10,
                             Margin = new Thickness(5, 0, 0, 0),
                             HorizontalAlignment = HorizontalAlignment.Left,
                             VerticalAlignment = VerticalAlignment.Center,
-                            StrokeThickness = 0,
-                            // TODO: Get class color for ellipse
-                            Fill = new BrushConverter().ConvertFrom("#FFF37646") as Brush
+                            StrokeThickness = 0
                         };
+                        // We couldn't match that class name with an actual class, maybe it was deleted?
+                        if (color == "") {
+                            realName = "";
+                        }
+                        else {
+                            // TODO: Get class color for ellipse
+                            classEllipse.Fill =
+                                new BrushConverter().ConvertFrom(Classes.GetHexFromColor(color)) as Brush;
+                        }
                         classGrid.Children.Add(classEllipse);
 
                         var classLabel = new Label {
@@ -587,7 +611,7 @@ namespace Homework_App {
                             Margin = new Thickness(-5, -3, 0, 0),
                             HorizontalAlignment = HorizontalAlignment.Left,
                             VerticalAlignment = VerticalAlignment.Center,
-                            Content = data.Class
+                            Content = realName
                         };
                         classLabel.SetValue(Grid.ColumnProperty, 1);
                         classGrid.Children.Add(classLabel);

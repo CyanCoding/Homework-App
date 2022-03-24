@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -43,13 +43,14 @@ internal static class Classes {
     /// </summary>
     /// <returns>A tuple of two string arrays
     /// First is name, second is color.</returns>
-    internal static Tuple<string[], string[]> GetClassesNameAndColor() {
+    internal static Tuple<string[], string[], string[]> GetClassesNameAndColor() {
         var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         path += "/Homework-App/class";
         var d = new DirectoryInfo(path);
 
         var classNames = new List<string>();
         var classColors = new List<string>();
+        var codes = new List<string>();
 
         foreach (var file in d.GetFiles("*.json")) {
             var text = File.ReadAllText(file.FullName);
@@ -57,9 +58,10 @@ internal static class Classes {
             
             classNames.Add(data.Name);
             classColors.Add(data.Color);
+            codes.Add("e" + codes.Count);
         }
         
-        return new Tuple<string[], string[]>(classNames.ToArray(), classColors.ToArray());
+        return new Tuple<string[], string[], string[]>(classNames.ToArray(), classColors.ToArray(), codes.ToArray());
     }
     
     /// <summary>
