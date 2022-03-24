@@ -162,6 +162,51 @@ namespace Homework_App {
         }
 
         private void newAssignmentButton_Click(object sender, RoutedEventArgs e) {
+            // We initialize the class combo box because that might have changed
+            AssignmentClass.Items.Clear();
+            var blankItem = new ComboBoxItem {
+                Content = ""
+            };
+            AssignmentClass.Items.Add(blankItem);
+            
+            var tuple = Classes.GetClassesNameAndColor();
+
+            for (int i = 0; i < tuple.Item1.Length; i++) {
+                // Outer class grid
+                var comboGrid = new Grid();
+                var column1 = new ColumnDefinition {
+                    Width = new GridLength(1, GridUnitType.Star)
+                };
+                var column2 = new ColumnDefinition {
+                    Width = new GridLength(10, GridUnitType.Star)
+                };
+
+                comboGrid.ColumnDefinitions.Add(column1);
+                comboGrid.ColumnDefinitions.Add(column2);
+            
+                // Color ellipse
+                var color = new Ellipse {
+                    Margin = new Thickness(3, -3, 0, 0),
+                    Height = 10,
+                    Width = 10,
+                    StrokeThickness = 0,
+                    Fill = new BrushConverter().ConvertFrom(Classes.GetHexFromColor(tuple.Item2[i])) as Brush
+                };
+                comboGrid.Children.Add(color);
+
+                var label = new Label {
+                    FontSize = 13,
+                    Margin = new Thickness(0, -4, 0, 0),
+                    Content = tuple.Item1[i]
+                };
+                label.SetValue(Grid.ColumnProperty, 1);
+                comboGrid.Children.Add(label);
+                
+                // Add the whole grid to our class combo box
+                AssignmentClass.Items.Add(comboGrid);
+            }
+
+            
             NewAssignmentGrid.Visibility = Visibility.Visible;
         }
 
@@ -633,6 +678,12 @@ namespace Homework_App {
         /// </summary>
         private void AssignmentCompleted(object sender, MouseButtonEventArgs e) {
             var l = (Label)sender;
+            
+            // Example name: n133443 (n is used to make it a valid name) 
+            string fileName = l.Name.Substring(1, l.Name.Length - 1); 
+            fileName += ".json"; // Now we have the file name! (e.g. 133443.json) 
+ 
+            Assignment.MarkAssignmentCompleted(fileName); 
 
             // Hides the assignment by hiding the parents of the checkbox label
             if (l.Parent is Border {Parent: Grid outerGrid}) {

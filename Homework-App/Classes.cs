@@ -7,6 +7,65 @@ using Newtonsoft.Json;
 namespace Homework_App; 
 
 internal static class Classes {
+    /// <summary>
+    /// Contains a dictionary of color names to hex values.
+    /// </summary>
+    /// <param name="color">The name of the color</param>
+    /// <returns>The corresponding hex value</returns>
+    internal static string GetHexFromColor(string color) {
+        var colorValues = new Dictionary<string, string>() {
+            {"VelvetGreenColor", "#006b3c"},
+            {"AvocadoColor", "#568203"},
+            {"SpringGreenColor", "#33b864"},
+            {"BlueOpalColor", "#0f3b57"},
+            {"BlueFlowerColor", "#2282a8"},
+            {"ElectricBlueColor", "#0075b3"},
+            {"BurntRedColor", "#9f2305"},
+            {"CherryColor", "#f2013f"},
+            {"ChristmasRedColor", "#b01b2e"},
+            {"CandyCornColor", "#fcfc5d"},
+            {"SunshineColor", "#FFD428"},
+            {"BakedPotatoColor", "#b69e87"},
+            {"BarkColor", "#996633"},
+            {"BrownCoffeeColor", "#4a2c2a"},
+            {"BrilliantPurpleColor", "#4b0082"},
+            {"CadmiumVioletColor", "#7f3e98"},
+            {"PaleMauveColor", "#7a547f"},
+            {"CalmPurpleColor", "#9878f8"},
+            {"LilacColor", "#cea2fd"}
+        };
+
+        return colorValues[color];
+    }
+    
+    /// <summary>
+    /// Gets every class name and color for the assignment class combo box
+    /// </summary>
+    /// <returns>A tuple of two string arrays
+    /// First is name, second is color.</returns>
+    internal static Tuple<string[], string[]> GetClassesNameAndColor() {
+        var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        path += "/Homework-App/class";
+        var d = new DirectoryInfo(path);
+
+        var classNames = new List<string>();
+        var classColors = new List<string>();
+
+        foreach (var file in d.GetFiles("*.json")) {
+            var text = File.ReadAllText(file.FullName);
+            var data = JsonConvert.DeserializeObject<ClassManifest>(text)!;
+            
+            classNames.Add(data.Name);
+            classColors.Add(data.Color);
+        }
+        
+        return new Tuple<string[], string[]>(classNames.ToArray(), classColors.ToArray());
+    }
+    
+    /// <summary>
+    /// Creates a file in our directory for the class
+    /// </summary>
+    /// <param name="json">The JSON text to write for the class</param>
     private static void WriteClass(string json) {
         Assignment.VerifyDirectory();
 
@@ -55,7 +114,7 @@ internal static class Classes {
             js.WritePropertyName("DaysEachWeek");
             js.WriteStartArray();
             foreach (var val in data.DaysEachWeek) {
-                js.WriteValue(val == true ? "True" : "False");
+                js.WriteValue(val == true);
             }
             js.WriteEnd();
             
