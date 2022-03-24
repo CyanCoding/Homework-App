@@ -556,8 +556,7 @@
                             <Label Content="Class" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
                             <ComboBox x:Name="AssignmentClass" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
                                 <ComboBoxItem Content=""/>
-                                <ComboBoxItem Content="Test class 1"/>
-                                <ComboBoxItem Content="Test class 2"/>
+                                
                             </ComboBox>
                         </Grid>
 
