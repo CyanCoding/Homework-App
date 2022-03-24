@@ -959,7 +959,7 @@ namespace Homework_App {
                 Time = ClassTime.Text,
                 Number = ClassNumber.Text, // This isn't an int, it's something like "CRN 13321"
                 DaysEachWeek = classDays,
-                Color = ((Grid) ClassColor.SelectedItem).Name,
+                Color = ((Grid) ClassColor.SelectedItem).Name, // Not a hex value. e.g. "RubyColor"
                 Reminder = ClassReminder.Text,
                 Notes = ClassNotes.Text
             };
