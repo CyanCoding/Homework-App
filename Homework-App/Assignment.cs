@@ -102,7 +102,7 @@ namespace Homework_App {
             // Create a random number for the file title
             var rnd = new Random();
             while (true) {
-                var fileName = rnd.Next(1, 100000).ToString() + ".json";
+                var fileName = "hw-" + rnd.Next(1, 100000) + ".json";
 
                 path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 path += "/Homework-App/assignment/" + fileName;
