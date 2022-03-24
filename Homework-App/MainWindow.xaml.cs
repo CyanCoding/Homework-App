@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -749,13 +749,14 @@ namespace Homework_App {
             var assignmentPresentGrids = new Grid[14];
 
             var i = 0;
-
+            var marginHeight = 0.0; // This will equal our grid's margin height
             // First we hide all the assignments from the grids
             foreach (var grid in gridsToHide) {
                 // b21234 indicates the grid name
                 foreach (var child in grid.Children) {
                     if (((Grid)child).Name == searchName) { 
                         ((Grid)child).Visibility = Visibility.Hidden;
+                        marginHeight = ((Grid)child).Margin.Top;
                         assignmentPresentGrids[i] = grid;
                         i++;
                     }
@@ -770,9 +771,9 @@ namespace Homework_App {
                     foreach (var child in grid.Children) {
                         if (child is Grid grid1) {
                             var thick = grid1.Margin;
-
-                            if (thick.Top != 0) { // 0 top thickness means it was already at the top
-                                // TODO: If an assignment is below, it shouldn't be moved
+                
+                            // We only lower assignments that are above the current one
+                            if (thick.Top >= marginHeight) { // 0 top thickness means it was already at the top
                                 thick.Top -= 70;
                             }
 
