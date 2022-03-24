@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ namespace Homework_App {
         /// <summary>
         /// Creates the app data directory if it doesn't exist.
         /// </summary>
-        private static void VerifyDirectory() {
+        public static void VerifyDirectory() {
             var dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             dir += "/Homework-App";
 
