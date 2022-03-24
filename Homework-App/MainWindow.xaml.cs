@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -772,6 +772,7 @@ namespace Homework_App {
                             var thick = grid1.Margin;
 
                             if (thick.Top != 0) { // 0 top thickness means it was already at the top
+                                // TODO: If an assignment is below, it shouldn't be moved
                                 thick.Top -= 70;
                             }
 

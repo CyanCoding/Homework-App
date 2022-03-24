@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -73,7 +73,7 @@ internal static class Classes {
 
         var rnd = new Random();
         while (true) {
-            var fileName = "class-" + rnd.Next(1, 100000) + ".json";
+            var fileName = "class" + rnd.Next(1, 100000) + ".json";
             var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             path += "/Homework-App/class/" + fileName;
 
