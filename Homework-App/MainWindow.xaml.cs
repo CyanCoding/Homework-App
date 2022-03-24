@@ -947,7 +947,7 @@ namespace Homework_App {
             for (var i = 0; i < classDays.Length; i++) {
                 classDays[i] ??= false;
             }
-            
+
             var data = new ClassData {
                 Name = ClassName.Text,
                 Building = ClassBuilding.Text,
@@ -959,6 +959,7 @@ namespace Homework_App {
                 Time = ClassTime.Text,
                 Number = ClassNumber.Text, // This isn't an int, it's something like "CRN 13321"
                 DaysEachWeek = classDays,
+                Color = ((Grid) ClassColor.SelectedItem).Name,
                 Reminder = ClassReminder.Text,
                 Notes = ClassNotes.Text
             };
