@@ -600,7 +600,6 @@ namespace Homework_App {
                             realName = "";
                         }
                         else {
-                            // TODO: Get class color for ellipse
                             classEllipse.Fill =
                                 new BrushConverter().ConvertFrom(Classes.GetHexFromColor(color)) as Brush;
                         }
