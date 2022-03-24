@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,7 +47,7 @@ namespace Homework_App {
         /// - Attachments * coming soon *
         /// </summary>
         /// <returns>True if created successfully</returns>
-        internal static bool CreateAssignment(AssignmentData data, string path = "") {
+        internal static void CreateAssignment(AssignmentData data, string path = "") {
             var sb = new StringBuilder();
             var sw = new StringWriter(sb);
 
@@ -72,7 +72,7 @@ namespace Homework_App {
                 // Iterate through writeValues. If the value isn't set, we use the key value
                 foreach (var (key, value) in writeValues) {
                     js.WritePropertyName(key);
-                    js.WriteValue(value != "" ? value : "");
+                    js.WriteValue(value);
                 }
 
                 js.WriteEndObject();
@@ -81,8 +81,6 @@ namespace Homework_App {
 
             sb.Clear();
             sw.Close();
-
-            return false;
         }
 
         /// <summary>
