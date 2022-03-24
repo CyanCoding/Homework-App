@@ -1008,7 +1008,6 @@ namespace Homework_App {
             }
             
             // Assemble DaysEachWeek
-            // TODO: Have assignment type show up as they type
             bool?[] classDays = {
                 MonCheckbox.IsChecked,
                 TueCheckbox.IsChecked,
@@ -1132,6 +1131,61 @@ namespace Homework_App {
 
         private void ClassTimesComboBox_OnDropDownClosed(object? sender, EventArgs e) {
             ClassChecksChanged(sender!, null!);
+        }
+
+        private void AssignmentTitle_OnTextChanged(object sender, TextChangedEventArgs e) {
+            var input = AssignmentTitle.Text.ToLower();
+
+            if (input.Contains("homework") || input.Contains("assignment")) {
+                AssignmentType.SelectedIndex = 1;
+            }
+            if (input.Contains("lesson") || input.Contains("module")) {
+                AssignmentType.SelectedIndex = 2;
+            }
+            if (input.Contains("paper")) {
+                AssignmentType.SelectedIndex = 3;
+            }
+            if (input.Contains("video")) {
+                AssignmentType.SelectedIndex = 4;
+            }
+            if (input.Contains("slideshow")) {
+                AssignmentType.SelectedIndex = 5;
+            }
+            if (input.Contains("worksheet")) {
+                AssignmentType.SelectedIndex = 6;
+            }
+            if (input.Contains("presentation")) {
+                AssignmentType.SelectedIndex = 7;
+            }
+            if (input.Contains("project")) {
+                AssignmentType.SelectedIndex = 8;
+            }
+            if (input.Contains("group")) { // We use group instead of group project because group is more likely
+                AssignmentType.SelectedIndex = 9;
+            }
+            if (input.Contains("discussion")) {
+                AssignmentType.SelectedIndex = 10;
+            }
+            if (input.Contains("lab")) {
+                AssignmentType.SelectedIndex = 12;
+            }
+            if (input.Contains("quiz")) {
+                AssignmentType.SelectedIndex = 13;
+            }
+            if (input.Contains("exam")) {
+                AssignmentType.SelectedIndex = 14;
+            }
+            if (input.Contains("midterm")) {
+                AssignmentType.SelectedIndex = 15;
+            }
+            if (input.Contains("final")) {
+                AssignmentType.SelectedIndex = 16;
+            }
+            // We put study as the last item here because someone might type "Study for exam" and want
+            // to categorize it as study and not exam.
+            if (input.Contains("study")) {
+                AssignmentType.SelectedIndex = 11;
+            }
         }
     }
 }

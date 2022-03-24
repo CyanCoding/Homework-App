@@ -512,7 +512,7 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="Title" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
-                            <TextBox x:Name="AssignmentTitle" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <TextBox x:Name="AssignmentTitle" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" TextChanged="AssignmentTitle_OnTextChanged"/>
                             <Label x:Name="AssignmentTitleRequiredLabel" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
                         </Grid>
 
