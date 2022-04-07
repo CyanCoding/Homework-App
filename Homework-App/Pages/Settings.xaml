@@ -5,8 +5,40 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Homework_App.Pages"
       mc:Ignorable="d"
-      Title="Settings" Height="450" Width="800">
+      Title="Settings">
     <Grid>
-        
+        <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+            <Label Content="Settings" FontSize="26"/>
+        </Border>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" Width="210" Height="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="App theme" Width="100" FontSize="18" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Normal"/>
+
+            <!-- The value in here is set at runtime -->
+            <ComboBox x:Name="ThemeComboBox" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" SelectionChanged="themeComboBox_SelectionChanged">
+                <ComboBoxItem Background="#FFA6C5FF" Content="Blueish"/>
+                <ComboBoxItem Background="#FFABA6FF" Content="Purpleish"/>
+                <ComboBoxItem Background="#FFE94B4B" Content="Redish"/>
+            </ComboBox>
+        </Grid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" Width="210" Height="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Start tab" Width="100" FontSize="18" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <!-- The value in here is set at runtime -->
+            <ComboBox x:Name="TabComboBox" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" SelectionChanged="tabComboBox_SelectionChanged">
+                <ComboBoxItem Content="Homework"/>
+                <ComboBoxItem Content="Classes"/>
+                <ComboBoxItem Content="Calendar"/>
+            </ComboBox>
+        </Grid>
     </Grid>
 </Page>

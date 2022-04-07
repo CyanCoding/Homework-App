@@ -3,10 +3,362 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Homework_App.Resources"
       mc:Ignorable="d"
-      Title="Classes" Height="450" Width="800">
+      Title="Classes">
     <Grid>
+        <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+            <Label Content="Classes" FontSize="26"/>
+        </Border>
+        <Button Margin="10,70,0,0" Width="140" Content="Add new class +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Style="{DynamicResource menu-color}" Cursor="Hand"/>
         
+        <Grid x:Name="NewClassGrid" Visibility="Hidden">
+        <Grid.Background>
+            <SolidColorBrush Color="Black" Opacity="0.7"/>
+        </Grid.Background>
+
+        <!-- Make dynamic height!! -->
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="450" Height="500" Background="White">
+            <Label Content="Add new class" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0"/>
+
+            <ScrollViewer Height="380">
+                <Grid>
+                
+                    <!-- Class name -->
+                    <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Class name" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                        <TextBox x:Name="ClassName" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                        <Label x:Name="ClassNameRequired" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
+                    </Grid>
+                
+                    <!-- Building -->
+                    <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,50,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Building" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                        <TextBox SpellCheck.IsEnabled="True" x:Name="ClassBuilding" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                    </Grid>
+                
+                    <!-- Room -->
+                    <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,100,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Room" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                        <TextBox SpellCheck.IsEnabled="True" x:Name="ClassRoom" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                    </Grid>
+                    
+                    <!-- Professor -->
+                    <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,150,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Professor" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                        <TextBox SpellCheck.IsEnabled="True" x:Name="ClassProfessor" VerticalContentAlignment="Center"  Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                        <ComboBox x:Name="ClassProfessorPronouns" VerticalContentAlignment="Center" Grid.Column="2" FontSize="13" Padding="5" Margin="0,0,10,0">
+                            <ComboBoxItem Content=""/>
+                            <ComboBoxItem Content="He"/>
+                            <ComboBoxItem Content="She"/>
+                            <ComboBoxItem Content="They"/>
+                            <ComboBoxItem Content="Ze"/>
+                            <ComboBoxItem Content="Ve"/>
+                        </ComboBox>
+                    </Grid>
+                    
+                    <!-- Start date -->
+                    <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,200,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Start date" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                        <DatePicker x:Name="StartDate" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                        <Label x:Name="StartDateRequired" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
+                    </Grid>
+                    
+                    <!-- End date -->
+                    <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,250,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="End date" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                        <DatePicker x:Name="EndDate" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                        <Label x:Name="EndDateRequired" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
+                    </Grid>
+
+                    <!-- Class time -->
+                    <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,300,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Class time" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                        <TextBox x:Name="ClassTime" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                        <Label Content="2:00 PM, 8am, etc." FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FF8E8E8E"/>
+                    </Grid>
+                    
+                    <!-- Course number -->
+                    <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,360,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Class number" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                        <TextBox x:Name="ClassNumber" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                        <Label Content="MAC 2311, CRN 22439, etc." FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FF8E8E8E"/>
+                    </Grid>
+        
+                    <!-- Days each week -->
+                    <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,420,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Days" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                        <ComboBox x:Name="ClassTimesComboBox" DropDownClosed="ClassTimesComboBox_OnDropDownClosed" IsEditable="True" IsReadOnly="True" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <CheckBox x:Name="MonCheckbox" Content="Mon" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                            <CheckBox x:Name="TueCheckbox" Content="Tue" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                            <CheckBox x:Name="WedCheckbox" Content="Wed" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                            <CheckBox x:Name="ThuCheckbox" Content="Thu" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                            <CheckBox x:Name="FriCheckbox" Content="Fri" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                            <CheckBox x:Name="SatCheckbox" Content="Sat" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                            <CheckBox x:Name="SunCheckbox" Content="Sun" Checked="ClassChecksChanged" Unchecked="ClassChecksChanged"/>
+                        </ComboBox>
+                    </Grid>
+                
+                    <!-- Color -->
+                    <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,470,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Color" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                        <ComboBox x:Name="ClassColor" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <Grid x:Name="VelvetGreenColor">
+                               <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#006b3c"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Velvet green"/>
+                            </Grid>
+                            <Grid x:Name="AvocadoColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#568203"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Avocado"/>
+                            </Grid>
+                            <Grid x:Name="SpringGreenColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#33b864"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Spring green"/>
+                            </Grid>
+                            <Grid x:Name="BlueOpalColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#0f3b57"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Blue Opal"/>
+                            </Grid>
+                            <Grid x:Name="BlueFlowerColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#2282a8"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Blue flower"/>
+                            </Grid>
+                            <Grid x:Name="ElectricBlueColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#0075b3"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Electric blue"/>
+                            </Grid>
+                            <Grid x:Name="BurntRedColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#9f2305"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Burnt red"/>
+                            </Grid>
+                            <Grid x:Name="CherryColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#f2013f"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Cherry"/>
+                            </Grid>
+                            <Grid x:Name="ChristmasRedColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#b01b2e"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Christmas red"/>
+                            </Grid>
+                            <Grid x:Name="CandyCornColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#fcfc5d"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Candy corn"/>
+                            </Grid>
+                            <Grid x:Name="SunshineColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#FFD428"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Sunshine"/>
+                            </Grid>
+                            <Grid x:Name="BakedPotatoColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#b69e87"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Baked potato"/>
+                            </Grid>
+                            <Grid x:Name="BarkColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#996633"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Bark"/>
+                            </Grid>
+                            <Grid x:Name="BrownCoffeeColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#4a2c2a"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Brown coffee"/>
+                            </Grid>
+                            <Grid x:Name="BrilliantPurpleColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#4b0082"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Brilliant purple"/>
+                            </Grid>
+                            <Grid x:Name="CadmiumVioletColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#7f3e98"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Cadmium violet"/>
+                            </Grid>
+                            <Grid x:Name="PaleMauveColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#7a547f"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Pale mauve"/>
+                            </Grid>
+                            <Grid x:Name="CalmPurpleColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#9878f8"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Calm purple"/>
+                            </Grid>
+                            <Grid x:Name="LilacColor">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse Margin="3,-3,0,0" Height="10" StrokeThickness="0" Width="10" Fill="#cea2fd"/>
+                                <Label FontSize="13" Margin="0,-4,0,0" Grid.Column="1" Content="Lilac"/>
+                            </Grid>
+                        </ComboBox>
+                    </Grid>
+
+                    <!-- Reminder -->
+                    <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,520,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Reminder" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                        <ComboBox x:Name="ClassReminder" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                            <ComboBoxItem Content=""/>
+                            <ComboBoxItem Content="5 minutes before"/>
+                            <ComboBoxItem Content="10 minutes before"/>
+                            <ComboBoxItem Content="15 minutes before"/>
+                            <ComboBoxItem Content="30 minutes before"/>
+                            <ComboBoxItem Content="45 minutes before"/>
+                            <ComboBoxItem Content="1 hour before"/>
+                            <ComboBoxItem Content="2 hours before"/>
+                            <ComboBoxItem Content="1 day before"/>
+                            <!-- <ComboBoxItem Content="Custom"/> -->
+                        </ComboBox>
+                    </Grid>
+
+                    <!-- Notes -->
+                    <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,570,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Notes" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                        <TextBox SpellCheck.IsEnabled="True" AcceptsReturn="True" TextWrapping="Wrap" x:Name="ClassNotes" VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" AcceptsTab="True" Block.LineHeight="2"/>
+                    </Grid>
+
+                    <!-- Extra space -->
+                    <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,660,0,0">
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+
+            <!-- Cancel and save buttons -->
+            <Grid VerticalAlignment="Bottom" Grid.RowSpan="2" Height="50" Margin="0,0,0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" x:Name="CancelClass" Content="Cancel" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Background="#FFAA2929" Click="cancelButton_Click"/>
+                <Button Grid.Column="1" Content="Save + make another" FontSize="13" Style="{DynamicResource menu-color}" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Click="SaveAndAddClass"/>
+                <Button Grid.Column="2" Content="Save" FontSize="13" Style="{DynamicResource menu-color}" Foreground="White" Cursor="Hand" BorderThickness="0.5" Margin="5,10,10,10" Click="SaveClass"/>
+            </Grid>
+        </Grid>
+    </Grid>
     </Grid>
 </Page>

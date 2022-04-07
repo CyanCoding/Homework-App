@@ -5,8 +5,269 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Homework_App.Pages"
       mc:Ignorable="d"
-      Title="Homework" Height="450" Width="800">
+      Title="Homework" SizeChanged="Window_SizeChanged">
     <Grid>
-        
+        <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
+            <Label Content="Homework" FontSize="26"/>
+        </Border>
+
+        <Button Content="Add new assignment +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="171" Style="{DynamicResource menu-color}" Cursor="Hand" Margin="10,70,0,0" Click="newAssignmentButton_Click"/>
+
+        <!-- Make dynamic height -->
+        <Grid x:Name="AssignmentGrid1" Margin="10,130,0,0" Width="400" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="AssignmentDisplay1Label" Grid.Row="0" Content="Due today" FontSize="18"/>
+            <Label x:Name="AssignmentSwitchButton" Cursor="Hand" Grid.Row="0" Grid.Column="1" Content="&#xE8AB;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe MDL2 Assets" MouseDown="assignmentSwitchButton_MouseDown"/>
+            <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine" Grid.ColumnSpan="2" Grid.Column="0">
+                <ScrollViewer x:Name="DueTodayScrollview">
+                    <Grid VerticalAlignment="Top">
+                        <Grid x:Name="TodayHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="TomorrowHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="NextThreeDaysHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="ThisWeekHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="NextWeekHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="AllHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="PastHomeworkGrid" VerticalAlignment="Top" Visibility="Hidden"/>
+                    </Grid>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <!-- Make dynamic height -->
+        <Grid x:Name="AssignmentGrid2" Margin="430,10,0,0" Width="400" Height="450" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="AssignmentDisplay2Label" Grid.Row="0" Content="Due today" FontSize="18"/>
+            <Label x:Name="AssignmentSwitchButton2" Cursor="Hand" Grid.Row="0" Grid.Column="1" Content="&#xE8AB;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe MDL2 Assets" MouseDown="assignmentSwitchButton_MouseDown"/>
+            <Border Grid.Row="1" BorderThickness="2" BorderBrush="Aquamarine" Grid.ColumnSpan="2" Grid.Column="0">
+                <ScrollViewer x:Name="DueTodayScrollview2">
+                    <Grid VerticalAlignment="Top">
+                        <Grid x:Name="TodayHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="TomorrowHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="NextThreeDaysHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="ThisWeekHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="NextWeekHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="AllHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <Grid x:Name="PastHomeworkGrid2" VerticalAlignment="Top" Visibility="Hidden"/>
+                    </Grid>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+        <Grid x:Name="NewAssignmentGrid" Visibility="Hidden">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.7"/>
+            </Grid.Background>
+
+            <!-- Make dynamic height!! -->
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="450" Height="500" Background="White">
+                <Label Content="Add new assignment" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0"/>
+
+                <ScrollViewer Height="380">
+                    <Grid>
+                        <!-- Title -->
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Title" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox x:Name="AssignmentTitle" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" TextChanged="AssignmentTitle_OnTextChanged"/>
+                            <Label x:Name="AssignmentTitleRequiredLabel" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
+                        </Grid>
+
+                        <!-- Assignment type -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,50,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Type" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <ComboBox x:Name="AssignmentType" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <ComboBoxItem Content=""/>
+                                <ComboBoxItem Content="Homework"/>
+                                <ComboBoxItem Content="Lesson"/>
+                                <ComboBoxItem Content="Paper"/>
+                                <ComboBoxItem Content="Video"/>
+                                <ComboBoxItem Content="Slideshow"/>
+                                <ComboBoxItem Content="Worksheet"/>
+                                <ComboBoxItem Content="Presentation"/>
+                                <ComboBoxItem Content="Project"/>
+                                <ComboBoxItem Content="Group project"/>
+                                <ComboBoxItem Content="Discussion"/>
+                                <ComboBoxItem Content="Study"/>
+                                <ComboBoxItem Content="Lab"/>
+                                <ComboBoxItem Content="Quiz"/>
+                                <ComboBoxItem Content="Exam"/>
+                                <ComboBoxItem Content="Midterm"/>
+                                <ComboBoxItem Content="Final"/>
+                                <ComboBoxItem Content="Other"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Class -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,100,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Class" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <ComboBox x:Name="AssignmentClass" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <ComboBoxItem Content=""/>
+                                
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Date -->
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,150,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Due date" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                            <DatePicker x:Name="AssignmentCalendar" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label x:Name="AssignmentCalendarRequiredLabel" Content="Required" FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FFAA2929" Visibility="Hidden"/>
+                        </Grid>
+
+                        <!-- Time -->
+                        <Grid Height="50" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,200,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Time" FontSize="14" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="5,0,0,0"/>
+                            <TextBox x:Name="AssignmentTime" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0"/>
+                            <Label Content="23:59, 2:00 PM, 8am, etc." FontSize="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="7,0,0,0" Foreground="#FF8E8E8E"/>
+                        </Grid>
+
+                        <!-- Priority -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,260,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Priority" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <ComboBox x:Name="AssignmentPriority" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <ComboBoxItem Content=""/>
+                                <ComboBoxItem Content="Low"/>
+                                <ComboBoxItem Content="Medium"/>
+                                <ComboBoxItem Content="High"/>
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Repeat -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,310,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Repeat" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <ComboBox x:Name="AssignmentRepeat" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <ComboBoxItem Content=""/>
+                                <ComboBoxItem Content="Every day"/>
+                                <ComboBoxItem Content="Every work day (Mon - Fri)"/>
+                                <ComboBoxItem Content="Once a week"/>
+                                <ComboBoxItem Content="Once every other week"/>
+                                <ComboBoxItem Content="Once a month"/>
+                                <!-- <ComboBoxItem Content="Custom"/> -->
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Reminder -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,360,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Reminder" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <ComboBox x:Name="AssignmentReminder" VerticalContentAlignment="Center" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0">
+                                <ComboBoxItem Content=""/>
+                                <ComboBoxItem Content="When due"/>
+                                <ComboBoxItem Content="1 hour before"/>
+                                <ComboBoxItem Content="2 hours before"/>
+                                <ComboBoxItem Content="4 hours before"/>
+                                <ComboBoxItem Content="6 hours before"/>
+                                <ComboBoxItem Content="8 hours before"/>
+                                <ComboBoxItem Content="12 hours before"/>
+                                <ComboBoxItem Content="1 day before"/>
+                                <ComboBoxItem Content="2 days before"/>
+                                <ComboBoxItem Content="3 days before"/>
+                                <ComboBoxItem Content="4 days before"/>
+                                <ComboBoxItem Content="5 days before"/>
+                                <ComboBoxItem Content="6 days before"/>
+                                <ComboBoxItem Content="7 days before"/>
+                                <ComboBoxItem Content="1.5 weeks before"/>
+                                <ComboBoxItem Content="2 weeks before"/>
+                                <!-- <ComboBoxItem Content="Custom"/> -->
+                            </ComboBox>
+                        </Grid>
+
+                        <!-- Notes -->
+                        <Grid Height="80" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,410,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Notes" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+                            <TextBox SpellCheck.IsEnabled="True" AcceptsReturn="True" TextWrapping="Wrap" x:Name="AssignmentNotes" VerticalAlignment="Top" Height="80" Grid.Column="1" FontSize="13" Padding="5" Margin="10,0,10,0" AcceptsTab="True" Block.LineHeight="2"/>
+                        </Grid>
+
+                        <!-- Attachments -->
+                        <Grid x:Name="AssignmentFileGrid" Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,500,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Attachments" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,-5,0,0"/>
+
+                            <Label Content="Coming soon!" FontSize="14" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="5,-5,0,0"/>
+                            <!--<Button x:Name="assignmentAddFileButton" IsEnabled="False" ToolTip="Coming soon!" Grid.Column="1" Content="+ Add file" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
+                            <Button x:Name="assignmentAddLinkButton" IsEnabled="False" ToolTip="Coming soon!" Grid.Column="2" Content="+ Add link" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,0,10,0" Foreground="White" Style="{DynamicResource menu-color}" Click="assignmentAddFileButton_Click"/>
+                            -->
+                            </Grid>
+
+                        <!-- Extra space -->
+                        <!-- Move down when attachments are added -->
+                        <Grid Height="30" VerticalAlignment="Top" Grid.RowSpan="2" Margin="0,500,0,0">
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+
+                <!-- Cancel and save buttons -->
+                <Grid VerticalAlignment="Bottom" Grid.RowSpan="2" Height="50" Margin="0,0,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Cancel" FontSize="13" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Background="#FFAA2929" Click="cancelButton_Click"/>
+                    <Button Grid.Column="1" Content="Save + make another" FontSize="13" Style="{DynamicResource menu-color}" BorderThickness="0.5" Cursor="Hand" Margin="10,10,5,10" Foreground="White" Click="saveAndAddButton_Click"/>
+                    <Button Grid.Column="2" Content="Save" FontSize="13" Style="{DynamicResource menu-color}" Foreground="White" Cursor="Hand" BorderThickness="0.5" Margin="5,10,10,10" Click="saveButton_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
