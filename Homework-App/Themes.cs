@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Homework_App {
-    internal class Themes {
+    internal static class Themes {
         /// <summary>
         /// Key: The name of the theme
         /// Value: {normal theme color}, {selection color}
