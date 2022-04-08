@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Net.Security;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -43,6 +44,7 @@ public partial class Settings : Page {
         style.Setters.Add(new Setter(Border.BorderBrushProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
 
         Application.Current.Resources["menu-color"] = style;
+        Themes.RefreshColors();
 
         // We have to update the button selection again for the new style
         //UpdateSelection(SettingsButton, SettingsGrid);
