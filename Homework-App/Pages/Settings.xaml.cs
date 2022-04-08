@@ -24,7 +24,8 @@ public partial class Settings : Page {
                 break;
         }
     }
-    
+
+    private int themeChanges = 0;
     /// <summary>
     /// Changes the theme globally.
     /// </summary>
@@ -44,10 +45,11 @@ public partial class Settings : Page {
         style.Setters.Add(new Setter(Border.BorderBrushProperty, new BrushConverter().ConvertFrom(theme[0]) as Brush));
 
         Application.Current.Resources["menu-color"] = style;
-        Themes.RefreshColors();
+        if (themeChanges != 0) {
+            Themes.RefreshColors();
+        }
 
-        // We have to update the button selection again for the new style
-        //UpdateSelection(SettingsButton, SettingsGrid);
+        themeChanges++;
     }
     
     /// <summary>
