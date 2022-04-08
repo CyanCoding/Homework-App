@@ -1,4 +1,4 @@
-﻿<Page x:Class="Homework_App.Resources.Classes"
+<Page x:Class="Homework_App.Resources.Classes"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,7 +9,7 @@
         <Border Style="{DynamicResource menu-color}" Background="White" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top">
             <Label Content="Classes" FontSize="26"/>
         </Border>
-        <Button Margin="10,70,0,0" Width="140" Content="Add new class +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Style="{DynamicResource menu-color}" Cursor="Hand"/>
+        <Button Margin="10,70,0,0" Width="140" Content="Add new class +" BorderThickness="0" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Style="{DynamicResource menu-color}" Cursor="Hand" Click="NewClassButtonClicked"/>
         
         <Grid x:Name="NewClassGrid" Visibility="Hidden">
         <Grid.Background>
