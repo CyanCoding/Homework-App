@@ -49,7 +49,7 @@ namespace Homework_App {
         private void settingsButton_Click(object? sender = null, RoutedEventArgs? e = null) {
             UpdateSelection(SettingsButton, SettingsFrame);
         }
-        // TODO: call these from our other class
+        
         private void UpdateSelection(Button selectedButton, Frame showingFrame) {
             var menuList = new[] {
                 HomeworkButton,

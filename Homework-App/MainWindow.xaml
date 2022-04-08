@@ -35,6 +35,6 @@
         <Frame x:Name="CalendarFrame" Source="Pages/Calendar.xaml" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Hidden"/>
         
         <!-- Main settings frame -->
-        <Frame x:Name="SettingsFrame" Source="Pages/Settings.xaml" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Visible"/>
+        <Frame x:Name="SettingsFrame" Source="Pages/Settings.xaml" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Hidden"/>
     </Grid>
 </Window>
