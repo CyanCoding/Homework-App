@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -13,6 +14,19 @@ namespace Homework_App {
             {"Purpleish", "#FFABA6FF,#FFCEA6FF" },
             {"Redish", "#FFE94B4B,#FFF27B7B"}
         };
+
+        /// <summary>
+        /// This is called from the settings page when theme is updated.
+        /// </summary>
+        internal static void RefreshColors() {
+            var theme = BrushValues[Properties.Settings.Default.SelectedTheme].Split(',');
+            MainWindow win = Application.Current.Windows[0] as MainWindow;
+            
+            win.SettingsButton.Background = new BrushConverter().ConvertFrom(theme[1]) as Brush;
+            win.HomeworkButton.Background = new BrushConverter().ConvertFrom(theme[0]) as Brush;
+            win.ClassesButton.Background = new BrushConverter().ConvertFrom(theme[0]) as Brush;
+            win.CalendarButton.Background = new BrushConverter().ConvertFrom(theme[0]) as Brush;
+        }
 
         /// <summary>
         /// Sets a button's background to the appropriate color based
