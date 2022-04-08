@@ -29,7 +29,7 @@
         <Frame x:Name="HomeworkFrame" Source="Pages/Homework.xaml" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Hidden"/>
 
         <!-- Main classes frame -->
-        <Frame Grid.Row="0" x:Name="ClassesFrame" Source="Pages/Classes.xaml" Margin="141,0,0,0" Visibility="Hidden"/>
+        <Frame x:Name="ClassesFrame" Source="Pages/Classes.xaml" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Visible"/>
 
         <!-- Main calendar frame -->
         <Frame x:Name="CalendarFrame" Source="Pages/Calendar.xaml" Margin="141,0,0,0" Grid.Row="0" Grid.RowSpan="2" Visibility="Hidden"/>
