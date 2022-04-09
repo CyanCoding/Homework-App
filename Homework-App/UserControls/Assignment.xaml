@@ -15,8 +15,8 @@
                 <Border Grid.Row="1" Background="#F2F2F2"/>
                 
                 <TextBlock Grid.Row="0" Text="Homework set with practice problems" TextWrapping="Wrap" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <Label Grid.Row="1" Content="Discussion" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="14"/>
-                <Label Grid.Row="1" Content="4:00p" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="14"/>
+                <Label Grid.Row="1" Content="Discussion" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
+                <Label Grid.Row="1" Content="4:00p" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"/>
             </Grid>
         </Border>
     </Grid>
