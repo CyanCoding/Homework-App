@@ -34,6 +34,14 @@
             <Label Grid.Column="5" Grid.Row="0" Content="Saturday" FontSize="16" HorizontalContentAlignment="Center" Background="#345796FF"/>
             <Label Grid.Column="6" Grid.Row="0" Content="Sunday" FontSize="16" HorizontalContentAlignment="Center" Background="#345796FF"/>
             
+            <!-- Gridlines -->
+            <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="5" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" Background="#EFEFEF" BorderThickness="0,1,1,0"/>
+            
             <!-- Week day borders -->
             <Border Grid.Column="0" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,1,1">
                 <Grid>
@@ -77,14 +85,6 @@
                     <Label Content="4 due" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
                 </Grid>
             </Border>
-            
-            <!-- Gridlines -->
-            <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
-            <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
-            <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
-            <Border Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
-            <Border Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
-            <Border Grid.Column="5" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
         </Grid>
     </Grid>
 </UserControl>
