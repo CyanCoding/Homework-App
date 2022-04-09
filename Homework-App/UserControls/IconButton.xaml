@@ -9,6 +9,6 @@
         <Border x:Name="menuBorder" Opacity="0" Width="35" Height="35" HorizontalAlignment="Left" Background="#252525" VerticalAlignment="Top" CornerRadius="5" MouseEnter="BorderMouseEnter" MouseLeave="BorderMouseLeave">
             <Border x:Name="colorBorder" Width="0" Height="0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Red" BorderThickness="2" CornerRadius="5" Opacity="0.45"/>
         </Border>
-        <Label x:Name="menuButton" FontFamily="Segoe MDL2 Assets" Margin="3,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="&#xE700;" FontSize="18"  Foreground="White" MouseEnter="BorderMouseEnter" MouseLeave="BorderMouseLeave"/>
+        <Label x:Name="menuButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" Foreground="White" MouseEnter="BorderMouseEnter" MouseLeave="BorderMouseLeave"/>
     </Grid>
 </UserControl>
