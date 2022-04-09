@@ -21,8 +21,8 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             
             <!-- Week days -->
