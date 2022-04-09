@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Homework_App.UserControls"
              mc:Ignorable="d"
-             d:DesignHeight="400" d:DesignWidth="700">
+             d:DesignHeight="400" d:DesignWidth="900">
     <Grid>
         <Label Content="April 9, 2022" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Margin="10,0,0,0" Foreground="#5796FF"/>
         
@@ -85,6 +86,9 @@
                     <Label Content="4 due" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
                 </Grid>
             </Border>
+            
+            <!-- Assignments -->
+            <local:Assignment Grid.Row="2" Grid.Column="5" VerticalAlignment="Top" Height="100" HorizontalAlignment="Stretch"/>
         </Grid>
     </Grid>
 </UserControl>
