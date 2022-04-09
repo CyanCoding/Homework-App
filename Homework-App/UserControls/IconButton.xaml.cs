@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
@@ -13,11 +14,19 @@ public partial class IconButton : UserControl {
     }
     
     /// <summary>
-    /// Gets or sets the value assigned to the control.
+    /// Gets or sets the Content value for the label.
     /// </summary>
     public string? SegoeType {
         get => menuButton.Content.ToString();
         set => menuButton.Content = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the Background color of the ring.
+    /// </summary>
+    public string? RingColor {
+        get => colorBorder.Background.ToString();
+        set => colorBorder.BorderBrush = new BrushConverter().ConvertFrom(value) as Brush;
     }
     
     private void BorderMouseEnter(object sender, MouseEventArgs e) {

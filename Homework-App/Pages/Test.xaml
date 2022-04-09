@@ -8,7 +8,8 @@
         Title="Test" Height="600" Width="1000">
     <Grid>
         <Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="Black" Width="55"/>
-        <local:IconButton SegoeType="&#xE700;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <local:IconButton SegoeType="&#xE710;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"/>
+        <local:IconButton SegoeType="&#xE700;" RingColor="#FFA6C5FF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <local:IconButton SegoeType="&#xE710;" RingColor="#FFA6C5FF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"/>
+        <local:IconButton SegoeType="&#xE713;" RingColor="#FFA6C5FF" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10"/>
     </Grid>
 </Window>
