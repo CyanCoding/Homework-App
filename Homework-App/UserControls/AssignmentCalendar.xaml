@@ -35,13 +35,56 @@
             <Label Grid.Column="6" Grid.Row="0" Content="Sunday" FontSize="16" HorizontalContentAlignment="Center" Background="#345796FF"/>
             
             <!-- Week day borders -->
-            <Border Grid.Column="0" Grid.Row="1" BorderBrush="#434343" BorderThickness="0,2,1,0"/>
-            <Border Grid.Column="1" Grid.Row="1" BorderBrush="#434343" BorderThickness="0,2,1,0"/>
-            <Border Grid.Column="2" Grid.Row="1" BorderBrush="#434343" BorderThickness="0,2,1,0"/>
-            <Border Grid.Column="3" Grid.Row="1" BorderBrush="#434343" BorderThickness="0,2,1,0"/>
-            <Border Grid.Column="4" Grid.Row="1" BorderBrush="#434343" BorderThickness="0,2,1,0"/>
-            <Border Grid.Column="5" Grid.Row="1" BorderBrush="#434343" BorderThickness="0,2,1,0"/>
-            <Border Grid.Column="6" Grid.Row="1" BorderBrush="#434343" BorderThickness="0,2,0,0"/>
+            <Border Grid.Column="0" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,1,1">
+                <Grid>
+                    <Label Content="4/4/2022" Foreground="#484848" HorizontalContentAlignment="Center"/>
+                    <Label Content="" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,1,1">
+                <Grid>
+                    <Label Content="4/5/2022" Foreground="#484848" HorizontalContentAlignment="Center"/>
+                    <Label Content="" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,1,1">
+                <Grid>
+                    <Label Content="4/6/2022" Foreground="#484848" HorizontalContentAlignment="Center"/>
+                    <Label Content="" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="3" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,1,1">
+                <Grid>
+                    <Label Content="4/7/2022" Foreground="#484848" HorizontalContentAlignment="Center"/>
+                    <Label Content="" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="4" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,1,1">
+                <Grid>
+                    <Label Content="4/8/2022" Foreground="#484848" HorizontalContentAlignment="Center"/>
+                    <Label Content="3 due" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="5" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,1,1">
+                <Grid>
+                    <Label Content="4/9/2022" Foreground="#484848" HorizontalContentAlignment="Center"/>
+                    <Label Content="" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="6" Grid.Row="1" BorderBrush="#979797" BorderThickness="0,1,0,1">
+                <Grid>
+                    <Label Content="4/10/2022" Foreground="#484848" HorizontalContentAlignment="Center"/>
+                    <Label Content="4 due" Foreground="#484848" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            
+            <!-- Gridlines -->
+            <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
+            <Border Grid.Column="5" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#979797" BorderThickness="0,1,1,0"/>
         </Grid>
     </Grid>
 </UserControl>
