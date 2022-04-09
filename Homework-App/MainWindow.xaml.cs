@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Homework_App.Pages;
 
 namespace Homework_App {
     /// <summary>
@@ -9,6 +10,7 @@ namespace Homework_App {
     public partial class MainWindow {
         public MainWindow() {
             InitializeComponent();
+            new Test().Show();
 
             // Generate and apply the theme
             var style = new Style();
